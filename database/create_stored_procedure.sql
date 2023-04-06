@@ -1,0 +1,4 @@
+CREATE PROCEDURE `get_pbb`()
+BEGIN
+    SELECT * FROM pbb;
+END
