@@ -239,8 +239,8 @@ class KtpController extends Controller
         $agama = Agama::all();
         $jeniskelamin = Jeniskelamin::all();
         $statuskawin = Statuskawin::all();
-        $rt = RT::all();
-        $rw = RW::all();
+        $rt = Rt::all();
+        $rw = Rw::all();
         $pekerjaan = Pekerjaan::all();
         $hubkeluarga = Hubkeluarga::all();
         // Get semua data
