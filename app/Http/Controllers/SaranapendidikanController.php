@@ -9,7 +9,7 @@ use App\Models\Province;
 use App\Models\Regency;
 use App\Models\District;
 use App\Models\Village;
-use App\models\Tipependidikan;
+use App\Models\Tipependidikan;
 use App\Models\Statustanah;
 use App\Models\Rt;
 use App\Models\Rw;
