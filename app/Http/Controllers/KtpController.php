@@ -338,7 +338,7 @@ class KtpController extends Controller
      * @param  \App\Models\Ktp  $ktp
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Ktp $ktp)
+    public function destroyktp($id, Ktp $ktp)
     {
         $ktp = Ktp::find($id);
         $ktp->delete();
