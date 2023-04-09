@@ -330,7 +330,8 @@ class KsbrwController extends Controller
             })
 
             ->addColumn('hapus', function ($ksbrw) {
-                if (auth()->user()->role == "superadmin") {
+                if (auth()->user()->role == "superadmin" || auth()->user()->role == "user" ||
+                auth()->user()->role == "pemtrantibum" ) {
                     return '<a href="#" class="btn btn-danger deleteksbrw"
                 data-id="' . $ksbrw->id . '"
                 data-nama="' . $ksbrw->ktp->nama . '">
