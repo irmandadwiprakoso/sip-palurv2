@@ -376,88 +376,88 @@ class PbbController extends Controller
             ->toJson();
     }
 
-    public function getdetaildatapbb(Request $request)
-    {
-        if (auth()->user()->role == 'superadmin') {
-            if ($request->input('pbbkel') != null) {
-                $pbb = Pbb::where('village_id', $request->pbbkel)
-                ->where('TAHUN_SPPT', $request->tahunpbb);
-            } else {
-                $pbb = Pbb::select('pbb.*')
-                ->where('TAHUN_SPPT', $request->tahunpbb)
-                ->orderBy('rw_id', 'asc')->orderBy('rt_id', 'asc');
-            }
-            if ($request->input('rwpbb') != null) {
-                $pbb = Pbb::where('rw_id', $request->rwpbb)
-                ->where('village_id', $request->pbbkel)
-                ->where('TAHUN_SPPT', $request->tahunpbb);
-            }
-            if ($request->input('rtpbb') != null) {
-                $pbb = Pbb::where('rt_id', $request->rtpbb)
-                ->where('village_id', $request->pbbkel)
-                ->where('TAHUN_SPPT', $request->tahunpbb)
-                ->where('rw_id', $request->rwpbb);
-            }
-        }
+    // public function getdetaildatapbb(Request $request)
+    // {
+    //     if (auth()->user()->role == 'superadmin') {
+    //         if ($request->input('pbbkel') != null) {
+    //             $pbb = Pbb::where('village_id', $request->pbbkel)
+    //             ->where('TAHUN_SPPT', $request->tahunpbb);
+    //         } else {
+    //             $pbb = Pbb::select('pbb.*')
+    //             ->where('TAHUN_SPPT', $request->tahunpbb)
+    //             ->orderBy('rw_id', 'asc')->orderBy('rt_id', 'asc');
+    //         }
+    //         if ($request->input('rwpbb') != null) {
+    //             $pbb = Pbb::where('rw_id', $request->rwpbb)
+    //             ->where('village_id', $request->pbbkel)
+    //             ->where('TAHUN_SPPT', $request->tahunpbb);
+    //         }
+    //         if ($request->input('rtpbb') != null) {
+    //             $pbb = Pbb::where('rt_id', $request->rtpbb)
+    //             ->where('village_id', $request->pbbkel)
+    //             ->where('TAHUN_SPPT', $request->tahunpbb)
+    //             ->where('rw_id', $request->rwpbb);
+    //         }
+    //     }
 
-        if (auth()->user()->role == 'permasbang' || auth()->user()->role == 'struktural') {
-            if ($request->input('rwpbb') != null) {
-                $pbb = Pbb::where('rw_id', $request->rwpbb)
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->where('TAHUN_SPPT', $request->tahunpbb);
-            }else{
-                $pbb = Pbb::select('pbb.*')
-                ->where('TAHUN_SPPT', $request->tahunpbb)
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->orderBy('rw_id', 'asc')->orderBy('rt_id', 'asc');
-            }
-            if ($request->input('rtpbb') != null) {
-                $pbb = Pbb::where('rt_id', $request->rtpbb)
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->where('TAHUN_SPPT', $request->tahunpbb)
-                ->where('rw_id', $request->rwpbb);
-            }
-        }
+    //     if (auth()->user()->role == 'permasbang' || auth()->user()->role == 'struktural') {
+    //         if ($request->input('rwpbb') != null) {
+    //             $pbb = Pbb::where('rw_id', $request->rwpbb)
+    //             ->where('village_id', '=', auth()->user()->village_id)
+    //             ->where('TAHUN_SPPT', $request->tahunpbb);
+    //         }else{
+    //             $pbb = Pbb::select('pbb.*')
+    //             ->where('TAHUN_SPPT', $request->tahunpbb)
+    //             ->where('village_id', '=', auth()->user()->village_id)
+    //             ->orderBy('rw_id', 'asc')->orderBy('rt_id', 'asc');
+    //         }
+    //         if ($request->input('rtpbb') != null) {
+    //             $pbb = Pbb::where('rt_id', $request->rtpbb)
+    //             ->where('village_id', '=', auth()->user()->village_id)
+    //             ->where('TAHUN_SPPT', $request->tahunpbb)
+    //             ->where('rw_id', $request->rwpbb);
+    //         }
+    //     }
 
-        if (auth()->user()->role == 'user') {
-            if($request->input('rtpbb')!=null){
-                $pbb = Pbb::where('rw_id', '=', auth()->user()->rw_id)
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->where('rt_id', $request->rtpbb)
-                ->where('TAHUN_SPPT', $request->tahunpbb)
-                ->orderBy('rt_id', 'asc');
-            }else{
-                $pbb = Pbb::where('rw_id', '=', auth()->user()->rw_id)
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->where('TAHUN_SPPT', $request->tahunpbb)
-                ->orderby('rt_id', 'asc');
-            }
-        }
+    //     if (auth()->user()->role == 'user') {
+    //         if($request->input('rtpbb')!=null){
+    //             $pbb = Pbb::where('rw_id', '=', auth()->user()->rw_id)
+    //             ->where('village_id', '=', auth()->user()->village_id)
+    //             ->where('rt_id', $request->rtpbb)
+    //             ->where('TAHUN_SPPT', $request->tahunpbb)
+    //             ->orderBy('rt_id', 'asc');
+    //         }else{
+    //             $pbb = Pbb::where('rw_id', '=', auth()->user()->rw_id)
+    //             ->where('village_id', '=', auth()->user()->village_id)
+    //             ->where('TAHUN_SPPT', $request->tahunpbb)
+    //             ->orderby('rt_id', 'asc');
+    //         }
+    //     }
     
-        return DataTables::eloquent($pbb)
-            ->addIndexColumn()
-            ->addColumn('rw', function ($pbb) {
-                return $pbb->rw->rw;
-            })
-            ->addColumn('rt', function ($pbb) {
-                return $pbb->rt->rt;
-            })
-            ->addColumn('jumlahsppt', function ($pbb) {
-                return $pbb->where('TAHUN_SPPT', '=', $request->tahunpbb)
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->where('rw_id', '=', auth()->user()->rw_id)
-                ->count();
-            })
-            ->addColumn('district', function ($pbb) {
-                return $pbb->district->name;
-            })
-            ->addColumn('village', function ($pbb) {
-                return $pbb->village->name;
-            })
+    //     return DataTables::eloquent($pbb)
+    //         ->addIndexColumn()
+    //         ->addColumn('rw', function ($pbb) {
+    //             return $pbb->rw->rw;
+    //         })
+    //         ->addColumn('rt', function ($pbb) {
+    //             return $pbb->rt->rt;
+    //         })
+    //         ->addColumn('jumlahsppt', function ($pbb) {
+    //             return $pbb->where('TAHUN_SPPT', '=', $request->tahunpbb)
+    //             ->where('village_id', '=', auth()->user()->village_id)
+    //             ->where('rw_id', '=', auth()->user()->rw_id)
+    //             ->count();
+    //         })
+    //         ->addColumn('district', function ($pbb) {
+    //             return $pbb->district->name;
+    //         })
+    //         ->addColumn('village', function ($pbb) {
+    //             return $pbb->village->name;
+    //         })
 
-            ->rawColumns([
-                'rw', 'rt','province', 'regency', 'district', 'village', 'jumlahsppt'
-            ])
-            ->toJson();
-    }
+    //         ->rawColumns([
+    //             'rw', 'rt','province', 'regency', 'district', 'village', 'jumlahsppt'
+    //         ])
+    //         ->toJson();
+    // }
 }

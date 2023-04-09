@@ -568,7 +568,7 @@
             									
 
             <!-- Detail Data per RT--> 
-            <div class="card card-primary">
+            {{-- <div class="card card-primary">
               <div class="card-header">
                   <h3 class="card-title">Detail Data SPPT PBB</h3>
               </div>
@@ -593,7 +593,7 @@
                       </div>
                     </div>									
                   </div>	
-                  </div>	
+                  </div>	 --}}
 
             <!-- Main content / Tampilan Data -->
             <section class="content">
