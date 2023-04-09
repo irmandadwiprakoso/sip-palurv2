@@ -6,6 +6,8 @@ use App\Models\Pkk;
 use Illuminate\Http\Request;
 use App\Models\Rt;
 use App\Models\Rw;
+use App\Models\Province;
+use App\Models\Regency;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\Jabatan;
