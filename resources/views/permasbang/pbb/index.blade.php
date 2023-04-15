@@ -642,6 +642,7 @@
                 <!-- /.container-fluid -->
             </section>
         </div>
+        </div>
         @include('master.csidebar')
         @include('master.footer')
         @include('master.script')
