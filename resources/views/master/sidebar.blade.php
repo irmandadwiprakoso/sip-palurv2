@@ -91,12 +91,12 @@
                                 <p>Sarana Kesehatan</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="/dtksnondtks" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>DTKS NON DTKS</p>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
                 @endif
