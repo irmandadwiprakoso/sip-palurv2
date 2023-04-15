@@ -337,8 +337,8 @@
                                             <select class="form-control @error('tipe_pns') is-invalid @enderror" 
                                             id="tipe_pns" name="tipe_pns">
                                                 <option value="{{ $asn->tipe_pns}}">{{ $asn->tipe_pns}}</option>
-                                                <option value="struktural">Struktural</option>
-                                                <option value="pelaksana">Pelaksana</option>
+                                                <option value="Struktural">Struktural</option>
+                                                <option value="Pelaksana">Pelaksana</option>
                                             </select>
                                             @error('tipe_pns') <div class="alert alert-danger">{{ $message }} </div>
                                             @enderror
