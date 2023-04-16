@@ -118,27 +118,24 @@ class PospinController extends Controller
       */
      public function store(Request $request)
      {
-         //dd($request->all());
+        //  dd($request->all());
          $request->validate(
              [
                  'ktp_id' => 'required|unique:pospin,ktp_id',
-                 // 'pokja' => 'required',
-                 // 'rt_id' => 'required',
-                 // 'rw_id' => 'required',
+                 'nama_ortu' => 'required',
                  'saranakesehatan_id' => 'required',    
              ],
              [
                  'ktp_id.required' => 'Harus di Isi Yaa',
                  'ktp_id.unique' => 'NIK Sudah Digunakan',
-                 // 'pokja.required' => 'Harus di Isi Yaa',
-                 // 'rt_id.required' => 'Harus di Isi Yaa',
-                 // 'rw_id.required' => 'Harus di Isi Yaa',
+                 'nama_ortu.required' => 'Harus di Isi Yaa',
                  'saranakesehatan_id.required' => 'Harus di Isi Yaa',
              ]
          );
          Pospin::create([
              'ktp_id' => $request->ktp_id,
              'saranakesehatan_id' => $request->saranakesehatan_id,
+             'nama_ortu' => $request->nama_ortu,
              'pin_1' => $request->pin_1,
              'pin_2' => $request->pin_2,
              'rw_id' => Auth::user()->rw_id,
@@ -225,6 +222,7 @@ class PospinController extends Controller
              ->update([
                  'ktp_id' => $request->ktp_id,
                  'saranakesehatan_id' => $request->saranakesehatan_id,
+                 'nama_ortu' => $request->nama_ortu,
                  'pin_1' => $request->pin_1,
                  'pin_2' => $request->pin_2,
              ]);

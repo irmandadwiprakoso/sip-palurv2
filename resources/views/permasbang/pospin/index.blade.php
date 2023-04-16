@@ -26,25 +26,18 @@
                     </div>
             
             <!-- Chart Data --> 
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Chart</h3>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card-body">
-                            <div class="row">  
-                                <div class="col-sm-12">
-                                    <div class="form-group">            
-                                    {!! $chart->container() !!}
-                            </div>
-                            </div>
-                            </div>
+                <div class="card card-danger">
+                    <div class="card-header">
+                        <h3 class="card-title">Donut Chart</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                     </div>
+                <div class="card-body" >
+                    {!! $chart->container() !!}
                 </div>
-            </div>
-        
+                </div>
+
             <!-- Filter Data --> 
                 <div class="card card-primary">
                     <div class="card-header">
@@ -54,7 +47,7 @@
                         <div class="col-md-12">
                             <div class="card-body">
                                 <div class="row">  
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="filter-pospinkel" class="form-label">POSPIN Kelurahan</label>
                                             <select class="form-control filter" id="filter-pospinkel" name="filter-pospinkel">
@@ -66,13 +59,25 @@
                                         </div>
                                         </div>
 
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="filter-rwpospin" class="form-label">RW Kelurahan</label>
                                             <select class="form-control filter" id="filter-rwpospin" name="filter-rwpospin">
                                                 <option value="">-- Pilih RW --</option>
                                                 @foreach ($rw as $rwpospin)
                                                     <option value="{{ $rwpospin->id }}">{{ $rwpospin->rw }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="filter-posyandupin" class="form-label">Posyandu</label>
+                                            <select class="form-control filter" id="filter-posyandupin" name="filter-posyandupin">
+                                                <option value="">-- Pilih Posyandu --</option>
+                                                @foreach ($saranakesehatan as $posyandupin)
+                                                    <option value="{{ $posyandupin->id }}">{{ $posyandupin->nama }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -97,6 +102,31 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)->
+                            where('pin_1','=', 'Sudah')->count()}}</h3>
+                            <p>Sudah Pin Polio 1</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)->
+                            where('pin_1','=', 'Belum')->count()}}</h3>
+                            <p>Belum Pin Polio 1</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
+
                 @elseif (auth()->user()->role == "user")
                 <div class="col-lg-4 col-4">
                     <div class="small-box bg-danger">
@@ -111,12 +141,63 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)
+                            ->where('rw_id', '=', auth()->user()->rw_id)
+                            ->where('pin_1','=', 'Sudah')
+                            ->count()}}</h3>
+                            <p>Sudah Pin Polio 1</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)
+                            ->where('rw_id', '=', auth()->user()->rw_id)
+                            ->where('pin_1','=', 'Belum')
+                            ->count()}}</h3>
+                            <p>Belum Pin Polio 1</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
+
                 @elseif (auth()->user()->role == "superadmin")
                 <div class="col-lg-4 col-4">
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3> {{$pospin->count()}}</h3>
+                            <h3> {{$pospin->where('pin_1','=', 'Belum')->count()}}</h3>
                             <p>Jumlah Bayi</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->where('pin_1','=', 'Sudah')->count()}}</h3>
+                            <p>Sudah Pin Polio I</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->where('pin_1', '=', 'Belum')->count()}}</h3>
+                            <p>Belum Pin Polio 1</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-thin fa-user-plus"></i>
@@ -127,40 +208,42 @@
             </div>
 
             <!-- Main content / Tampilan Data -->
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">Detail Data POSPIN</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="datapospin" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">NIK</th>
-                                                <th scope="col">Nama</th>
-                                                <th scope="col">JK</th>
-                                                <th scope="col">Tgl Lahir</th>
-                                                <th scope="col">Posyandu</th>
-                                                <th scope="col">RW</th>
-                                                <th scope="col">PIN 1</th>
-                                                <th scope="col">PIN 2</th>
-                                                <th scope="col">Kelurahan</th>
-                                                <th scope="col">Kecamatan</th>
-                                                <th scope="col">Edit</th>
-                                                <th scope="col">Detail</th>
-                                                <th scope="col">Delete</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Detail Data POSPIN</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="datapospin" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">NIK</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">JK</th>
+                                <th scope="col">Tgl Lahir</th>
+                                <th scope="col">Nama Orang Tua</th>
+                                <th scope="col">Posyandu</th>
+                                <th scope="col">RW</th>
+                                <th scope="col">PIN 1</th>
+                                <th scope="col">PIN 2</th>
+                                <th scope="col">Kelurahan</th>
+                                <th scope="col">Kecamatan</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Detail</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
         @include('master.csidebar')
         @include('master.footer')
         @include('master.script')
@@ -201,6 +284,17 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
+                                                    <label for="nama_ortu" class="form-label">Nama Orang Tua</label>
+                                                    <input type="text" onkeyup="this.value = this.value.toUpperCase()"
+                                                        class="form-control @error('nama_ortu') is-invalid @enderror"
+                                                        id="nama_ortu" placeholder="Ibu/Bapak" name="nama_ortu" value="{{ old('nama_ortu') }}">
+                                                    @error('nama_ortu') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
                                                     <label for="saranakesehatan_id">Posyandu</label>
                                                     <select class="form-control @error('saranakesehatan_id') is-invalid @enderror"
                                                         id="saranakesehatan_id" name="saranakesehatan_id"
@@ -217,7 +311,7 @@
                                                 </div>
                                                 </div>
 
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-3">
                                                     <div class="form-group">
                                                     <label for="pin_1" class="form-label">PIN 1</label>
                                                     <select class="form-control @error('pin_1') is-invalid @enderror" id="pin_1" name="pin_1">
@@ -230,7 +324,7 @@
                                                 </div>
                                                 </div>      
 
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-3">
                                                     <div class="form-group">
                                                     <label for="pin_2" class="form-label">PIN 2</label>
                                                     <select class="form-control @error('pin_2') is-invalid @enderror" id="pin_2" name="pin_2">

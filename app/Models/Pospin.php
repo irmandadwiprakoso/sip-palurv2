@@ -13,6 +13,7 @@ class Pospin extends Model
         'id',
         'ktp_id',
         'saranakesehatan_id',
+        'nama_ortu',
         'rw_id',
         'district_id',
         'village_id',

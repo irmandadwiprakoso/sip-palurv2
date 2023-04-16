@@ -64,6 +64,17 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
+                                                    <label for="nama_ortu" class="form-label">Nama Orang Tua</label>
+                                                    <input type="text" onkeyup="this.value = this.value.toUpperCase()" class="form-control @error('nama_ortu') is-invalid @enderror"
+                                                        id="nama_ortu" placeholder="Ibu/Bapak" name="nama_ortu"
+                                                        value="{{ $pospin->nama_ortu }}">
+                                                    @error('nama_ortu') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
+                                                </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
                                                     <label for="saranakesehatan_id" class="form-label">Posyandu</label>
                                                     <select class="form-control @error('saranakesehatan_id') is-invalid @enderror"
                                                         aria-label="Default select example" id="saranakesehatan_id" name="saranakesehatan_id"
@@ -79,7 +90,7 @@
                                                 </div>
                                                 </div>   
 
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-3">
                                                 <div class="form-group"> 
                                                     <label for="pin_1" class="text-danger">PIN 1</label>
                                                         <select class="form-control @error('pin_1') is-invalid @enderror"
@@ -94,7 +105,7 @@
                                                     </div>
                                                 </div>    
 
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-3">
                                                 <div class="form-group"> 
                                                     <label for="pin_2" class="text-danger">PIN 2</label>
                                                         <select class="form-control @error('pin_2') is-invalid @enderror"

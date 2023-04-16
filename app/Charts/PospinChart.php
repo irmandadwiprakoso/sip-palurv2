@@ -14,25 +14,29 @@ class PospinChart
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\donutChart
+    public function build(): \ArielMejiaDev\LarapexCharts\pieChart
     {
         $pospin = Pospin::get();
         $data = [
             $pospin->where('pin_1', '=', 'Sudah')->count(),
             $pospin->where('pin_1', '=', 'Belum')->count(),
+            $pospin->where('pin_2', '=', 'Sudah')->count(),
+            $pospin->where('pin_2', '=', 'Belum')->count(),
         ];
 
         $label = [
-            'Sudah Pin Polio',
-            'Belum Pin Polio',
+            'Sudah Pin Polio 1',
+            'Belum Pin Polio 1',
+            'Sudah Pin Polio 2',
+            'Belum Pin Polio 2',
         ];
 
-        return $this->chart->donutChart()
-            ->setTitle('Data Pos Sub Pin Polio Kelurahan Jakasampurna')
+        return $this->chart->pieChart()
+            ->setTitle('Data Pos Sub Pin Polio Nopv2')
             ->addData($data)
             ->setLabels($label)
-            ->setWidth(500)
-            ->setHeight(500)
-            ->setColors(['#ffc63b', '#ff6384']);
+            ->setWidth(400)
+            ->setHeight(400);
+            // ->setColors(['#ffc63b', '#ff6384']);
     }
 }

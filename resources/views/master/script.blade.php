@@ -110,10 +110,6 @@
 @endif
 </script>
 
-<!-- Chart Pospin-->
-
-
-
 <!----------------------------------------------- PEM TRANTIBUM---------------------------->
 <!-- DataTables KSB RT-->
 <script>
@@ -2206,7 +2202,7 @@
 <!-- DataTables POSPIN-->
 <script>
     let rwpospin = $("#filter-rwpospin").val()
-        ,rtpospin = $("#filter-rtpospin").val()
+        ,posyandupin = $("#filter-posyandupin").val()
         ,pospinkel = $("#filter-pospinkel").val()
 
     $(document).ready(function() {
@@ -2231,7 +2227,7 @@
                 url : "{{'getdatapospin'}}",
                 data:function(d){
                 d.rwpospin = rwpospin;
-                d.rtpospin = rtpospin;
+                d.posyandupin = posyandupin;
                 d.pospinkel = pospinkel;
                 return d               
                 }
@@ -2242,6 +2238,7 @@
                 {data:'nama_ktp', name:'nama_ktp'},
                 {data:'jk_ktp', name:'jk_ktp'},
                 {data:'tgllahir_ktp', name:'tgllahir_ktp'},
+                {data:'nama_ortu', name:'nama_ortu'},
                 {data:'saranakesehatan', name:'saranakesehatan'},
                 {data:'rw', name:'rw'},
                 {data:'pin_1', name:'pin_1'},
@@ -2260,7 +2257,7 @@
 
             $(".filter").on('change', function() { 
                 rwpospin = $("#filter-rwpospin").val()
-                rtpospin = $("#filter-rtpospin").val()
+                posyandupin = $("#filter-posyandupin").val()
                 pospinkel = $("#filter-pospinkel").val()
                 table.ajax.reload(null, false);            
             })
