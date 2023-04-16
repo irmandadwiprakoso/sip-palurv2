@@ -255,6 +255,11 @@ class PospinController extends Controller
                  $pospin = Pospin::where('village_id', $request->pospinkel)
                  ->where('rw_id', $request->rwpospin);
              }
+             if ($request->input('posyandupin') != null) {
+                 $pospin = Pospin::where('village_id', $request->pospinkel)
+                 ->where('rw_id', $request->rwpospin)
+                 ->where('saranakeseahtan_id', $request->posyandupin);
+             }
          }
          
          if (auth()->user()->role == 'user') {

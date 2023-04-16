@@ -91,7 +91,7 @@
             <!-- Detail Data --> 
             <div class="row">
                 @if (auth()->user()->role == "permasbang" || auth()->user()->role == "struktural")
-                <div class="col-lg-4 col-4">
+                <div class="col-lg-12 col-4">
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)->count()}}</h3>
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-4">
+                <div class="col-lg-3 col-4">
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)->
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-4">
+                <div class="col-lg-3 col-4">
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)->
@@ -126,9 +126,33 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-3 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)->
+                            where('pin_2','=', 'Sudah')->count()}}</h3>
+                            <p>Sudah Pin Polio 2</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)->
+                            where('pin_2','=', 'Belum')->count()}}</h3>
+                            <p>Belum Pin Polio 2</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
 
                 @elseif (auth()->user()->role == "user")
-                <div class="col-lg-4 col-4">
+                <div class="col-lg-12 col-4">
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)
@@ -141,7 +165,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-4">
+                <div class="col-lg-3 col-4">
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)
@@ -155,7 +179,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-4">
+                <div class="col-lg-3 col-4">
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)
@@ -169,12 +193,40 @@
                         </div>
                     </div>
                 </div>
-
-                @elseif (auth()->user()->role == "superadmin")
-                <div class="col-lg-4 col-4">
+                <div class="col-lg-3 col-4">
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3> {{$pospin->where('pin_1','=', 'Belum')->count()}}</h3>
+                            <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)
+                            ->where('rw_id', '=', auth()->user()->rw_id)
+                            ->where('pin_2','=', 'Sudah')
+                            ->count()}}</h3>
+                            <p>Sudah Pin Polio 2</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->where('village_id', '=', auth()->user()->village_id)
+                            ->where('rw_id', '=', auth()->user()->rw_id)
+                            ->where('pin_2','=', 'Belum')
+                            ->count()}}</h3>
+                            <p>Belum Pin Polio 2</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
+
+                @elseif (auth()->user()->role == "superadmin")
+                <div class="col-lg-12 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->count()}}</h3>
                             <p>Jumlah Bayi</p>
                         </div>
                         <div class="icon">
@@ -182,7 +234,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-4">
+                <div class="col-lg-3 col-4">
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3> {{$pospin->where('pin_1','=', 'Sudah')->count()}}</h3>
@@ -193,11 +245,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-4">
+                <div class="col-lg-3 col-4">
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3> {{$pospin->where('pin_1', '=', 'Belum')->count()}}</h3>
                             <p>Belum Pin Polio 1</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->where('pin_2','=', 'Sudah')->count()}}</h3>
+                            <p>Sudah Pin Polio 2</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-thin fa-user-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3> {{$pospin->where('pin_2', '=', 'Belum')->count()}}</h3>
+                            <p>Belum Pin Polio 2</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-thin fa-user-plus"></i>
