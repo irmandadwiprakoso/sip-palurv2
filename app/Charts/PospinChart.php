@@ -16,13 +16,35 @@ class PospinChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\pieChart
     {
-        $pospin = Pospin::get();
-        $data = [
-            $pospin->where('pin_1', '=', 'Sudah')->count(),
-            $pospin->where('pin_1', '=', 'Belum')->count(),
-            $pospin->where('pin_2', '=', 'Sudah')->count(),
-            $pospin->where('pin_2', '=', 'Belum')->count(),
-        ];
+        if (auth()->user()->role == 'user') {
+            $pospin = Pospin::get();
+            $data = [
+                $pospin->where('village_id', '=', auth()->user()->village_id)->where('rw_id', '=', auth()->user()->rw_id)->where('pin_1', '=', 'Sudah')->count(),
+                $pospin->where('village_id', '=', auth()->user()->village_id)->where('rw_id', '=', auth()->user()->rw_id)->where('pin_1', '=', 'Belum')->count(),
+                $pospin->where('village_id', '=', auth()->user()->village_id)->where('rw_id', '=', auth()->user()->rw_id)->where('pin_2', '=', 'Sudah')->count(),
+                $pospin->where('village_id', '=', auth()->user()->village_id)->where('rw_id', '=', auth()->user()->rw_id)->where('pin_2', '=', 'Belum')->count(),
+            ];
+        }
+
+        if (auth()->user()->role == 'struktural' || auth()->user()->role == 'permasbang' ) {
+            $pospin = Pospin::get();
+            $data = [
+                $pospin->where('village_id', '=', auth()->user()->village_id)->where('pin_1', '=', 'Sudah')->count(),
+                $pospin->where('village_id', '=', auth()->user()->village_id)->where('pin_1', '=', 'Belum')->count(),
+                $pospin->where('village_id', '=', auth()->user()->village_id)->where('pin_2', '=', 'Sudah')->count(),
+                $pospin->where('village_id', '=', auth()->user()->village_id)->where('pin_2', '=', 'Belum')->count(),
+            ];
+        }
+
+        if (auth()->user()->role == 'superadmin') {
+            $pospin = Pospin::get();
+            $data = [
+                $pospin->where('pin_1', '=', 'Sudah')->count(),
+                $pospin->where('pin_1', '=', 'Belum')->count(),
+                $pospin->where('pin_2', '=', 'Sudah')->count(),
+                $pospin->where('pin_2', '=', 'Belum')->count(),
+            ];
+        }
 
         $label = [
             'Sudah Pin Polio 1',
