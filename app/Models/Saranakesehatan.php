@@ -28,22 +28,18 @@ class Saranakesehatan extends Model
     {
         return $this->belongsTo(Tipekesehatan::class);
     }
-
     public function statustanah()
     {
         return $this->belongsTo(Statustanah::class);
     }
-
     public function rt()
     {
         return $this->belongsTo(Rt::class);
     }
-
     public function rw()
     {
         return $this->belongsTo(Rw::class);
     }
-
     public function District()
     {
         return $this->belongsTo(District::class);
@@ -59,5 +55,9 @@ class Saranakesehatan extends Model
     public function Village()
     {
         return $this->belongsTo(Village::class);
+    }
+    public function pospin()
+    {
+        return $this->hasMany(Pospin::class);
     }
 }

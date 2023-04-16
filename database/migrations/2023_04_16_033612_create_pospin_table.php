@@ -15,6 +15,16 @@ class CreatePospinTable extends Migration
     {
         Schema::create('pospin', function (Blueprint $table) {
             $table->id();
+            $table->integer('ktp_id');
+            $table->integer('saranakesehatan_id');
+            $table->integer('rt_id');
+            $table->integer('rw_id');
+            $table->integer('district_id');
+            $table->integer('village_id');
+            $table->string('pin_1');
+            $table->string('lokasi_1');
+            $table->string('pin_2');
+            $table->string('lokasi_2');
             $table->timestamps();
         });
     }

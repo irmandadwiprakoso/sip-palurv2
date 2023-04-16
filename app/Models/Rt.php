@@ -72,4 +72,8 @@ class Rt extends Model
     {
         return $this->hasMany(Dtksnondtks::class);
     }
+    public function pospin()
+    {
+        return $this->hasMany(Pospin::class);
+    }
 }

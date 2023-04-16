@@ -20,6 +20,7 @@ use App\Http\Controllers\TkkController;
 use App\Http\Controllers\DtksController;
 use App\Http\Controllers\VaksinController;
 use App\Http\Controllers\PkkController;
+use App\Http\Controllers\PospinController;
 use App\Http\Controllers\DtksnondtksController;
 use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
@@ -181,7 +182,7 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::post('/getkabupaten', [PbbController::class, 'getkabupaten'])->name('getkabupaten');
     Route::post('/getkecamatan', [PbbController::class, 'getkecamatan'])->name('getkecamatan');
     Route::post('/getdesa', [PbbController::class, 'getdesa'])->name('getdesa');
-    Route::get('/destroypbb/{id}', [PbbController::class, 'destroy'])->name('destroypbb');
+    Route::get('/destroypbb/{id}', [PbbController::class, 'destroypbb'])->name('destroypbb');
     Route::get('/getdatapbb', [PbbController::class, 'getdatapbb'])->name('datapbb');
     Route::get('/getdetaildatapbb', [PbbController::class, 'getdetaildatapbb'])->name('detaildatapbb');
 
@@ -190,7 +191,7 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::post('/getkabupaten', [FasosfasumController::class, 'getkabupaten'])->name('getkabupaten');
     Route::post('/getkecamatan', [FasosfasumController::class, 'getkecamatan'])->name('getkecamatan');
     Route::post('/getdesa', [FasosfasumController::class, 'getdesa'])->name('getdesa');
-    Route::get('/destroyfasosfasum/{id}', [FasosfasumController::class, 'destroy'])->name('destroyfasosfasum');
+    Route::get('/destroyfasosfasum/{id}', [FasosfasumController::class, 'destroyfasosfasum'])->name('destroyfasosfasum');
     Route::get('/getdatafasosfasum', [FasosfasumController::class, 'getdatafasosfasum'])->name('datafasosfasum');
 
     //POSYANDU//
@@ -198,7 +199,7 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::post('/getkabupaten', [PosyanduController::class, 'getkabupaten'])->name('getkabupaten');
     Route::post('/getkecamatan', [PosyanduController::class, 'getkecamatan'])->name('getkecamatan');
     Route::post('/getdesa', [PosyanduController::class, 'getdesa'])->name('getdesa');
-    Route::get('/destroyposyandu/{id}', [PosyanduController::class, 'destroy'])->name('destroyposyandu');
+    Route::get('/destroyposyandu/{id}', [PosyanduController::class, 'destroyposyandu'])->name('destroyposyandu');
     Route::get('/getdataposyandu', [PosyanduController::class, 'getdataposyandu'])->name('dataposyandu');
     
     //PKK//
@@ -206,6 +207,14 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::post('/getkabupaten', [PkkController::class, 'getkabupaten'])->name('getkabupaten');
     Route::post('/getkecamatan', [PkkController::class, 'getkecamatan'])->name('getkecamatan');
     Route::post('/getdesa', [PkkController::class, 'getdesa'])->name('getdesa');
-    Route::get('/destroypkk/{id}', [PkkController::class, 'destroy'])->name('destroypkk');
+    Route::get('/destroypkk/{id}', [PkkController::class, 'destroypkk'])->name('destroypkk');
     Route::get('/getdatapkk', [PkkController::class, 'getdatapkk'])->name('datapkk');
+
+    //POSPIN//
+    Route::resource('pospin', PospinController::class);
+    Route::post('/getkabupaten', [PospinController::class, 'getkabupaten'])->name('getkabupaten');
+    Route::post('/getkecamatan', [PospinController::class, 'getkecamatan'])->name('getkecamatan');
+    Route::post('/getdesa', [PospinController::class, 'getdesa'])->name('getdesa');
+    Route::get('/destroypospin/{id}', [PospinController::class, 'destroypospin'])->name('destroypospin');
+    Route::get('/getdatapospin', [PospinController::class, 'getdatapospin'])->name('datapospin');
 });
