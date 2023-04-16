@@ -40,7 +40,7 @@
                                     <div class="card-body">
                                     <form>
                                     <div class="row">
-                                        <div class="col-sm-12">
+                                        {{-- <div class="col-sm-12">
                                         <div class="form-group">
                                             <h3 class="profile-username text-center">{{ $dtksnondtks->ktp->nama }}</h3>
                                             <h3 class="profile-username text-center">{{ $dtksnondtks->ktp->id }}</h3>
@@ -53,6 +53,7 @@
                                                       class="form-control" id="nama" value="{{ $dtksnondtks->ktp->nama }}">
                                               </div>
                                               </div>
+
                                               <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="ktp_id" class="form-label">Nama/NIK Kader DTKS NON DTKS</label>
@@ -64,8 +65,19 @@
                                                         </datalist>
                                                     @error ('ktp_id') <div class="alert alert-danger">{{ $message }} </div>@enderror 
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="no_HP" class="form-label">Nomor HP</label>
+                                                    <input type="text"
+                                                        class="form-control @error('no_HP') is-invalid @enderror" id="no_HP"
+                                                        placeholder="No HP" name="no_HP" value="{{ $dtksnondtks->pkh }}">
+                                                    @error('no_HP') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
+                                                </div>
+
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <a class="btn btn-default" href="/dtksnondtks" role="button">Close</a>

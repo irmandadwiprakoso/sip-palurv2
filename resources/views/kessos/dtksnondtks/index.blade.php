@@ -261,17 +261,17 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Nama</th>
-                                                <th scope="col">NIK</th>
-                                                {{-- <th scope="col">pkh</th>
+                                                {{-- <th scope="col">Nama</th>
+                                                <th scope="col">NIK</th> --}}
+                                                <th scope="col">pkh</th>
                                                 <th scope="col">bpnt</th>
                                                 <th scope="col">pbi</th>
-                                                <th scope="col">non_bansos</th> --}}
-                                                <th scope="col">RT</th>
-                                                <th scope="col">RW</th>
+                                                <th scope="col">non_bansos</th>
+                                                {{-- <th scope="col">RT</th>
+                                                <th scope="col">RW</th> --}}
                                                 <th scope="col">Keterangan</th>
-                                                <th scope="col">Kecamatan</th>
-                                                <th scope="col">Kelurahan</th>
+                                                {{-- <th scope="col">Kecamatan</th>
+                                                <th scope="col">Kelurahan</th> --}}
                                                 <th scope="col">Edit</th>
                                                 <th scope="col">Detail</th>
                                                 <th scope="col">Delete</th>

@@ -101,14 +101,6 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::post('/getdesa', [SaranakesehatanController::class, 'getdesa'])->name('getdesa');
     Route::get('/destroysaranakesehatan/{id}', [SaranakesehatanController::class, 'destroysaranakesehatan'])->name('DestroySaranakesehatan');
     Route::get('/getdatasaranakesehatan', [SaranakesehatanController::class, 'getdatasaranakesehatan'])->name('datasaranakesehatan');
-    
-    //Dtks//
-    Route::resource('dtks', DtksController::class);
-    Route::post('/getkabupaten', [DtksController::class, 'getkabupaten'])->name('getkabupaten');
-    Route::post('/getkecamatan', [DtksController::class, 'getkecamatan'])->name('getkecamatan');
-    Route::post('/getdesa', [DtksController::class, 'getdesa'])->name('getdesa');
-    Route::get('/destroydtks/{id}', [DtksController::class, 'destroydtks'])->name('DestroyDtks');
-    Route::get('/getdatadtks', [DtksController::class, 'getdatadtks'])->name('datadtks');
 
     //DTKS NON DTKS//
     Route::resource('dtksnondtks', DtksnondtksController::class);

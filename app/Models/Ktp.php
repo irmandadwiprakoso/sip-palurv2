@@ -58,7 +58,6 @@ class Ktp extends Model
     {
         return $this->hasMany(Ksbrw::class);
     }
-
     public function pekerjaan()
     {
         return $this->belongsTo(Pekerjaan::class);
@@ -93,6 +92,6 @@ class Ktp extends Model
     }
     public function dtksnondtks()
     {
-        return $this->hasMany(dtksnondtks::class);
+        return $this->hasMany(Dtksnondtks::class);
     }
 }

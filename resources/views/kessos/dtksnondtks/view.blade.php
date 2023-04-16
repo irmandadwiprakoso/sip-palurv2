@@ -15,8 +15,7 @@
     </div>
     </div>
    
-   
-    {{-- <div class="col-sm-3">
+    <div class="col-sm-3">
     <div class="form-group">
         <label for="id" class="form-label">Status PKH</label>
         <input type="text" disabled readonly class="form-control" id="nama" value="{{ $dtksnondtks->pkh}}">
@@ -39,7 +38,7 @@
         <label for="id" class="form-label">Status NON_BANSOS</label>
         <input type="text" disabled readonly class="form-control" id="nama" value="{{ $dtksnondtks->non_bansos }}">
     </div>
-    </div> --}}
+    </div>
    
    
     <div class="col-sm-6">

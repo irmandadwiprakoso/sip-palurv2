@@ -235,7 +235,7 @@ class DtksnondtksController extends Controller
      * @param  \App\Models\Dtksnondtks  $dtksnondtks
      * @return \Illuminate\Http\Response
      */
-    public function destroydtksnondtks(Dtksnondtks $dtksnondtks)
+    public function destroydtksnondtks($id, Dtksnondtks $dtksnondtks)
     {
         $dtksnondtks = Dtksnondtks::find($id);
         $dtksnondtks->delete();
