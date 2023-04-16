@@ -45,7 +45,7 @@
                             </div>
                         </div>
 
-                    <div class="col-sm-6>
+                    <div class="col-sm-6">
                     <div class="form-group">
                             <label for="nama" class="form-label">Nama Sarana Kesehatan</label>
                             <input type="text" onkeyup="this.value = this.value.toUpperCase()" class="form-control @error('nama') is-invalid @enderror" 
