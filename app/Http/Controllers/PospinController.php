@@ -9,9 +9,12 @@ use App\Models\Saranakesehatan;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\kelbekasi;
+use App\Charts\PospinChart;
+
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
+
 class PospinController extends Controller
 {
     /**
@@ -54,7 +57,7 @@ class PospinController extends Controller
          echo $option;
      }
 
-     public function index()
+     public function index(PospinChart $chart)
      {
          $rw = Rw::all();
          $ktp = Ktp::all();
@@ -64,8 +67,12 @@ class PospinController extends Controller
          $districts = District::all();
          $villages = Village::all();
          $pospin = Pospin::all();
- 
-         return view('permasbang.pospin.index', compact(
+         
+
+         return view('permasbang.pospin.index', 
+         ['chart' => $chart->build()],
+         
+         compact(
              'rw',
              'ktp',
              'kelbekasi',
@@ -73,8 +80,10 @@ class PospinController extends Controller
              'districts',
              'villages',
              'pospin',
+             'chart'
          ));
      }
+
  
      /**
       * Show the form for creating a new resource.

@@ -24,6 +24,27 @@
                             </button>
                         </div>
                     </div>
+            
+            <!-- Chart Data --> 
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Chart</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <div class="row">  
+                                <div class="col-sm-12">
+                                    <div class="form-group">            
+                                    {!! $chart->container() !!}
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
             <!-- Filter Data --> 
                 <div class="card card-primary">
                     <div class="card-header">
@@ -32,7 +53,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-body">
-                                <div class="row">            
+                                <div class="row">  
                                         <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="filter-pospinkel" class="form-label">POSPIN Kelurahan</label>
@@ -143,6 +164,8 @@
         @include('master.csidebar')
         @include('master.footer')
         @include('master.script')
+        <script src="{{ $chart->cdn() }}"></script>
+        {{ $chart->script() }}
 
 <!--------------Modal Create------------------------->
 <form action="/pospin" method="post" enctype="multipart/form-data">
@@ -184,7 +207,7 @@
                                                         value="{{ old('saranakesehatan_id') }}">
                                                         <option selected disabled>- Pilih Posyandu-</option>
                                                         @foreach ($saranakesehatan as $saranakesehatan)
-                                                            <option value="{{ $saranakesehatan->id }}"
+                                                            <option value="{{ $saranakesehatan->id}}"
                                                                 {{ old('saranakesehatan_id') == $saranakesehatan->id ? 'selected' : null }}>
                                                                 {{ $saranakesehatan->nama }}</option>
                                                         @endforeach
@@ -257,6 +280,7 @@
         </div>
     </div>
     <!-- /.endmodal -->
+
 </body>
 </html>
 
