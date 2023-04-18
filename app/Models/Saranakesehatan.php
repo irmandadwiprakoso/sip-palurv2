@@ -60,4 +60,8 @@ class Saranakesehatan extends Model
     {
         return $this->hasMany(Pospin::class);
     }
+    public function posyandu()
+    {
+        return $this->hasMany(Posyandu::class);
+    }
 }

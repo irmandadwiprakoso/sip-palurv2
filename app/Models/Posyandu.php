@@ -11,7 +11,7 @@ class Posyandu extends Model
     protected $table = 'posyandu';
     protected $fillable = [
         'ktp_id',
-        'nama_posyandu',
+        'saranakesehatan_id',
         'rw_id',
         'no_SK',
         'jabatan_id',
@@ -54,5 +54,9 @@ class Posyandu extends Model
     public function jabatan()
     {
         return $this->belongsTo(Jabatan::class);
+    }
+    public function saranakesehatan()
+    {
+        return $this->belongsTo(Saranakesehatan::class);
     }
 }

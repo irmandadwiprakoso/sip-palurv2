@@ -37,7 +37,7 @@
     <div class="form-group">
         <label for="no_rek" class="form-label">Nama Posyandu</label>
         <input type="text" disabled readonly
-            class="form-control" id="nama" value="{{ $posyandu->nama_posyandu}}">
+            class="form-control" id="nama" value="{{ $posyandu->saranakesehatan->nama}}">
     </div>
     </div>
    

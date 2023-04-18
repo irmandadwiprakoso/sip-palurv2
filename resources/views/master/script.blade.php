@@ -1912,7 +1912,7 @@
                 {data:'ktp', name:'ktp'},
                 {data:'jabatan', name:'jabatan'},
                 {data:'no_SK', name:'no_SK'},
-                {data:'nama_posyandu', name:'nama_posyandu'},
+                {data:'saranakesehatan', name:'saranakesehatan'},
                 {data:'rw', name:'rw'},
                 {data:'district', name:'district'},
                 {data:'village', name:'village'},

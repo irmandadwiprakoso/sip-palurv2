@@ -215,114 +215,23 @@
                                             </div>
                                             </div>
 
-                                        
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="nama_posyandu" class="form-label">Nama Posyandu</label>
-                                                    <input type="text" onkeyup="this.value = this.value.toUpperCase()"
-                                                        class="form-control @error('nama_posyandu') is-invalid @enderror"
-                                                        id="nama_posyandu" placeholder="Nama Posyandu" name="nama_posyandu" value="{{ old('nama_posyandu') }}">
-                                                    @error('nama_posyandu') <div class="alert alert-danger">{{ $message }} </div>
-                                                    @enderror
-                                                </div>
-                                                </div>
-                                            {{-- <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="rt_id" class="form-label">RT</label>
-                                                <select class="form-control @error('rt_id') is-invalid @enderror" id="rt_id"
-                                                    name="rt_id" value="{{ old('rt_id') }}">
-                                                    <option selected disabled>- Pilih RT-</option>
-                                                     @foreach ($rt as $erte)
-                                                        <option value="{{ $erte->id }}"
-                                                            {{ old('rt_id') == $erte->id ? 'selected' : null }}>
-                                                            {{ $erte->rt }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('rt_id') <div class="alert alert-danger">{{ $message }} </div>
-                                                @enderror
-                                            </div>
-                                            </div> --}}
-
-                                            {{-- <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="rw_id" class="form-label">RW</label>
-                                                <select class="form-control @error('rw_id') is-invalid @enderror" id="rw_id"
-                                                    name="rw_id" value="{{ old('rw_id') }}">
-                                                    <option selected disabled>- Pilih RW-</option>
-                                                    @foreach ($rw as $erwe)
-                                                        <option value="{{ $erwe->id }}"
-                                                            {{ old('rw_id') == $erwe->id ? 'selected' : null }}>
-                                                            {{ $erwe->rw }}</option>
-                                                    @endforeach
-                                                    </select>
-                                                @error('rw_id') <div class="alert alert-danger">{{ $message }} </div>
-                                                @enderror
-                                            </div>
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="provinsi">Provinsi</label>
-                                                <select class="form-control @error('province_id') is-invalid @enderror"
-                                                    id="provinsi" name="province_id" value="{{ old('province_id') }}">
-                                                    <option selected disabled>- Pilih Provinsi-</option>
-                                                    @foreach ($provinces as $provinsi)
-                                                        <option value="{{ $provinsi->id }}">{{ $provinsi->name }}
-                                                        </option>
+                                                    <label for="saranakesehatan_id">Posyandu</label>
+                                                    <select class="form-control @error('saranakesehatan_id') is-invalid @enderror"
+                                                        id="saranakesehatan_id" name="saranakesehatan_id"
+                                                        value="{{ old('saranakesehatan_id') }}">
+                                                        <option selected disabled>- Pilih Posyandu-</option>
+                                                        @foreach ($saranakesehatan as $saranakesehatan)
+                                                            <option value="{{ $saranakesehatan->id}}"
+                                                                {{ old('saranakesehatan_id') == $saranakesehatan->id ? 'selected' : null }}>
+                                                                {{ $saranakesehatan->nama }}</option>
                                                         @endforeach
                                                     </select>
-                                                @error('province_id') <div class="alert alert-danger">{{ $message }}
-                                                </div>@enderror
-                                            </div>
-                                            </div>
-
-                                                <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="kabupaten">Kota/Kabupaten</label>
-                                                    <select class="form-control @error('regency_id') is-invalid @enderror"
-                                                        id="kabupaten" name="regency_id" value="{{ old('regency_id') }}">
-                                                        <option selected disabled>- Pilih Kota/Kabupaten-</option>
-                                                        @foreach ($regencies as $kabupaten)
-                                                            <option value="{{ $kabupaten->id }}">{{ $kabupaten->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('regency_id') <div class="alert alert-danger">{{ $message }}
-                                                    </div>@enderror
+                                                    @error('saranakesehatan_id') <div class="alert alert-danger">
+                                                        {{ $message }} </div>@enderror
                                                 </div>
                                                 </div>
-
-                                            <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="kecamatan">Kecamatan</label>
-                                                <select class="form-control @error('district_id') is-invalid @enderror"
-                                                    id="kecamatan" name="district_id" value="{{ old('district_id') }}">
-                                                    <option selected disabled>- Pilih Kecamatan-</option>
-                                                    @foreach ($districts as $kecamatan)
-                                                        <option value="{{ $kecamatan->id }}">{{ $kecamatan->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('district_id') <div class="alert alert-danger">{{ $message }}
-                                                </div>@enderror
-                                            </div>
-                                            </div>
-
-                                        <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="desa">Desa/Kelurahan</label>
-                                            <select class="form-control @error('village_id') is-invalid @enderror"
-                                                id="desa" name="village_id" value="{{ old('village_id') }}">
-                                                <option selected disabled>- Pilih Desa/Kelurahan-</option>
-                                                @foreach ($villages as $desa)
-                                                    <option value="{{ $desa->id }}">{{ $desa->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('village_id') <div class="alert alert-danger">{{ $message }}
-                                            </div>@enderror
-                                        </div>
-                                        </div> --}}
-
                                     </div>
                                 </form>
                             </div>    

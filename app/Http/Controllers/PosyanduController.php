@@ -12,6 +12,7 @@ use App\Models\District;
 use App\Models\Village;
 use App\Models\Ktp;
 use App\Models\kelbekasi;
+use App\Models\Saranakesehatan;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,6 +64,7 @@ class PosyanduController extends Controller
         $ktp = Ktp::all();
         $kelbekasi = kelbekasi::all();
         $jabatan = Jabatan::all();
+        $saranakesehatan = Saranakesehatan::all();
         // Get semua data
         $districts = District::all();
         $villages = Village::all();
@@ -75,6 +77,7 @@ class PosyanduController extends Controller
             'jabatan',
             'districts',
             'villages',
+            'saranakesehatan',
             'posyandu',
         ));
     }
@@ -96,6 +99,7 @@ class PosyanduController extends Controller
         $regencies = Regency::all();
         $districts = District::all();
         $villages = Village::all();
+        $saranakesehatan = Saranakesehatan::all();
 
         return view('permasbang.posyandu.index', compact(
             'jabatan',
@@ -104,6 +108,7 @@ class PosyanduController extends Controller
             'kelbekasi',
             'districts',
             'villages',
+            'saranakesehatan',
         ));
     }
 
@@ -119,7 +124,7 @@ class PosyanduController extends Controller
         $request->validate(
             [
                 'ktp_id' => 'required|unique:posyandu,ktp_id',
-                'nama_posyandu' => 'required',
+                'saranakesehatan_id' => 'required',
                 // 'rt_id' => 'required',
                 // 'rw_id' => 'required',
                 'no_SK' => 'required',
@@ -128,7 +133,7 @@ class PosyanduController extends Controller
             [
                 'ktp_id.required' => 'Harus di Isi Yaa',
                 'ktp_id.unique' => 'NIK Sudah Digunakan',
-                'nama_posyandu.required' => 'Harus di Isi Yaa',
+                'saranakesehatan_id.required' => 'Harus di Isi Yaa',
                 // 'rt_id.required' => 'Harus di Isi Yaa',
                 // 'rw_id.required' => 'Harus di Isi Yaa',
                 'no_SK.required' => 'Harus di Isi Yaa',
@@ -137,11 +142,11 @@ class PosyanduController extends Controller
         );
         Posyandu::create([
             'ktp_id' => $request->ktp_id,
-            'nama_posyandu' => $request->nama_posyandu,
+            'saranakesehatan_id' => $request->saranakesehatan_id,
             // 'rt_id' => $request->rt_id,
-            'rw_id' => Auth::user()->rw_id,
             'no_SK' => $request->no_SK,
             'jabatan_id' => $request->jabatan_id,
+            'rw_id' => Auth::user()->rw_id,
             'district_id' => Auth::user()->district_id,
             'village_id' => Auth::user()->village_id,
         ]);
@@ -162,6 +167,7 @@ class PosyanduController extends Controller
         $ktp = Ktp::all();
         $kelbekasi = kelbekasi::all();
         $jabatan = Jabatan::all();
+        $saranakesehatan = Saranakesehatan::all();
         // Get semua data
         $districts = District::all();
         $villages = Village::all();
@@ -175,6 +181,7 @@ class PosyanduController extends Controller
             'districts',
             'villages',
             'posyandu',
+            'saranakesehatan',
         ));
     }
 
@@ -190,6 +197,7 @@ class PosyanduController extends Controller
         $jabatan = Jabatan::all();
         $rw = Rw::all();
         $kelbekasi = kelbekasi::all();
+        $saranakesehatan = Saranakesehatan::all();
         // Get semua data
         $districts = District::all();
         $villages = Village::all();
@@ -202,6 +210,7 @@ class PosyanduController extends Controller
             'districts',
             'villages',
             'posyandu',
+            'saranakesehatan',
         ));
     }
 
@@ -217,7 +226,7 @@ class PosyanduController extends Controller
     //  dd($request->all());   
         $request->validate([
             // 'ktp_id' => 'required',
-            'nama_posyandu' => 'required',
+            'saranakesehatan_id' => 'required',
             // 'rt_id' => 'required',
             // 'rw_id' => 'required',
             'no_SK' => 'required',
@@ -227,7 +236,7 @@ class PosyanduController extends Controller
         Posyandu::where('id', $posyandu->id)
             ->update([
                 'ktp_id' => $request->ktp_id,
-                'nama_posyandu' => $request->nama_posyandu,
+                'saranakesehatan_id' => $request->saranakesehatan_id,
                 // 'rt_id' => $request->rt_id,
                 // 'rw_id' => $request->rw_id,
                 'no_SK' => $request->no_SK,
@@ -320,6 +329,9 @@ class PosyanduController extends Controller
             })
             ->addColumn('village', function ($posyandu) {
                 return $posyandu->village->name;
+            })
+            ->addColumn('saranakesehatan', function ($pospin) {
+                return $pospin->saranakesehatan->nama;
             })
 
             ->addColumn('edit', function ($posyandu) {
