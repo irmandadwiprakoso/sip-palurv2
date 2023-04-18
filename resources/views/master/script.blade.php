@@ -1139,124 +1139,14 @@
 </script>
 
 <!-----------------------------------------------KESSOS---------------------------->
-<!-- DataTables DTKS NON DTKS-->
-<script>
-    let rwdtksnondtks = $("#filter-rwdtksnondtks").val()
-        ,rtdtksnondtks = $("#filter-rtdtksnondtks").val()
-        ,dtksnondtkskel = $("#filter-dtksnondtkskel").val()
-
-    $(document).ready(function() {
-        var table = $('#datadtksnondtks').DataTable({
-            processing:true,
-            serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
-            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
-            dom: 
-                "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
-                "<'row'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5'i><'col-md-7'p>>",
-                lengthMenu:[
-                    [10,25,50,100,-1],
-                    [10,25,50,100,"All"]
-                ],
-            ajax: {
-                url : "{{'getdatadtksnondtks'}}",
-                data:function(d){
-                d.rwdtksnondtks = rwdtksnondtks;
-                d.rtdtksnondtks = rtdtksnondtks;
-                d.dtksnondtkskel = dtksnondtkskel;
-                return d               
-                }
-            },
-            columns:[
-                {data:'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},
-                // {data:'ktp_id', name:'ktp_id'},
-                // {data:'ktp', name:'ktp'},
-                {data:'pkh', name:'pkh'},
-                {data:'bpnt', name:'bpnt'},
-                {data:'pbi', name:'pbi'},
-                {data:'non_bansos', name:'non_bansos'},
-                // {data:'rt', name:'rt'},
-                // {data:'rw', name:'rw'},
-                {data:'keterangan', name:'keterangan'},
-                // {data:'district', name:'district'},
-                // {data:'village', name:'village'},
-                {data:'edit', name:'edit', orderable: false, searchable: false},
-                {data:'view', name:'view', orderable: false, searchable: false},
-                {data:'hapus', name:'hapus', orderable: false, searchable: false},
-                ],
-        })
-
-        table.buttons().container()
-            .appendTo( '#datadtksnondtks_wrapper .col-md-6:e(0)' 
-        );
-
-            $(".filter").on('change', function() { 
-                rwdtksnondtks = $("#filter-rwdtksnondtks").val()
-                rtdtksnondtks = $("#filter-rtdtksnondtks").val()
-                dtksnondtkskel = $("#filter-dtksnondtkskel").val()
-                table.ajax.reload(null, false);            
-            })
-    })
-
-    $(document).on('click', '.viewdtksnondtks', function(){
-        console.log($(this).data('id'))
-        let id = $(this).data('id')
-        $.ajax({
-            url:`/dtksnondtks/${id}`,
-            method:"GET",
-            success:function(data){
-                console.log(data)
-                $('#modal-view').find('.modal-body').html(data)
-                $('#modal-view').modal('show')
-            },
-            error:function(error){
-                console.log(error)
-            }
-        })
-    })
-</script>
-
-<!--SweetAlert2 DTKS NON DTKS-->
-<script>
-    $(document).on('click', '.deletedtksnondtks', function() {
-        var id = $(this).attr('data-id')
-        var namaid = $(this).attr('data-nama')
-
-        Swal.fire({
-            title: 'Yakin di Hapus?',
-            text: "Kamu Akan Ngapus Data Dengan Nama: " + namaid + " ",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Apus Aja!',
-            cancelButtonText: 'Gajadi!',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location = "/destroydtksnondtks/" + id + ""
-                Swal.fire(
-                    'Ahsyiappp!',
-                    'Datanya Udah Keapus!',
-                    'success'
-                )
-            }
-        })
-    })
-</script>
-
 <!-- DataTables DTKS-->
 <script>
-    let rwdtks = $("#filter-rwdtks").val()
-        ,rtdtks = $("#filter-rtdtks").val()
-        ,dtkskel = $("#filter-dtkskel").val()
+    let rwdetekaes = $("#filter-rwdetekaes").val()
+        ,rtdetekaes = $("#filter-rtdetekaes").val()
+        ,detekaeskel = $("#filter-detekaeskel").val()
 
     $(document).ready(function() {
-        var table = $('#datadtks').DataTable({
+        var table = $('#datadetekaes').DataTable({
             processing:true,
             serverSide:true,            
             responsive: true,
@@ -1274,27 +1164,27 @@
                     [10,25,50,100,"All"]
                 ],
             ajax: {
-                url : "{{'getdatadtks'}}",
+                url : "{{'getdatadetekaes'}}",
                 data:function(d){
-                d.rwdtks = rwdtks;
-                d.rtdtks = rtdtks;
-                d.dtkskel = dtkskel;
+                d.rwdetekaes = rwdetekaes;
+                d.rtdetekaes = rtdetekaes;
+                d.detekaeskel = detekaeskel;
                 return d               
                 }
             },
             columns:[
                 {data:'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},
-                {data:'ktp', name:'ktp'},
                 {data:'ktp_id', name:'ktp_id'},
-                {data:'pkh', name:'pkh'},
-                {data:'bpnt', name:'bpnt'},
-                {data:'pbi', name:'pbi'},
-                {data:'non_bansos', name:'non_bansos'},
+                {data:'nama_ktp', name:'nama_ktp'},
+                {data:'stts_pkh', name:'stts_pkh'},
+                {data:'stts_bpnt', name:'stts_bpnt'},
+                {data:'stts_pbi', name:'stts_pbi'},
+                {data:'stts_non_bansos', name:'stts_non_bansos'},
                 {data:'rt', name:'rt'},
                 {data:'rw', name:'rw'},
+                {data:'keterangan', name:'keterangan'},
                 {data:'district', name:'district'},
                 {data:'village', name:'village'},
-                {data:'keterangan', name:'keterangan'},
                 {data:'edit', name:'edit', orderable: false, searchable: false},
                 {data:'view', name:'view', orderable: false, searchable: false},
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
@@ -1302,22 +1192,22 @@
         })
 
         table.buttons().container()
-            .appendTo( '#datadtks_wrapper .col-md-6:e(0)' 
+            .appendTo( '#datadetekaes_wrapper .col-md-6:e(0)' 
         );
 
             $(".filter").on('change', function() { 
-                rwdtks = $("#filter-rwdtks").val()
-                rtdtks = $("#filter-rtdtks").val()
-                dtkskel = $("#filter-dtkskel").val()
+                rwdetekaes = $("#filter-rwdetekaes").val()
+                rtdetekaes = $("#filter-rtdetekaes").val()
+                detekaeskel = $("#filter-detekaeskel").val()
                 table.ajax.reload(null, false);            
             })
     })
 
-    $(document).on('click', '.viewdtks', function(){
+    $(document).on('click', '.viewdetekaes', function(){
         console.log($(this).data('id'))
         let id = $(this).data('id')
         $.ajax({
-            url:`/dtks/${id}`,
+            url:`/detekaes/${id}`,
             method:"GET",
             success:function(data){
                 console.log(data)
@@ -1333,7 +1223,7 @@
 
 <!--SweetAlert2 DTKS -->
 <script>
-    $(document).on('click', '.deletedtks', function() {
+    $(document).on('click', '.deletedetekaes', function() {
         var id = $(this).attr('data-id')
         var namaid = $(this).attr('data-nama')
 
@@ -1348,7 +1238,7 @@
             cancelButtonText: 'Gajadi!',
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location = "/destroydtks/" + id + ""
+                window.location = "/destroydetekaes/" + id + ""
                 Swal.fire(
                     'Ahsyiappp!',
                     'Datanya Udah Keapus!',

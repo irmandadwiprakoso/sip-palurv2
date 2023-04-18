@@ -72,12 +72,12 @@ class Rw extends Model
     {
         return $this->hasMany(Posyandu::class);
     }
-    public function dtksnondtks()
-    {
-        return $this->hasMany(Dtksnondtks::class);
-    }
     public function pospin()
     {
         return $this->hasMany(Pospin::class);
+    }
+    public function detekaes()
+    {
+        return $this->hasMany(Detekaes::class);
     }
 }

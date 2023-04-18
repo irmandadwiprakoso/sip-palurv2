@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Dtksnondtks extends Model
+class Detekaes extends Model
 {
     use HasFactory;
-    protected $table = 'dtksnondtks';
+    protected $table = 'detekaes';
     protected $fillable = [
+        'id',
         'ktp_id',
-        'pkh',
-        'pbi',
-        'non_bansos',
-        'bpnt',
+        'stts_pkh',
+        'stts_bpnt',
+        'stts_pbi',
+        'stts_non_bansos',
         'rt_id',
         'rw_id',
         'district_id',

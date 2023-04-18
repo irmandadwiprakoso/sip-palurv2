@@ -90,12 +90,12 @@ class Ktp extends Model
     {
         return $this->hasMany(Pkk::class);
     }
-    public function dtksnondtks()
-    {
-        return $this->hasMany(Dtksnondtks::class);
-    }
     public function pospin()
     {
         return $this->hasMany(Pospin::class);
+    }
+    public function detekaes()
+    {
+        return $this->hasMany(Detekaes::class);
     }
 }

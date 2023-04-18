@@ -23,6 +23,7 @@ use App\Http\Controllers\PkkController;
 use App\Http\Controllers\PospinController;
 use App\Http\Controllers\DtksnondtksController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\DetekaesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -103,13 +104,13 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::get('/destroysaranakesehatan/{id}', [SaranakesehatanController::class, 'destroysaranakesehatan'])->name('DestroySaranakesehatan');
     Route::get('/getdatasaranakesehatan', [SaranakesehatanController::class, 'getdatasaranakesehatan'])->name('datasaranakesehatan');
 
-    //DTKS NON DTKS//
-    Route::resource('dtksnondtks', DtksnondtksController::class);
-    Route::post('/getkabupaten', [DtksnondtksController::class, 'getkabupaten'])->name('getkabupaten');
-    Route::post('/getkecamatan', [DtksnondtksController::class, 'getkecamatan'])->name('getkecamatan');
-    Route::post('/getdesa', [DtksnondtksController::class, 'getdesa'])->name('getdesa');
-    Route::get('/destroydtksnondtks/{id}', [DtksnondtksController::class, 'destroydtksnondtks'])->name('destroydtksnondtks');
-    Route::get('/getdatadtksnondtks', [DtksnondtksController::class, 'getdatadtksnondtks'])->name('datadtksnondtks');
+    //D T K S//
+    Route::resource('detekaes', DetekaesController::class);
+    Route::post('/getkabupaten', [DetekaesController::class, 'getkabupaten'])->name('getkabupaten');
+    Route::post('/getkecamatan', [DetekaesController::class, 'getkecamatan'])->name('getkecamatan');
+    Route::post('/getdesa', [DetekaesController::class, 'getdesa'])->name('getdesa');
+    Route::get('/destroydetekaes/{id}', [DetekaesController::class, 'destroydetekaes'])->name('destroydetekaes');
+    Route::get('/getdatadetekaes', [DetekaesController::class, 'getdatadetekaes'])->name('datadetekaes');
 });
 
 // MENU PEM TRANTIBUM //
@@ -217,4 +218,5 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::post('/getdesa', [PospinController::class, 'getdesa'])->name('getdesa');
     Route::get('/destroypospin/{id}', [PospinController::class, 'destroypospin'])->name('destroypospin');
     Route::get('/getdatapospin', [PospinController::class, 'getdatapospin'])->name('datapospin');
+
 });
