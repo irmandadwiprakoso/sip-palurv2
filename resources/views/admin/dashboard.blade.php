@@ -36,7 +36,7 @@
 
             <!-- Main content -->
             <section class="content">
-                <div class="box box-primary">
+                <div class="box box-danger">
                     <div class="row gutte">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="table-container ">

@@ -106,7 +106,7 @@
             </div>	
 
             <!-- Main content / Tampilan Data -->
-            <div class="card card-primary">
+            <div class="card card-danger">
                 <div class="card-header">
                     <h3 class="card-title">Restore Data ASN</h3>
                 </div>

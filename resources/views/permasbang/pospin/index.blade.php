@@ -19,7 +19,7 @@
             <!-- Button Tambah Data -->    
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">
                                 <i class="fas fa-plus-square"></i> Add Data
                             </button>
                         </div>
@@ -39,7 +39,7 @@
                 </div>
 
             <!-- Filter Data --> 
-                <div class="card card-primary">
+                <div class="card card-danger">
                     <div class="card-header">
                         <h3 class="card-title">Filter Data POSPIN</h3>
                     </div>
@@ -282,7 +282,7 @@
             </div>
 
             <!-- Main content / Tampilan Data -->
-            <div class="card card-primary">
+            <div class="card card-danger">
                 <div class="card-header">
                     <h3 class="card-title">Detail Data POSPIN</h3>
                 </div>
