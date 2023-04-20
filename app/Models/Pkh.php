@@ -11,7 +11,11 @@ class Pkh extends Model
     protected $table = 'pkh';
     protected $fillable = [
         'ktp_id',
-        'statusdtks_id',
+        // 'statusdtks_id',
+        'pkh',
+        'bpnt',
+        'pbi',
+        'non_bansos',
         'keterangan',
         'rt_id',
         'rw_id',

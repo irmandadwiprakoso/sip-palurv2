@@ -19,14 +19,27 @@
             <!-- Button Tambah Data -->    
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">
                                 <i class="fas fa-plus-square"></i> Add Data
                             </button>
                         </div>
                     </div>
 
+            <!-- Chart Data --> 
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Chart DTKS</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                    </div>
+                </div>
+            <div class="card-body" >
+                {!! $chart->container() !!}
+            </div>
+            </div>
+
             <!-- Filter Data --> 
-                <div class="card card-primary">
+                <div class="card card-danger">
                     <div class="card-header">
                         <h3 class="card-title">Filter Data DTKS</h3>
                     </div>
@@ -76,7 +89,7 @@
                 </div>									
 
                 <!-- Main content / Tampilan Data -->
-            <div class="card card-primary">
+            <div class="card card-danger">
                 <div class="card-header">
                     <h3 class="card-title">Detail Data DTKS</h3>
                 </div>
@@ -89,7 +102,10 @@
                                 <th scope="col">NIK</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Alamat</th>
-                                <th scope="col">DTKS</th>
+                                <th scope="col">PKH</th>
+                                <th scope="col">BPNT</th>
+                                <th scope="col">PBI</th>
+                                <th scope="col">NON BANSOS</th>
                                 <th scope="col">KETERANGAN</th>
                                 <th scope="col">RT</th>
                                 <th scope="col">RW</th>
@@ -113,7 +129,8 @@
         @include('master.csidebar')
         @include('master.footer')
         @include('master.script')
-
+        <script src="{{ $chart->cdn() }}"></script>
+        {{ $chart->script() }}
 <!--------------Modal Create------------------------->
 <form action="/pkh" method="post" enctype="multipart/form-data">
     @csrf
@@ -131,7 +148,7 @@
                             <form>
                                 <div class="row">
 
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="ktp_id" class="form-label">NIK/Nama DTKS</label>
                                                     <input class="form-control @error('ktp_id') is-invalid @enderror" 
@@ -168,20 +185,52 @@
                                                 </div>
                                             </div> --}}
 
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-3">
                                                 <div class="form-group">
-                                                    <label for="statusdtks_id" class="form-label">DTKS</label>
-                                                        <select class="form-control @error('statusdtks_id') is-invalid @enderror" id="statusdtks_id"
-                                                            name="statusdtks_id" value="{{ old('statusdtks_id') }}">
-                                                            <option selected disabled>- Pilih DTKS-</option>
-                                                            @foreach ($statusdtks as $statusdtks)
-                                                                <option value="{{ $statusdtks->id }}"
-                                                                    {{ old('statusdtks_id') == $statusdtks->id ? 'selected' : null }}>
-                                                                    {{ $statusdtks->statusdtks }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        @error('statusdtks_id') <div class="alert alert-danger">{{ $message }} </div>
-                                                        @enderror
+                                                    <label for="pkh" class="form-label">Status PKH</label>
+                                                    <select class="form-control @error('pkh') is-invalid @enderror" id="pkh" name="pkh">
+                                                        <option selected disabled>-- Pilih Status --</option>
+                                                        <option value="PKH">PKH</option>
+                                                        <option value="-">-</option>
+                                                    </select>
+                                                    @error('pkh') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="bpnt" class="form-label">Status BPNT</label>
+                                                    <select class="form-control @error('bpnt') is-invalid @enderror" id="bpnt" name="bpnt">
+                                                        <option selected disabled>-- Pilih Status --</option>
+                                                        <option value="BPNT">BPNT</option>
+                                                        <option value="-">-</option>
+                                                    </select>
+                                                    @error('bpnt') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="pbi" class="form-label">Status PBI</label>
+                                                    <select class="form-control @error('pbi') is-invalid @enderror" id="pbi" name="pbi">
+                                                        <option selected disabled>-- Pilih Status --</option>
+                                                        <option value="PBI">PBI</option>
+                                                        <option value="-">-</option>
+                                                    </select>
+                                                    @error('pbi') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="non_bansos" class="form-label">Status NON BANSOS</label>
+                                                    <select class="form-control @error('non_bansos') is-invalid @enderror" id="non_bansos" name="non_bansos">
+                                                        <option selected disabled>-- Pilih Status --</option>
+                                                        <option value="NON BANSOS">NON BANSOS</option>
+                                                        <option value="-">-</option>
+                                                    </select>
+                                                    @error('non_bansos') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
                                                 </div>
                                             </div>
 

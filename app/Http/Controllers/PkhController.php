@@ -10,6 +10,7 @@ use App\Models\Statusdtks;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\kelbekasi;
+use App\Charts\PkhChart;
 
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -57,7 +58,7 @@ class PkhController extends Controller
          echo $option;
      }
 
-     public function index()
+     public function index(PkhChart $chart)
      {
          $rt = Rt::all();
          $rw = Rw::all();
@@ -70,6 +71,8 @@ class PkhController extends Controller
          $pkh = Pkh::all();
 
          return view('kessos.pkh.index',
+         ['chart' => $chart->build()],
+
          compact(
              'rt',
              'rw',
@@ -79,6 +82,7 @@ class PkhController extends Controller
              'districts',
              'villages',
              'pkh',
+             'chart'
          ));
      }
 
@@ -99,7 +103,9 @@ class PkhController extends Controller
          $districts = District::all();
          $villages = Village::all();
  
-         return view('kessos.pkh.index', compact(
+         return view('kessos.pkh.index', 
+         
+         compact(
              'rt',
              'rw',
              'ktp',
@@ -123,25 +129,30 @@ class PkhController extends Controller
              [
                  'ktp_id' => 'required|unique:pkh,ktp_id',
                  'keterangan' => 'required',
-                 'statusdtks_id' => 'required',    
+                //  'statusdtks_id' => 'required',    
              ],
              [
                  'ktp_id.required' => 'Harus di Isi Yaa',
                  'ktp_id.unique' => 'NIK Sudah Digunakan',
                  'keterangan.required' => 'Harus di Isi Yaa',
-                 'statusdtks_id.required' => 'Harus di Isi Yaa',
+                //  'statusdtks_id.required' => 'Harus di Isi Yaa',
              ]
          );
+
          Pkh::create([
              'ktp_id' => $request->ktp_id,
-             'statusdtks_id' => $request->statusdtks_id,
+            //  'statusdtks_id' => $request->statusdtks_id,
              'keterangan' => $request->keterangan,
+             'pkh' => $request->pkh,
+             'bpnt' => $request->bpnt,
+             'pbi' => $request->pbi,
+             'non_bansos' => $request->non_bansos,
              'rt_id' => $request->rt_id,
              'rw_id' => Auth::user()->rw_id,
              'district_id' => Auth::user()->district_id,
              'village_id' => Auth::user()->village_id,
          ]);
-         // Pkh::create($request->all());
+        
          return redirect('/pkh')->with('success', 'Data Berhasil Ditambahkan!');
      }
  
@@ -215,15 +226,19 @@ class PkhController extends Controller
      {
      //  dd($request->all());   
          $request->validate([
-             // 'ktp_id' => 'required',
-             'statusdtks_id' => 'required',     
+             'ktp_id' => 'required',
+            //  'statusdtks_id' => 'required',     
          ]);
  
          Pkh::where('id', $pkh->id)
              ->update([
                  'ktp_id' => $request->ktp_id,
-                 'statusdtks_id' => $request->statusdtks_id,
+                //  'statusdtks_id' => $request->statusdtks_id,
                  'keterangan' => $request->keterangan,
+                 'pkh' => $request->pkh,
+                 'bpnt' => $request->bpnt,
+                 'pbi' => $request->pbi,
+                 'non_bansos' => $request->non_bansos,
              ]);
  
          return redirect('/pkh')->with('success', 'Data Berhasil Di Update!');
@@ -272,7 +287,7 @@ class PkhController extends Controller
              }
          }
  
-         if (auth()->user()->role == 'kessos' || auth()->user()->role == 'struktural' ) {
+         if (auth()->user()->role == 'kessos' || auth()->user()->role == 'struktural' || auth()->user()->role == 'permasbang' ) {
              if ($request->input('rwpkh') != null) {
                  $pkh = Pkh::where('rw_id', $request->rwpkh)
                  ->where('village_id', '=', auth()->user()->village_id);
@@ -291,9 +306,9 @@ class PkhController extends Controller
              ->addColumn('alamat_ktp', function ($pkh) {
                  return $pkh->ktp->alamat;
              })
-             ->addColumn('statusdtks', function ($pkh) {
-                 return $pkh->statusdtks->statusdtks;
-             })
+            //  ->addColumn('statusdtks', function ($pkh) {
+            //      return $pkh->statusdtks->statusdtks;
+            //  })
              ->addColumn('rt', function ($pkh) {
                  return $pkh->rt->rt;
              })
@@ -336,10 +351,9 @@ class PkhController extends Controller
              'ktp', 
              'nama_ktp', 
              'alamat_ktp', 
-             'statusdtks', 
+            //  'statusdtks', 
              'village', 
              'district', 
-             'statusdtks', 
              'edit', 
              'view', 
              'hapus'

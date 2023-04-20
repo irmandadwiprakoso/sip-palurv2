@@ -28,7 +28,7 @@
                         <!-- left column -->
                         <div class="col-md-12">
                             <!-- general form elements -->
-                            <div class="card card-primary">
+                            <div class="card card-danger">
                                 <div class="card-header">
                                     <h3 class="card-title">Update Data DTKS</h3>
                                 </div>
@@ -62,7 +62,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-4">
+                                            {{-- <div class="col-sm-4">
                                                 <div class="form-group">
                                                     <label for="statusdtks_id" class="form-label">Status DTKS</label>
                                                     <select class="form-control @error('statusdtks_id') is-invalid @enderror"
@@ -77,8 +77,65 @@
                                                     @error('statusdtks_id') <div class="alert alert-danger">{{ $message }} </div>
                                                     @enderror
                                                 </div>
-                                                </div>
+                                                </div> --}}
 
+                                            <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="pkh" class="form-label">Status PKH</label>
+                                                <select class="form-control @error('pkh') is-invalid @enderror" id="pkh"
+                                                name="pkh" placeholder="Keterangan">
+                                                <option selected value="{{ $pkh->pkh}}">
+                                                    {{ $pkh->pkh }}</option>
+                                                    <option value="PKH">PKH</option>
+                                                    <option value="-">-</option>
+                                                </select>
+                                                @error('pkh') <div class="alert alert-danger">{{ $message }} </div>
+                                                @enderror
+                                            </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="bpnt" class="form-label">Status BPNT</label>
+                                                <select class="form-control @error('bpnt') is-invalid @enderror" id="bpnt"
+                                                name="bpnt" placeholder="Keterangan">
+                                                <option selected value="{{ $pkh->bpnt}}">
+                                                    {{ $pkh->bpnt }}</option>
+                                                    <option value="BPNT">BPNT</option>
+                                                    <option value="-">-</option>
+                                                </select>
+                                                @error('bpnt') <div class="alert alert-danger">{{ $message }} </div>
+                                                @enderror
+                                            </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="pbi" class="form-label">Status PBI</label>
+                                                <select class="form-control @error('pbi') is-invalid @enderror" id="pbi"
+                                                name="pbi" placeholder="Keterangan">
+                                                <option selected value="{{ $pkh->pbi}}">
+                                                    {{ $pkh->pbi }}</option>
+                                                    <option value="PBI">PBI</option>
+                                                    <option value="-">-</option>
+                                                </select>
+                                                @error('pbi') <div class="alert alert-danger">{{ $message }} </div>
+                                                @enderror
+                                            </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="non_bansos" class="form-label">Status NON BANSOS</label>
+                                                <select class="form-control @error('non_bansos') is-invalid @enderror" id="non_bansos"
+                                                name="non_bansos" placeholder="Keterangan">
+                                                <option selected value="{{ $pkh->non_bansos}}">
+                                                    {{ $pkh->non_bansos }}</option>
+                                                    <option value="NON BANSOS">NON BANSOS</option>
+                                                    <option value="-">-</option>
+                                                </select>
+                                                @error('non_bansos') <div class="alert alert-danger">{{ $message }} </div>
+                                                @enderror
+                                            </div>
+                                            </div>
+                                            
                                             <div class="col-sm-4">
                                                 <div class="form-group">
                                                 <label for="keterangan" class="form-label">Keterangan</label>
