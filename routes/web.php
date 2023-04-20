@@ -104,14 +104,6 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::post('/getdesa', [SaranakesehatanController::class, 'getdesa'])->name('getdesa');
     Route::get('/destroysaranakesehatan/{id}', [SaranakesehatanController::class, 'destroysaranakesehatan'])->name('DestroySaranakesehatan');
     Route::get('/getdatasaranakesehatan', [SaranakesehatanController::class, 'getdatasaranakesehatan'])->name('datasaranakesehatan');
-
-    //D T K S//
-    Route::resource('detekaes', DetekaesController::class);
-    Route::post('/getkabupaten', [DetekaesController::class, 'getkabupaten'])->name('getkabupaten');
-    Route::post('/getkecamatan', [DetekaesController::class, 'getkecamatan'])->name('getkecamatan');
-    Route::post('/getdesa', [DetekaesController::class, 'getdesa'])->name('getdesa');
-    Route::get('/destroydetekaes/{id}', [DetekaesController::class, 'destroydetekaes'])->name('destroydetekaes');
-    Route::get('/getdatadetekaes', [DetekaesController::class, 'getdatadetekaes'])->name('datadetekaes');
 });
 
 // MENU PEM TRANTIBUM //
@@ -227,5 +219,4 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::post('/getdesa', [SiksController::class, 'getdesa'])->name('getdesa');
     Route::get('/destroysiks/{id}', [SiksController::class, 'destroysiks'])->name('destroysiks');
     Route::get('/getdatasiks', [SiksController::class, 'getdatasiks'])->name('datasiks');
-
 });

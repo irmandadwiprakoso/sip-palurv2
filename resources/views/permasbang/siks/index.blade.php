@@ -88,10 +88,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">NIK</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">BPNT</th>
-                                <th scope="col">PKH</th>
-                                <th scope="col">PBI</th>
-                                <th scope="col">NON BANSOS</th>
+                                <th scope="col">DTKS</th>
                                 <th scope="col">KETERANGAN</th>
                                 <th scope="col">RT</th>
                                 <th scope="col">RW</th>
@@ -148,7 +145,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-12">
+                                            {{-- <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="" class="form-label">Status DTKS</label>
                                                     <div class="form-check form-check-inline">
@@ -168,7 +165,24 @@
                                                         <label class="form-check-label" for="non_bansos">NON BANSOS</label>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                        <label for="statusdtks_id" class="form-label">DTKS</label>
+                                                        <select class="form-control @error('statusdtks_id') is-invalid @enderror" id="statusdtks_id"
+                                                            name="statusdtks_id" value="{{ old('statusdtks_id') }}">
+                                                            <option selected disabled>- Pilih DTKS-</option>
+                                                            @foreach ($statusdtks as $statusdtks)
+                                                                <option value="{{ $statusdtks->id }}"
+                                                                    {{ old('statusdtks_id') == $statusdtks->id ? 'selected' : null }}>
+                                                                    {{ $statusdtks->statusdtks }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('statusdtks_id') <div class="alert alert-danger">{{ $message }} </div>
+                                                        @enderror
+                                                    </div>
+                                                    </div>
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
@@ -200,8 +214,8 @@
                                                     </select>
                                                     @error('rt_id') <div class="alert alert-danger">{{ $message }} </div>
                                                     @enderror
-                                                </div>
-                                                </div>
+                                            </div>
+                                            </div>
                                     </div>
                                 </form>
                             </div>    

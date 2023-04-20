@@ -10,16 +10,12 @@ class Siks extends Model
     use HasFactory;
     protected $table = 'siks';
     protected $fillable = [
-        'id',
         'ktp_id',
         'rt_id',
         'rw_id',
         'district_id',
         'village_id',
-        'pkh',
-        'bpnt',
-        'pbi',
-        'non_bansos',
+        'statusdtks_id',
         'keterangan',
     ];
 
@@ -46,5 +42,9 @@ class Siks extends Model
     public function kelbekasi()
     {
         return $this->belongsTo(kelbekasi::class);
+    }
+    public function statusdtks()
+    {
+        return $this->belongsTo(Statusdtks::class);
     }
 }

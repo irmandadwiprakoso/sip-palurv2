@@ -11,6 +11,7 @@ use App\Models\Regency;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\kelbekasi;
+use App\Models\Statusdtks;
 
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -60,10 +61,11 @@ class SiksController extends Controller
 
      public function index()
      {
-         $rw = Rw::all();
          $ktp = Ktp::all();
-         $kelbekasi = kelbekasi::all();
+         $rw = Rw::all();
          $rt = Rt::all();
+         $kelbekasi = kelbekasi::all();
+         $statusdtks = Statusdtks::all();
          // Get semua data
          $districts = District::all();
          $villages = Village::all();
@@ -71,10 +73,11 @@ class SiksController extends Controller
 
          return view('permasbang.siks.index', 
          compact(
-             'rw',
              'ktp',
-             'kelbekasi',
+             'rw',
              'rt',
+             'kelbekasi',
+             'statusdtks',
              'districts',
              'villages',
              'siks',
@@ -89,19 +92,21 @@ class SiksController extends Controller
       */
      public function create()
      {
-         $rw = Rw::all();
          $ktp = Ktp::all();
-         $kelbekasi = kelbekasi::all();
          $rt = Rt::all();
+         $rw = Rw::all();
+         $kelbekasi = kelbekasi::all();
+         $statusdtks = Statusdtks::all();
          // Get semua data
          $districts = District::all();
          $villages = Village::all();
  
          return view('permasbang.siks.index', compact(
-             'rw',
              'ktp',
-             'kelbekasi',
              'rt',
+             'rw',
+             'kelbekasi',
+             'statusdtks',
              'districts',
              'villages',
          ));
@@ -119,18 +124,19 @@ class SiksController extends Controller
          $request->validate(
              [
                  'ktp_id' => 'required|unique:siks,ktp_id',  
+                 'statusdtks_id' => 'required',  
+                 'keterangan' => 'required',  
              ],
              [
                  'ktp_id.required' => 'Harus di Isi Yaa',
                  'ktp_id.unique' => 'NIK Sudah Digunakan',
+                 'statusdtks_id.required' => 'Harus di Isi Yaa',
+                 'keterangan.required' => 'Harus di Isi Yaa',
              ]
          );
          Siks::create([
              'ktp_id' => $request->ktp_id,
-             'pbi' => $request->pbi,
-             'non_bansos' => $request->non_bansos,
-             'bpnt' => $request->bpnt,
-             'pkh' => $request->pkh,
+             'statusdtks_id' => $request->statusdtks_id,
              'keterangan' => $request->keterangan,
              'rt_id' => $request->rt_id,
              'rw_id' => Auth::user()->rw_id,
@@ -149,20 +155,22 @@ class SiksController extends Controller
       */
      public function show($id)
      {
-         $rw = Rw::all();
          $ktp = Ktp::all();
-         $kelbekasi = kelbekasi::all();
+         $rw = Rw::all();
          $rt = Rt::all();
+         $kelbekasi = kelbekasi::all();
+         $statusdtks = Statusdtks::all();
          // Get semua data
          $districts = District::all();
          $villages = Village::all();
          $siks = Siks::find($id);
          
          return view('permasbang.siks.view', compact(
-             'rw',
              'ktp',
-             'kelbekasi',
              'rt',
+             'rw',
+             'kelbekasi',
+             'statusdtks',
              'districts',
              'villages',
              'siks',
@@ -175,26 +183,33 @@ class SiksController extends Controller
       * @param  \App\Models\Siks  $siks
       * @return \Illuminate\Http\Response
       */
-     public function edit($id, Siks $siks)
-     {
 
-         dd($siks);
-         $ktp = Ktp::all();
-         $rw = Rw::all();
-         $rt = Rt::all();
-         // Get semua data
-         $districts = District::all();
-         $villages = Village::all();
+      public function edit()
+      {
 
-         return view('permasbang.siks.edit', compact(
-             'siks',
-             'rw',
-             'ktp',
-             'rt',
-             'districts',
-             'villages',
-         ));
-     }
+            dd($siks);
+          $ktp = Ktp::all();
+          $rw = Rw::all();
+          $rt = Rt::all();
+          $kelbekasi = kelbekasi::all();
+          $statusdtks = Statusdtks::all();
+          // Get semua data
+          $districts = District::all();
+          $villages = Village::all();
+  
+          return view('permasbang.siks.edit', 
+          compact(
+              'rw',
+              'rt',
+              'ktp',
+              'kelbekasi',
+              'statusdtks',
+              'districts',
+              'villages',
+              'siks',
+          ));
+      }
+
  
      /**
       * Update the specified resource in storage.
@@ -209,16 +224,14 @@ class SiksController extends Controller
              'ktp_id' => 'required',
              'rt_id' => 'required',      
              'keterangan' => 'required',      
+             'statusdtks_id' => 'required',      
          ]);
  
          Siks::where('id', $siks->id)
              ->update([
                  'ktp_id' => $request->ktp_id,
                  'rt_id' => $request->rt_id,
-                 'bpnt' => $request->bpnt,
-                 'pkh' => $request->pkh,
-                 'pbi' => $request->pbi,
-                 'non_bansos' => $request->non_bansos,
+                 'statusdtks_id' => $request->statusdtks_id,
                  'keterangan' => $request->keterangan,
              ]);
     //   dd($request->all()); 
@@ -285,6 +298,9 @@ class SiksController extends Controller
              ->addColumn('nama_ktp', function ($siks) {
                  return $siks->ktp->nama;
              })
+             ->addColumn('dtks', function ($siks) {
+                 return $siks->statusdtks->statusdtks;
+             })
              ->addColumn('rt', function ($siks) {
                  return $siks->rt->rt;
              })
@@ -325,6 +341,7 @@ class SiksController extends Controller
              'rt', 
              'rw', 
              'nama_ktp',  
+             'dtks',  
              'village', 
              'district', 
              'edit', 

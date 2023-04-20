@@ -40,7 +40,7 @@
                                     <div class="card-body">
                                     <form>
                                     <div class="row">
-                                        <div class="col-sm-12">
+                                        {{-- <div class="col-sm-12">
                                         <div class="form-group">
                                             <h3 class="profile-username text-center">{{ $siks->ktp->nama }}</h3>
                                             <h3 class="profile-username text-center">{{ $siks->ktp->id }}</h3>
@@ -49,7 +49,7 @@
 
                                               <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <label for="ktp_id" class="form-label">Nama/NIK </label>
+                                                    <label for="ktp_id" class="form-label">Nama/NIK DTKS</label>
                                                     <input class="form-control @error('ktp_id') is-invalid @enderror" 
                                                     placeholder="Ketik NIK/Nama, pilih NIK/Nama sesuai yang diinginkan" list="nik_warga" id="ktp_id" 
                                                     name="ktp_id" value="{{$siks->ktp_id}}"> 
@@ -60,31 +60,31 @@
                                                         </datalist>
                                                     @error ('ktp_id') <div class="alert alert-danger">{{ $message }} </div>@enderror 
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
-
-
-                                            <div class="col-sm-6">
+                                            {{-- <div class="col-sm-6">
                                                 <div class="form-group">
-                                                <label for="pkh" class="form-label">Status PKH</label>
-                                                <select class="form-control @error('pkh') is-invalid @enderror" id="pkh"
-                                                name="pkh" placeholder="Keterangan">
-                                                <option selected value="{{ $siks->pkh }}">
-                                                    {{ $siks->pkh }}</option>
-                                                    <option value="PKH">PKH</option>
-                                                    <option value="-">-</option>
-                                                </select>
-                                                @error('pkh') <div class="alert alert-danger">{{ $message }} </div>
-                                                @enderror
-                                            </div>
-                                            </div>
+                                                    <label for="statusdtks_id" class="form-label">Status DTKS</label>
+                                                    <select class="form-control @error('statusdtks_id') is-invalid @enderror"
+                                                        aria-label="Default select example" id="statusdtks_id" name="statusdtks_id"
+                                                        value="{{ $siks->statusdtks_id }}">
+                                                        <option selected value="{{ $siks->statusdtks_id }}">{{ $siks->statusdtks->statusdtks }}
+                                                        </option>
+                                                        @foreach ($statusdtks as $statusdtks)
+                                                            <option value="{{ $statusdtks->id }}">{{ $statusdtks->statusdtks }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('statusdtks_id') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
+                                                </div> --}}
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                 <label for="keterangan" class="form-label">Keterangan</label>
                                                 <select class="form-control @error('keterangan') is-invalid @enderror" id="keterangan"
                                                 name="keterangan" placeholder="Keterangan">
-                                                <option selected value="{{ $siks->keterangan }}">
+                                                <option selected value="{{ $siks->keterangan}}">
                                                     {{ $siks->keterangan }}</option>
                                                     <option value="KPM">Keluarga Penerima Manfaat</option>
                                                     <option value="Pindah">Pindah</option>
@@ -97,7 +97,7 @@
                                             </div>
                                             </div>
 
-                                        <div class="col-sm-6">
+                                        {{-- <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="rt_id" class="form-label">RT</label>
                                             <select class="form-control @error('rt_id') is-invalid @enderror"
@@ -112,7 +112,7 @@
                                             @error('rt_id') <div class="alert alert-danger">{{ $message }} </div>
                                             @enderror
                                         </div>
-                                        </div>
+                                        </div> --}}
 
                                             <div class="col-sm-12">
                                                 <div class="form-group">
