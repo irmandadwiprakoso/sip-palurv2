@@ -460,6 +460,7 @@
     })
 
 </script>
+
 <!-----------------------------------------------SEKRETARIAT---------------------------->
 <!-- DataTables TKK-->
 <script>
@@ -1476,6 +1477,115 @@
 
 </script>
 
+<!-- DataTables PKH -->
+<script>
+    let rwpkh = $("#filter-rwpkh").val()
+        ,rtpkh = $("#filter-rtpkh").val()
+        ,pkhkel = $("#filter-pkhkel").val()
+
+    $(document).ready(function() {
+        var table = $('#datapkh').DataTable({
+            processing:true,
+            serverSide:true,            
+            responsive: true,
+            autoWidth: false,
+            paging: true,
+            lengthChange: true,
+            info: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
+            dom: 
+                "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
+                "<'row'<'col-md-12'tr>>" +
+                "<'row'<'col-md-5'i><'col-md-7'p>>",
+                lengthMenu:[
+                    [10,25,50,100,-1],
+                    [10,25,50,100,"All"]
+                ],
+            ajax: {
+                url : "{{'getdatapkh'}}",
+                data:function(d){
+                d.rwpkh = rwpkh;
+                d.rtpkh = rtpkh;
+                d.pkhkel = pkhkel;
+                return d               
+                }
+            },
+            columns:[
+                {data:'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},
+                {data:'ktp_id', name:'ktp_id'},
+                {data:'nama_ktp', name:'nama_ktp'},
+                {data:'alamat_ktp', name:'alamat_ktp'},
+                {data:'statusdtks', name:'statusdtks'},
+                {data:'keterangan', name:'keterangan'},
+                {data:'rt', name:'rt'},
+                {data:'rw', name:'rw'},
+                {data:'district', name:'district'},
+                {data:'village', name:'village'},
+                {data:'edit', name:'edit', orderable: false, searchable: false},
+                {data:'view', name:'view', orderable: false, searchable: false},
+                {data:'hapus', name:'hapus', orderable: false, searchable: false},
+                ],
+        })
+
+        table.buttons().container()
+            .appendTo( '#datapkh_wrapper .col-md-6:e(0)' 
+        );
+
+            $(".filter").on('change', function() { 
+                rwpkh = $("#filter-rwpkh").val()
+                rtpkh = $("#filter-rtpkh").val()
+                pkhkel = $("#filter-pkhkel").val()
+                table.ajax.reload(null, false);            
+            })
+    })
+
+    $(document).on('click', '.viewpkh', function(){
+        console.log($(this).data('id'))
+        let id = $(this).data('id')
+        $.ajax({
+            url:`/pkh/${id}`,
+            method:"GET",
+            success:function(data){
+                console.log(data)
+                $('#modal-view').find('.modal-body').html(data)
+                $('#modal-view').modal('show')
+            },
+            error:function(error){
+                console.log(error)
+            }
+        })
+    })
+</script>
+
+<!--SweetAlert2 PKH -->
+<script>
+    $(document).on('click', '.deletepkh', function() {
+        var id = $(this).attr('data-id')
+        var namaid = $(this).attr('data-nama')
+
+        Swal.fire({
+            title: 'Yakin di Hapus?',
+            text: "Kamu Akan Ngapus Data Dengan Nama: " + namaid + " ",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Apus Aja!',
+            cancelButtonText: 'Gajadi!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = "/destroypkh/" + id + ""
+                Swal.fire(
+                    'Ahsyiappp!',
+                    'Datanya Udah Keapus!',
+                    'success'
+                )
+            }
+        })
+    })
+
+</script>
+
 <!-----------------------------------------------PERMASBANG---------------------------->
 <!-- DataTables SPPT PBB-->
 <script>
@@ -2078,114 +2188,6 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location = "/destroypospin/" + id + ""
-                Swal.fire(
-                    'Ahsyiappp!',
-                    'Datanya Udah Keapus!',
-                    'success'
-                )
-            }
-        })
-    })
-
-</script>
-
-<!-- DataTables SIKS-NG-->
-<script>
-    let rwsiks = $("#filter-rwsiks").val()
-        ,rtsiks = $("#filter-rtsiks").val()
-        ,sikskel = $("#filter-sikskel").val()
-
-    $(document).ready(function() {
-        var table = $('#datasiks').DataTable({
-            processing:true,
-            serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
-            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
-            dom: 
-                "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
-                "<'row'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5'i><'col-md-7'p>>",
-                lengthMenu:[
-                    [10,25,50,100,-1],
-                    [10,25,50,100,"All"]
-                ],
-            ajax: {
-                url : "{{'getdatasiks'}}",
-                data:function(d){
-                d.rwsiks = rwsiks;
-                d.rtsiks = rtsiks;
-                d.sikskel = sikskel;
-                return d               
-                }
-            },
-            columns:[
-                {data:'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},
-                {data:'ktp_id', name:'ktp_id'},
-                {data:'nama_ktp', name:'nama_ktp'},
-                {data:'dtks', name:'dtks'},
-                {data:'keterangan', name:'keterangan'},
-                {data:'rt', name:'rt'},
-                {data:'rw', name:'rw'},
-                {data:'district', name:'district'},
-                {data:'village', name:'village'},
-                {data:'edit', name:'edit', orderable: false, searchable: false},
-                {data:'view', name:'view', orderable: false, searchable: false},
-                {data:'hapus', name:'hapus', orderable: false, searchable: false},
-                ],
-        })
-
-        table.buttons().container()
-            .appendTo( '#datasiks_wrapper .col-md-6:e(0)' 
-        );
-
-            $(".filter").on('change', function() { 
-                rwsiks = $("#filter-rwsiks").val()
-                rtsiks = $("#filter-rtsiks").val()
-                sikskel = $("#filter-sikskel").val()
-                table.ajax.reload(null, false);            
-            })
-    })
-
-    $(document).on('click', '.viewsiks', function(){
-        console.log($(this).data('id'))
-        let id = $(this).data('id')
-        $.ajax({
-            url:`/siks/${id}`,
-            method:"GET",
-            success:function(data){
-                console.log(data)
-                $('#modal-view').find('.modal-body').html(data)
-                $('#modal-view').modal('show')
-            },
-            error:function(error){
-                console.log(error)
-            }
-        })
-    })
-</script>
-
-<!--SweetAlert2 SIKS-NG-->
-<script>
-    $(document).on('click', '.deletesiks', function() {
-        var id = $(this).attr('data-id')
-        var namaid = $(this).attr('data-nama')
-
-        Swal.fire({
-            title: 'Yakin di Hapus?',
-            text: "Kamu Akan Ngapus Data Dengan Nama: " + namaid + " ",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Apus Aja!',
-            cancelButtonText: 'Gajadi!',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location = "/destroysiks/" + id + ""
                 Swal.fire(
                     'Ahsyiappp!',
                     'Datanya Udah Keapus!',

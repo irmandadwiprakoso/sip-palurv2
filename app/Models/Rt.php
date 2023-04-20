@@ -48,10 +48,6 @@ class Rt extends Model
     {
         return $this->hasMany(Fasosfasum::class);
     }
-    public function covid19()
-    {
-        return $this->hasMany(Covid19::class);
-    }
     public function pbb()
     {
         return $this->hasMany(Pbb::class);
@@ -59,10 +55,6 @@ class Rt extends Model
     public function laporanpamor()
     {
         return $this->hasMany(Laporanpamor::class);
-    }
-    public function dtks()
-    {
-        return $this->hasMany(Dtks::class);
     }
     public function posyandu()
     {
@@ -72,12 +64,12 @@ class Rt extends Model
     {
         return $this->hasMany(Pospin::class);
     }
-    public function detekaes()
-    {
-        return $this->hasMany(Detekaes::class);
-    }
     public function Siks()
     {
         return $this->hasMany(Siks::class);
+    }
+    public function pkh()
+    {
+        return $this->hasMany(Pkh::class);
     }
 }

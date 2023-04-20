@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siks;
+use App\Models\Pkh;
 use App\Models\Ktp;
-use App\Models\Rw;
 use App\Models\Rt;
-use App\Models\Province;
-use App\Models\Regency;
+use App\Models\Rw;
+use App\Models\Statusdtks;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\kelbekasi;
-use App\Models\Statusdtks;
 
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
 
-class SiksController extends Controller
+class PkhController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -61,26 +59,26 @@ class SiksController extends Controller
 
      public function index()
      {
-         $ktp = Ktp::all();
-         $rw = Rw::all();
          $rt = Rt::all();
+         $rw = Rw::all();
+         $ktp = Ktp::all();
          $kelbekasi = kelbekasi::all();
          $statusdtks = Statusdtks::all();
          // Get semua data
          $districts = District::all();
          $villages = Village::all();
-         $siks = Siks::all(); 
+         $pkh = Pkh::all();
 
-         return view('permasbang.siks.index', 
+         return view('kessos.pkh.index',
          compact(
-             'ktp',
-             'rw',
              'rt',
+             'rw',
+             'ktp',
              'kelbekasi',
              'statusdtks',
              'districts',
              'villages',
-             'siks',
+             'pkh',
          ));
      }
 
@@ -92,19 +90,19 @@ class SiksController extends Controller
       */
      public function create()
      {
-         $ktp = Ktp::all();
-         $rt = Rt::all();
          $rw = Rw::all();
+         $rt = Rt::all();
+         $ktp = Ktp::all();
          $kelbekasi = kelbekasi::all();
          $statusdtks = Statusdtks::all();
          // Get semua data
          $districts = District::all();
          $villages = Village::all();
  
-         return view('permasbang.siks.index', compact(
-             'ktp',
+         return view('kessos.pkh.index', compact(
              'rt',
              'rw',
+             'ktp',
              'kelbekasi',
              'statusdtks',
              'districts',
@@ -123,18 +121,18 @@ class SiksController extends Controller
         //  dd($request->all());
          $request->validate(
              [
-                 'ktp_id' => 'required|unique:siks,ktp_id',  
-                 'statusdtks_id' => 'required',  
-                 'keterangan' => 'required',  
+                 'ktp_id' => 'required|unique:pkh,ktp_id',
+                 'keterangan' => 'required',
+                 'statusdtks_id' => 'required',    
              ],
              [
                  'ktp_id.required' => 'Harus di Isi Yaa',
                  'ktp_id.unique' => 'NIK Sudah Digunakan',
-                 'statusdtks_id.required' => 'Harus di Isi Yaa',
                  'keterangan.required' => 'Harus di Isi Yaa',
+                 'statusdtks_id.required' => 'Harus di Isi Yaa',
              ]
          );
-         Siks::create([
+         Pkh::create([
              'ktp_id' => $request->ktp_id,
              'statusdtks_id' => $request->statusdtks_id,
              'keterangan' => $request->keterangan,
@@ -143,17 +141,47 @@ class SiksController extends Controller
              'district_id' => Auth::user()->district_id,
              'village_id' => Auth::user()->village_id,
          ]);
-         // Siks::create($request->all());
-         return redirect('/siks')->with('success', 'Data Berhasil Ditambahkan!');
+         // Pkh::create($request->all());
+         return redirect('/pkh')->with('success', 'Data Berhasil Ditambahkan!');
      }
  
      /**
       * Display the specified resource.
       *
-      * @param  \App\Models\Siks  $siks
+      * @param  \App\Models\Pkh  $pkh
       * @return \Illuminate\Http\Response
       */
      public function show($id)
+     {
+         $rw = Rw::all();
+         $rt = Rt::all();
+         $ktp = Ktp::all();
+         $kelbekasi = kelbekasi::all();
+         $statusdtks = Statusdtks::all();
+         // Get semua data
+         $districts = District::all();
+         $villages = Village::all();
+         $pkh = Pkh::find($id);
+ 
+         return view('kessos.pkh.view', compact(
+             'rw',
+             'rt',
+             'ktp',
+             'kelbekasi',
+             'statusdtks',
+             'districts',
+             'villages',
+             'pkh',
+         ));
+     }
+ 
+     /**
+      * Show the form for editing the specified resource.
+      *
+      * @param  \App\Models\Pkh  $pkh
+      * @return \Illuminate\Http\Response
+      */
+     public function edit(Pkh $pkh)
      {
          $ktp = Ktp::all();
          $rw = Rw::all();
@@ -163,176 +191,141 @@ class SiksController extends Controller
          // Get semua data
          $districts = District::all();
          $villages = Village::all();
-         $siks = Siks::find($id);
-         
-         return view('permasbang.siks.view', compact(
-             'ktp',
+ 
+         return view('kessos.pkh.edit', compact(
              'rt',
              'rw',
+             'ktp',
              'kelbekasi',
              'statusdtks',
              'districts',
              'villages',
-             'siks',
+             'pkh',
          ));
      }
- 
-     /**
-      * Show the form for editing the specified resource.
-      *
-      * @param  \App\Models\Siks  $siks
-      * @return \Illuminate\Http\Response
-      */
-
-      public function edit()
-      {
-
-            dd($siks);
-          $ktp = Ktp::all();
-          $rw = Rw::all();
-          $rt = Rt::all();
-          $kelbekasi = kelbekasi::all();
-          $statusdtks = Statusdtks::all();
-          // Get semua data
-          $districts = District::all();
-          $villages = Village::all();
-  
-          return view('permasbang.siks.edit', 
-          compact(
-              'rw',
-              'rt',
-              'ktp',
-              'kelbekasi',
-              'statusdtks',
-              'districts',
-              'villages',
-              'siks',
-          ));
-      }
-
  
      /**
       * Update the specified resource in storage.
       *
       * @param  \Illuminate\Http\Request  $request
-      * @param  \App\Models\Siks  $siks
+      * @param  \App\Models\Pkh  $pkh
       * @return \Illuminate\Http\Response
       */
-     public function update(Request $request, Siks $siks)
+     public function update(Request $request, Pkh $pkh)
      {
+     //  dd($request->all());   
          $request->validate([
-             'ktp_id' => 'required',
-             'rt_id' => 'required',      
-             'keterangan' => 'required',      
-             'statusdtks_id' => 'required',      
+             // 'ktp_id' => 'required',
+             'statusdtks_id' => 'required',     
          ]);
  
-         Siks::where('id', $siks->id)
+         Pkh::where('id', $pkh->id)
              ->update([
                  'ktp_id' => $request->ktp_id,
-                 'rt_id' => $request->rt_id,
                  'statusdtks_id' => $request->statusdtks_id,
                  'keterangan' => $request->keterangan,
              ]);
-    //   dd($request->all()); 
-
-         return redirect('/siks')->with('success', 'Data Berhasil Di Update!');
+ 
+         return redirect('/pkh')->with('success', 'Data Berhasil Di Update!');
      }
  
      /**
       * Remove the specified resource from storage.
       *
-      * @param  \App\Models\Siks  $siks
+      * @param  \App\Models\Pkh  $pkh
       * @return \Illuminate\Http\Response
       */
-     public function destroysiks($id, Siks $siks)
+     public function destroypkh($id, Pkh $pkh)
      {
-         $siks = Siks::find($id);
-         $siks->delete();
-         return redirect('/siks');
+         $pkh = Pkh::find($id);
+         $pkh->delete();
+         return redirect('/pkh');
      }
  
-     public function getdatasiks(Request $request)
+     public function getdatapkh(Request $request)
      {
          if (auth()->user()->role == 'superadmin') {
-             if ($request->input('sikskel') != null) {
-                 $siks = Siks::where('village_id', $request->sikskel)->orderBy('rw_id', 'asc');
+             if ($request->input('pkhkel') != null) {
+                 $pkh = Pkh::where('village_id', $request->pkhkel)->orderBy('rw_id', 'asc');
              } else {
-                 $siks = Siks::select('siks.*')->orderBy('rw_id', 'asc');
+                 $pkh = Pkh::select('pkh.*')->orderBy('rw_id', 'asc');
              }
-             if ($request->input('rwsiks') != null) {
-                 $siks = Siks::where('village_id', $request->sikskel)
-                 ->where('rw_id', $request->rwsiks);
+             if ($request->input('rwpkh') != null) {
+                 $pkh = Pkh::where('village_id', $request->pkhkel)
+                 ->where('rw_id', $request->rwpkh);
              }
              if ($request->input('posyandupin') != null) {
-                 $siks = Siks::where('village_id', $request->sikskel)
-                 ->where('rw_id', $request->rwsiks)
+                 $pkh = Pkh::where('village_id', $request->pkhkel)
+                 ->where('rw_id', $request->rwpkh)
                  ->where('saranakeseahtan_id', $request->posyandupin);
              }
          }
          
          if (auth()->user()->role == 'user') {
-             if ($request->input('rtsiks') != null) {
-                 $siks = Siks::where('rt_id', $request->rtsiks)
+             if ($request->input('rtpkh') != null) {
+                 $pkh = Pkh::where('rt_id', $request->rtpkh)
                  ->where('village_id', '=', auth()->user()->village_id)
                  ->where('rw_id', '=', auth()->user()->rw_id);
              }else {
-                 $siks = Siks::where('rw_id', '=', auth()->user()->rw_id)
+                 $pkh = Pkh::where('rw_id', '=', auth()->user()->rw_id)
                  ->where('village_id', '=', auth()->user()->village_id);
              }
          }
  
-         if (auth()->user()->role == 'permasbang' || auth()->user()->role == 'struktural' ) {
-             if ($request->input('rwsiks') != null) {
-                 $siks = Siks::where('rw_id', $request->rwsiks)
+         if (auth()->user()->role == 'kessos' || auth()->user()->role == 'struktural' ) {
+             if ($request->input('rwpkh') != null) {
+                 $pkh = Pkh::where('rw_id', $request->rwpkh)
                  ->where('village_id', '=', auth()->user()->village_id);
              }else {
-                 $siks = Siks::select('siks.*')
+                 $pkh = Pkh::select('pkh.*')
                  ->where('village_id', '=', auth()->user()->village_id)
                  ->orderby('rt_id', 'asc');
              }
          }
  
-         return DataTables::eloquent($siks)
+         return DataTables::eloquent($pkh)
              ->addIndexColumn()
-             ->addColumn('nama_ktp', function ($siks) {
-                 return $siks->ktp->nama;
+             ->addColumn('nama_ktp', function ($pkh) {
+                 return $pkh->ktp->nama;
              })
-             ->addColumn('dtks', function ($siks) {
-                 return $siks->statusdtks->statusdtks;
+             ->addColumn('alamat_ktp', function ($pkh) {
+                 return $pkh->ktp->alamat;
              })
-             ->addColumn('rt', function ($siks) {
-                 return $siks->rt->rt;
+             ->addColumn('statusdtks', function ($pkh) {
+                 return $pkh->statusdtks->statusdtks;
              })
-             ->addColumn('rw', function ($siks) {
-                 return $siks->rw->rw;
+             ->addColumn('rt', function ($pkh) {
+                 return $pkh->rt->rt;
              })
-             ->addColumn('district', function ($siks) {
-                 return $siks->district->name;
+             ->addColumn('rw', function ($pkh) {
+                 return $pkh->rw->rw;
              })
-             ->addColumn('village', function ($siks) {
-                 return $siks->village->name;
+             ->addColumn('district', function ($pkh) {
+                 return $pkh->district->name;
+             })
+             ->addColumn('village', function ($pkh) {
+                 return $pkh->village->name;
              })
  
-             ->addColumn('edit', function ($siks) {
-                 if (auth()->user()->role == "superadmin" || auth()->user()->role == "permasbang" ||
+             ->addColumn('edit', function ($pkh) {
+                 if (auth()->user()->role == "superadmin" || auth()->user()->role == "kessos" ||
                  auth()->user()->role == "user") {
-                     return '<a href="siks/' . $siks->id . '/edit" class="btn btn-warning" title="Edit">
+                     return '<a href="pkh/' . $pkh->id . '/edit" class="btn btn-warning" title="Edit">
                  <i class="fas fa-edit"></i></a>';
                  }
              })
  
-             ->addColumn('view', function ($siks) {
-                 return '<a href="#" class="btn btn-primary viewsiks" data-id="' . $siks->id . '">
+             ->addColumn('view', function ($pkh) {
+                 return '<a href="#" class="btn btn-primary viewpkh" data-id="' . $pkh->id . '">
                  <i class="fas fa-eye"></i></a>';
              })
  
-             ->addColumn('hapus', function ($siks) {
-                 if (auth()->user()->role == "superadmin" || auth()->user()->role == "permasbang" ||
+             ->addColumn('hapus', function ($pkh) {
+                 if (auth()->user()->role == "superadmin" || auth()->user()->role == "kessos" ||
                  auth()->user()->role == "user" ) {
-                     return '<a href="#" class="btn btn-danger deletesiks"
-                 data-id="' . $siks->id . '"
-                 data-nama="' . $siks->ktp->nama . '">
+                     return '<a href="#" class="btn btn-danger deletepkh"
+                 data-id="' . $pkh->id . '"
+                 data-nama="' . $pkh->ktp->nama . '">
                  <i class="fas fa-trash"></i></a>';
                  }
              })
@@ -340,10 +333,13 @@ class SiksController extends Controller
              ->rawColumns([
              'rt', 
              'rw', 
-             'nama_ktp',  
-             'dtks',  
+             'ktp', 
+             'nama_ktp', 
+             'alamat_ktp', 
+             'statusdtks', 
              'village', 
              'district', 
+             'statusdtks', 
              'edit', 
              'view', 
              'hapus'

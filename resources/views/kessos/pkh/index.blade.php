@@ -36,8 +36,8 @@
                                 <div class="row">  
                                         <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="filter-sikskel" class="form-label">DTKS Kelurahan</label>
-                                            <select class="form-control filter" id="filter-sikskel" name="filter-sikskel">
+                                            <label for="filter-pkhkel" class="form-label">DTKS Kelurahan</label>
+                                            <select class="form-control filter" id="filter-pkhkel" name="filter-pkhkel">
                                                 <option value="">-- Pilih Kelurahan --</option>
                                                 @foreach ($kelbekasi as $kelbekasi)
                                                     <option value="{{ $kelbekasi->id }}">{{ $kelbekasi->name }}</option>
@@ -48,11 +48,11 @@
 
                                         <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="filter-rwsiks" class="form-label">RW Kelurahan</label>
-                                            <select class="form-control filter" id="filter-rwsiks" name="filter-rwsiks">
+                                            <label for="filter-rwpkh" class="form-label">RW Kelurahan</label>
+                                            <select class="form-control filter" id="filter-rwpkh" name="filter-rwpkh">
                                                 <option value="">-- Pilih RW --</option>
-                                                @foreach ($rw as $rwsiks)
-                                                    <option value="{{ $rwsiks->id }}">{{ $rwsiks->rw }}</option>
+                                                @foreach ($rw as $rwpkh)
+                                                    <option value="{{ $rwpkh->id }}">{{ $rwpkh->rw }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -60,11 +60,11 @@
 
                                         <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="filter-rtsiks" class="form-label">RT Kelurahan</label>
-                                            <select class="form-control filter" id="filter-rtsiks" name="filter-rtsiks">
+                                            <label for="filter-rtpkh" class="form-label">RT Kelurahan</label>
+                                            <select class="form-control filter" id="filter-rtpkh" name="filter-rtpkh">
                                                 <option value="">-- Pilih RT --</option>
-                                                @foreach ($rt as $rtsiks)
-                                                    <option value="{{ $rtsiks->id }}">{{ $rtsiks->rt }}</option>
+                                                @foreach ($rt as $rtpkh)
+                                                    <option value="{{ $rtpkh->id }}">{{ $rtpkh->rt }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -82,12 +82,13 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="datasiks" class="table table-bordered table-hover">
+                    <table id="datapkh" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">NIK</th>
                                 <th scope="col">Nama</th>
+                                <th scope="col">Alamat</th>
                                 <th scope="col">DTKS</th>
                                 <th scope="col">KETERANGAN</th>
                                 <th scope="col">RT</th>
@@ -114,7 +115,7 @@
         @include('master.script')
 
 <!--------------Modal Create------------------------->
-<form action="/siks" method="post" enctype="multipart/form-data">
+<form action="/pkh" method="post" enctype="multipart/form-data">
     @csrf
     <div class="modal fade" id="modal-default">
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
@@ -130,7 +131,7 @@
                             <form>
                                 <div class="row">
 
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="ktp_id" class="form-label">NIK/Nama DTKS</label>
                                                     <input class="form-control @error('ktp_id') is-invalid @enderror" 
@@ -169,7 +170,7 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                        <label for="statusdtks_id" class="form-label">DTKS</label>
+                                                    <label for="statusdtks_id" class="form-label">DTKS</label>
                                                         <select class="form-control @error('statusdtks_id') is-invalid @enderror" id="statusdtks_id"
                                                             name="statusdtks_id" value="{{ old('statusdtks_id') }}">
                                                             <option selected disabled>- Pilih DTKS-</option>
@@ -181,39 +182,39 @@
                                                         </select>
                                                         @error('statusdtks_id') <div class="alert alert-danger">{{ $message }} </div>
                                                         @enderror
-                                                    </div>
-                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                <label for="keterangan" class="form-label">Keterangan</label>
-                                                <select class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" name="keterangan">
-                                                    <option selected disabled>-- Pilih Keterangan --</option>
-                                                    <option value="KPM">Keluarga Penerima Manfaat</option>
-                                                    <option value="Pindah">Pindah</option>
-                                                    <option value="Meninggal">Meninggal</option>
-                                                    <option value="Tidak Diketahui">Tidak Diketahui</option>
-                                                    <option value="Non DTKS">Non DTKS</option>
-                                                </select>
-                                                @error('keterangan') <div class="alert alert-danger">{{ $message }} </div>
-                                                @enderror
-                                            </div>
+                                                    <label for="keterangan" class="form-label">Keterangan</label>
+                                                    <select class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" name="keterangan">
+                                                        <option selected disabled>-- Pilih Keterangan --</option>
+                                                        <option value="KPM">Keluarga Penerima Manfaat</option>
+                                                        <option value="Pindah">Pindah</option>
+                                                        <option value="Meninggal">Meninggal</option>
+                                                        <option value="Tidak Diketahui">Tidak Diketahui</option>
+                                                        <option value="Non DTKS">Non DTKS</option>
+                                                    </select>
+                                                    @error('keterangan') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
                                             </div>
         
                                             <div class="col-sm-6">
                                             <div class="form-group">
-                                                    <label for="rt_id" class="form-label">RT</label>
-                                                    <select class="form-control @error('rt_id') is-invalid @enderror" id="rt_id"
-                                                        name="rt_id" value="{{ old('rt_id') }}">
-                                                        <option selected disabled>- Pilih RT-</option>
-                                                        @foreach ($rt as $erte)
-                                                            <option value="{{ $erte->id }}"
-                                                                {{ old('rt_id') == $erte->id ? 'selected' : null }}>
-                                                                {{ $erte->rt }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('rt_id') <div class="alert alert-danger">{{ $message }} </div>
-                                                    @enderror
+                                                <label for="rt_id" class="form-label">RT</label>
+                                                <select class="form-control @error('rt_id') is-invalid @enderror" id="rt_id"
+                                                    name="rt_id" value="{{ old('rt_id') }}">
+                                                    <option selected disabled>- Pilih RT-</option>
+                                                    @foreach ($rt as $erte)
+                                                        <option value="{{ $erte->id }}"
+                                                            {{ old('rt_id') == $erte->id ? 'selected' : null }}>
+                                                            {{ $erte->rt }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('rt_id') <div class="alert alert-danger">{{ $message }} </div>
+                                                @enderror
                                             </div>
                                             </div>
                                     </div>

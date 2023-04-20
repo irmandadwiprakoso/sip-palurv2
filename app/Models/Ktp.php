@@ -94,9 +94,9 @@ class Ktp extends Model
     {
         return $this->hasMany(Pospin::class);
     }
-    public function detekaes()
+    public function pkh()
     {
-        return $this->hasMany(Detekaes::class);
+        return $this->hasMany(Pkh::class);
     }
     public function Siks()
     {

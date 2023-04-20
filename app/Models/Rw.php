@@ -64,10 +64,6 @@ class Rw extends Model
     {
         return $this->hasMany(Laporanpamor::class);
     }
-    public function dtks()
-    {
-        return $this->hasMany(Dtks::class);
-    }
     public function posyandu()
     {
         return $this->hasMany(Posyandu::class);
@@ -80,8 +76,8 @@ class Rw extends Model
     {
         return $this->hasMany(Siks::class);
     }
-    public function detekaes()
+    public function pkh()
     {
-        return $this->hasMany(Detekaes::class);
+        return $this->hasMany(Pkh::class);
     }
 }

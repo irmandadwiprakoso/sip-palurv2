@@ -17,14 +17,12 @@ use App\Http\Controllers\SaranaibadahController;
 use App\Http\Controllers\SaranakesehatanController;
 use App\Http\Controllers\SaranapendidikanController;
 use App\Http\Controllers\TkkController;
-use App\Http\Controllers\DtksController;
 use App\Http\Controllers\VaksinController;
 use App\Http\Controllers\PkkController;
 use App\Http\Controllers\PospinController;
+use App\Http\Controllers\PkhController;
 use App\Http\Controllers\SiksController;
-use App\Http\Controllers\DtksnondtksController;
 use App\Http\Controllers\PasswordController;
-use App\Http\Controllers\DetekaesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -104,6 +102,14 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::post('/getdesa', [SaranakesehatanController::class, 'getdesa'])->name('getdesa');
     Route::get('/destroysaranakesehatan/{id}', [SaranakesehatanController::class, 'destroysaranakesehatan'])->name('DestroySaranakesehatan');
     Route::get('/getdatasaranakesehatan', [SaranakesehatanController::class, 'getdatasaranakesehatan'])->name('datasaranakesehatan');
+    
+    //PKH//
+    Route::resource('pkh', PkhController::class);
+    Route::post('/getkabupaten', [PkhController::class, 'getkabupaten'])->name('getkabupaten');
+    Route::post('/getkecamatan', [PkhController::class, 'getkecamatan'])->name('getkecamatan');
+    Route::post('/getdesa', [PkhController::class, 'getdesa'])->name('getdesa');
+    Route::get('/destroypkh/{id}', [PkhController::class, 'destroypkh'])->name('DestroyPkh');
+    Route::get('/getdatapkh', [PkhController::class, 'getdatapkh'])->name('datapkh');
 });
 
 // MENU PEM TRANTIBUM //

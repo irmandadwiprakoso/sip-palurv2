@@ -19,4 +19,8 @@ class Statusdtks extends Model
     {
         return $this->belongsTo(Siks::class);
     }
+    public function pkh()
+    {
+        return $this->belongsTo(Pkh::class);
+    }
 }

@@ -92,7 +92,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/detekaes" class="nav-link">
+                            <a href="/pkh" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>DTKS</p>
                             </a>

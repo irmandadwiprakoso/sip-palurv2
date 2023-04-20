@@ -34,16 +34,16 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form action="/siks/{{ $siks->id }}" method="post">
+                                <form action="/pkh/{{ $pkh->id }}" method="post">
                                     @method('patch')
                                     @csrf
                                     <div class="card-body">
                                     <form>
                                     <div class="row">
-                                        {{-- <div class="col-sm-12">
+                                        <div class="col-sm-12">
                                         <div class="form-group">
-                                            <h3 class="profile-username text-center">{{ $siks->ktp->nama }}</h3>
-                                            <h3 class="profile-username text-center">{{ $siks->ktp->id }}</h3>
+                                            <h3 class="profile-username text-center">{{ $pkh->ktp->nama }}</h3>
+                                            <h3 class="profile-username text-center">{{ $pkh->ktp->id }}</h3>
                                         </div>
                                         </div>
 
@@ -52,23 +52,23 @@
                                                     <label for="ktp_id" class="form-label">Nama/NIK DTKS</label>
                                                     <input class="form-control @error('ktp_id') is-invalid @enderror" 
                                                     placeholder="Ketik NIK/Nama, pilih NIK/Nama sesuai yang diinginkan" list="nik_warga" id="ktp_id" 
-                                                    name="ktp_id" value="{{$siks->ktp_id}}"> 
-                                                        <datalist id="nik_warga" selected value="{{$siks->ktp_id}}" >
+                                                    name="ktp_id" value="{{$pkh->ktp_id}}"> 
+                                                        <datalist id="nik_warga" selected value="{{$pkh->ktp_id}}" >
                                                         @foreach ($ktp as $ktp)
                                                             <option value="{{$ktp->id}}"> {{$ktp->nama}}</option>
                                                         @endforeach
                                                         </datalist>
                                                     @error ('ktp_id') <div class="alert alert-danger">{{ $message }} </div>@enderror 
                                                 </div>
-                                            </div> --}}
+                                            </div>
 
-                                            {{-- <div class="col-sm-6">
+                                            <div class="col-sm-4">
                                                 <div class="form-group">
                                                     <label for="statusdtks_id" class="form-label">Status DTKS</label>
                                                     <select class="form-control @error('statusdtks_id') is-invalid @enderror"
                                                         aria-label="Default select example" id="statusdtks_id" name="statusdtks_id"
-                                                        value="{{ $siks->statusdtks_id }}">
-                                                        <option selected value="{{ $siks->statusdtks_id }}">{{ $siks->statusdtks->statusdtks }}
+                                                        value="{{ $pkh->statusdtks_id }}">
+                                                        <option selected value="{{ $pkh->statusdtks_id }}">{{ $pkh->statusdtks->statusdtks }}
                                                         </option>
                                                         @foreach ($statusdtks as $statusdtks)
                                                             <option value="{{ $statusdtks->id }}">{{ $statusdtks->statusdtks }}</option>
@@ -77,15 +77,15 @@
                                                     @error('statusdtks_id') <div class="alert alert-danger">{{ $message }} </div>
                                                     @enderror
                                                 </div>
-                                                </div> --}}
+                                                </div>
 
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-4">
                                                 <div class="form-group">
                                                 <label for="keterangan" class="form-label">Keterangan</label>
                                                 <select class="form-control @error('keterangan') is-invalid @enderror" id="keterangan"
                                                 name="keterangan" placeholder="Keterangan">
-                                                <option selected value="{{ $siks->keterangan}}">
-                                                    {{ $siks->keterangan }}</option>
+                                                <option selected value="{{ $pkh->keterangan}}">
+                                                    {{ $pkh->keterangan }}</option>
                                                     <option value="KPM">Keluarga Penerima Manfaat</option>
                                                     <option value="Pindah">Pindah</option>
                                                     <option value="Meninggal">Meninggal</option>
@@ -97,13 +97,13 @@
                                             </div>
                                             </div>
 
-                                        {{-- <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="rt_id" class="form-label">RT</label>
                                             <select class="form-control @error('rt_id') is-invalid @enderror"
                                                 aria-label="Default select example" id="rt_id" name="rt_id"
-                                                value="{{ $siks->rt_id }}">
-                                                <option selected value="{{ $siks->rt_id }}">{{ $siks->rt->rt }}
+                                                value="{{ $pkh->rt_id }}">
+                                                <option selected value="{{ $pkh->rt_id }}">{{ $pkh->rt->rt }}
                                                 </option>
                                                 @foreach ($rt as $erte)
                                                     <option value="{{ $erte->id }}">{{ $erte->rt }}</option>
@@ -112,11 +112,11 @@
                                             @error('rt_id') <div class="alert alert-danger">{{ $message }} </div>
                                             @enderror
                                         </div>
-                                        </div> --}}
+                                        </div>
 
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <a class="btn btn-default" href="/siks" role="button">Close</a>
+                                                    <a class="btn btn-default" href="/pkh" role="button">Close</a>
                                                     <button type="submit" class="btn btn-success">Update</button>
                                                 </div>
                                             </div>
