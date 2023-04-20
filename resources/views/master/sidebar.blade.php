@@ -146,6 +146,12 @@
                                 <p>Pospin</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/siks" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>SIKS-NG</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 @endif

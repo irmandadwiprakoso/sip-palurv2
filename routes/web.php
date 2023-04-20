@@ -21,6 +21,7 @@ use App\Http\Controllers\DtksController;
 use App\Http\Controllers\VaksinController;
 use App\Http\Controllers\PkkController;
 use App\Http\Controllers\PospinController;
+use App\Http\Controllers\SiksController;
 use App\Http\Controllers\DtksnondtksController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\DetekaesController;
@@ -218,5 +219,13 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::post('/getdesa', [PospinController::class, 'getdesa'])->name('getdesa');
     Route::get('/destroypospin/{id}', [PospinController::class, 'destroypospin'])->name('destroypospin');
     Route::get('/getdatapospin', [PospinController::class, 'getdatapospin'])->name('datapospin');
+    
+    //SIKS-NG//
+    Route::resource('siks', SiksController::class);
+    Route::post('/getkabupaten', [SiksController::class, 'getkabupaten'])->name('getkabupaten');
+    Route::post('/getkecamatan', [SiksController::class, 'getkecamatan'])->name('getkecamatan');
+    Route::post('/getdesa', [SiksController::class, 'getdesa'])->name('getdesa');
+    Route::get('/destroysiks/{id}', [SiksController::class, 'destroysiks'])->name('destroysiks');
+    Route::get('/getdatasiks', [SiksController::class, 'getdatasiks'])->name('datasiks');
 
 });

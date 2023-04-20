@@ -98,4 +98,8 @@ class Ktp extends Model
     {
         return $this->hasMany(Detekaes::class);
     }
+    public function Siks()
+    {
+        return $this->hasMany(Siks::class);
+    }
 }

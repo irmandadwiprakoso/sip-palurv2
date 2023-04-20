@@ -76,6 +76,10 @@ class Rw extends Model
     {
         return $this->hasMany(Pospin::class);
     }
+    public function Siks()
+    {
+        return $this->hasMany(Siks::class);
+    }
     public function detekaes()
     {
         return $this->hasMany(Detekaes::class);
