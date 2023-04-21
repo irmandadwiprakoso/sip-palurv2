@@ -9,7 +9,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-danger">
             <div class="card-header text-center">
                 <a href="#" class="h1"><b>SIP-</b>PALUR</a>
             </div>
@@ -20,7 +20,7 @@
                     @csrf
                     <div class="input-group mb-3">
                         <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
-                            name="username" placeholder="username" required>
+                            name="username" placeholder="Username" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -46,7 +46,7 @@
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" class="btn btn-danger btn-block">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>
