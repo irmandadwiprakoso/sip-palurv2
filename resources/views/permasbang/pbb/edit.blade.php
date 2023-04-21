@@ -213,23 +213,6 @@
                                             </div>@enderror
                                         </div>
                                         </div>
-    
-                                            {{-- <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="village_id" class="form-label">Kelurahan</label>
-                                                <select class="form-control @error('village_id') is-invalid @enderror"
-                                                    id="village_id" name="village_id"
-                                                    value="{{ $pbb->village_id }}">
-                                                    <option selected value="{{ $pbb->village_id }}">{{ $pbb->village->name }}
-                                                    </option>
-                                                    @foreach ($kelbekasi as $kelbekasi)
-                                                    <option value="{{ $kelbekasi->id }}">{{ $kelbekasi->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('village_id') <div class="alert alert-danger">{{ $message }} </div>
-                                                @enderror
-                                            </div>
-                                            </div> --}}
 
                                         <div class="card-footer">
                                             <a class="btn btn-default" href="/pbb" role="button">Close</a>

@@ -27,6 +27,19 @@
                     </div>
             @endif
 
+            <!-- Chart Data --> 
+            <div class="card card-danger">
+              <div class="card-header">
+                  <h3 class="card-title">PBB Chart</h3>
+                  <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                  </div>
+              </div>
+            <div class="card-body" >
+                {!! $chart->container() !!}
+            </div>
+            </div>
+
             <!-- Detail Data -->
             @if (auth()->user()->role == "superadmin") 
                     <div class="row">
@@ -565,35 +578,6 @@
                         </div>
                     </div>									
                 </div>									
-            									
-
-            <!-- Detail Data per RT--> 
-            {{-- <div class="card card-danger">
-              <div class="card-header">
-                  <h3 class="card-title">Detail Data SPPT PBB</h3>
-              </div>
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="card-body">
-                          <div class="row">
-                            <div class="card-body">
-                              <table id="detaildatapbb" class="table table-bordered table-hover">
-                                <thead>
-                                  <tr>
-                                      <th>NO</th>
-                                      <th>RT</th>
-                                      <th>RW</th>
-                                      <th>JUMLAH SPPT</th>
-                                  </tr>
-                                </thead>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>									
-                  </div>	
-                  </div>	 --}}
 
             <!-- Main content / Tampilan Data -->
             <section class="content">
@@ -646,6 +630,8 @@
         @include('master.csidebar')
         @include('master.footer')
         @include('master.script')
+        <script src="{{ $chart->cdn() }}"></script>
+        {{ $chart->script() }}
 
 <!--------------Modal Create SPPT PBB------------------------->
 <form action="/pbb" method="post" enctype="multipart/form-data">

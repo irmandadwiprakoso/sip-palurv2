@@ -12,7 +12,10 @@ use App\Models\Regency;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\kelbekasi;
+use App\Charts\PbbChart;
+
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class PbbController extends Controller
 {
@@ -56,7 +59,7 @@ class PbbController extends Controller
         echo $option;
     }
 
-    public function index()
+    public function index(PbbChart $chart)
     {
         $rw = Rw::all();
         $rt = Rt::all();
@@ -70,6 +73,7 @@ class PbbController extends Controller
 
         return view(
             'permasbang.pbb.index',
+            ['chart' => $chart->build()],
             compact(
                 'rw',
                 'rt',
@@ -78,7 +82,8 @@ class PbbController extends Controller
                 'districts',
                 'villages',
                 'pbb',
-                'kelbekasi'
+                'kelbekasi',
+                'chart'
             )
         );
     }
