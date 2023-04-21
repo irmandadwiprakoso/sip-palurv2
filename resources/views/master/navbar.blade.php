@@ -72,7 +72,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                 <!-- User image -->
-                <li class="user-header bg-primary">
+                <li class="user-header bg-danger">
                     <img src="
                  @if(auth()->user()->role == 'user')
                  {{auth()->user()->tkk->getFoto()}}
