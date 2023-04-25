@@ -11,11 +11,13 @@
         "php": "^7.3",
         "arielmejiadev/larapex-charts": "^5.2",
         "azishapidin/indoregion": "^3.0",
+        "barryvdh/laravel-dompdf": "^2.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
+        "nesbot/carbon": "^2.66",
         "realrashid/sweet-alert": "^5.1",
         "yajra/laravel-datatables-oracle": "^9.0"
     },

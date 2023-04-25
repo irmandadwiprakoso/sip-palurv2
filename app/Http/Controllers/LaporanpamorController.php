@@ -13,9 +13,11 @@ use App\Models\Province;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\kelbekasi;
-use Yajra\DataTables\Facades\DataTables;
 use Carbon\Carbon;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class LaporanpamorController extends Controller
@@ -288,10 +290,9 @@ class LaporanpamorController extends Controller
         $laporanpamor->delete();
         return redirect('/laporanpamor');
     }
-
+    
     public function getdatalaporanpamor(Request $request)
     {
-    
     if (auth()->user()->role == 'user') {
         if ($request->input('tahun') != null) {
             $laporanpamor = Laporanpamor::where('user_id', Auth()->user()->id)
@@ -401,4 +402,47 @@ class LaporanpamorController extends Controller
             ])
             ->toJson();
     }
+
+    // public function cetaklaporanpamor()
+    // {
+    //     $pdf = App::make('dompdf.wrapper');
+    //     $pdf->loadHTML('<h1>Test</h1>');
+    //     return $pdf->stream();
+    // }
+
+    public function cetaklaporanpamor()
+    {
+        return view(
+            'sekret.laporan.cetaklaporanpamor'
+        );
+    }
+
+    public function cetaklaporanbydate($startdatepamor, $enddatepamor)
+    {
+        $rt = Rt::all();
+        $rw = Rw::all();
+        $seksi = Seksi::all();
+        $user = User::all();
+        $provinces = Province::all();
+        $regencies = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
+        $kelbekasi = kelbekasi::all();
+
+        // dd(["tanggal awal : ".$startdatepamor, "Tanggal Akhir : ".$enddatepamor]);
+        if (auth()->user()->role == 'superadmin') {
+            $cetaklaporanbydate = Laporanpamor::whereBetween('tanggal', [$startdatepamor, $enddatepamor])->latest()->get();
+        }
+
+        if (auth()->user()->role == 'user') {
+            $cetaklaporanbydate = Laporanpamor::where('user_id', Auth()->user()->id)->whereBetween('tanggal', [$startdatepamor, $enddatepamor])->latest()->get();
+        }
+
+        return view('sekret.laporan.cetaklaporanbydate', 
+        compact(
+            'rt', 'rw', 'seksi', 'provinces', 'regencies', 'districts', 'villages', 'kelbekasi', 'user','cetaklaporanbydate'
+        ));
+    }
+
+
 }

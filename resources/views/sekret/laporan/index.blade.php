@@ -17,15 +17,19 @@
             <section class="content-header">
                 <div class="container-fluid">
             <!-- Button Tambah Data -->    
-            @if (auth()->user()->role == "superadmin" || auth()->user()->role == "user")
                     <div class="row mb-2">
+                        @if (auth()->user()->role == "superadmin" || auth()->user()->role == "user")
                         <div class="col-sm-6">
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">
                                 <i class="fas fa-plus-square"></i> Add Data 
                             </button>
+                            <a href="/cetaklaporanpamor" class="btn btn-danger">
+                                <i class="fas fa-print"></i> Print Laporan Pamor
+                            </a>
+                        @endif
                         </div>
                     </div>	
-            @endif								
+			
             <!-- Filter Data --> 
             <div class="card card-danger">
                 <div class="card-header">
@@ -265,74 +269,6 @@
                                             @enderror
                                         </div>
                                         </div>
-                                            
-                                        {{-- <div class="col-sm-6">
-                                            <div class="form-group">
-                                                    <label for="provinsi">Provinsi</label>
-                                                    <select class="form-control @error('province_id') is-invalid @enderror" id="provinsi"
-                                                        name="province_id" value="{{ old('province_id') }}">
-                                                        <option selected disabled>- Pilih Provinsi-</option>
-                                                        @foreach ($provinces as $provinsi)
-                                                            <option value="{{ $provinsi->id }}"
-                                                                {{ old('province_id') == $provinsi->id ? 'selected' : null}}>
-                                                                {{ $provinsi->name }} </option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('province_id') <div class="alert alert-danger">{{ $message }}
-                                                    </div>@enderror
-                                                </div>
-                                                </div>
-
-                                            <div class="col-sm-6">
-                                            <div class="form-group">
-                                                    <label for="kabupaten">Kota/Kabupaten</label>
-                                                    <select class="form-control @error('regency_id') is-invalid @enderror"
-                                                        id="kabupaten" name="regency_id" value="{{ old('regency_id') }}">
-                                                        <option selected disabled>- Pilih Kota/Kabupaten-</option>
-                                                        @foreach ($regencies as $kabupaten)
-                                                            <option value="{{ $kabupaten->id }}"
-                                                                {{ old('regency_id') == $kabupaten->id ? 'selected' : null}}>
-                                                                {{ $kabupaten->name }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('regency_id') <div class="alert alert-danger">{{ $message }}
-                                                    </div>@enderror
-                                                </div>
-                                                </div>
-                                            <div class="col-sm-6">
-                                            <div class="form-group">
-                                                    <label for="kecamatan">Kecamatan</label>
-                                                    <select class="form-control @error('district_id') is-invalid @enderror"
-                                                        id="kecamatan" name="district_id" value="{{ old('district_id') }}">
-                                                        <option selected disabled>- Pilih Kecamatan-</option>
-                                                        @foreach ($districts as $kecamatan)
-                                                            <option value="{{ $kecamatan->id }}"
-                                                                {{ old('district_id') == $kecamatan->id ? 'selected' : null }}>
-                                                                {{ $kecamatan->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('district_id') <div class="alert alert-danger">{{ $message }}
-                                                    </div>@enderror
-                                                </div>
-                                                </div>
-                                            <div class="col-sm-6">
-                                            <div class="form-group">
-                                                    <label for="desa">Desa/Kelurahan</label>
-                                                    <select class="form-control @error('village_id') is-invalid @enderror"
-                                                        id="desa" name="village_id" value="{{ old('village_id') }}">
-                                                        <option selected disabled>- Pilih Desa/Kelurahan-</option>
-                                                        @foreach ($villages as $desa)
-                                                            <option value="{{ $desa->id }}"
-                                                                {{ old('village_id') == $desa->id ? 'selected' : null }}>
-                                                                {{ $desa->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('village_id') <div class="alert alert-danger">{{ $message }}
-                                                    </div>@enderror
-                                            </div>
-                                            </div> --}}
 
                                         <div class="col-sm-12">
                                         <div class="form-group">
