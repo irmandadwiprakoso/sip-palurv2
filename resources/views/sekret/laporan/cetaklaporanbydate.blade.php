@@ -111,8 +111,9 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.2in; margin-botto
           </tr>
           <tr class="row7">
             <td class="column0 style5 s">TANGGAL</td>
-            <td class="column1 style5 s">: </td>
-           
+            @foreach ($cetaklaporanbydate as $pamor)
+            <td class="column1 style5 s">: {{ $pamor->tanggal }}</td>
+            @endforeach
           </tr>
           <tr class="row8">
           </tr>
