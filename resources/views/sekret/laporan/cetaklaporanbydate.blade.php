@@ -121,9 +121,9 @@ body { margin-left: 0.6in; margin-right: 0.7in; margin-top: 0.2in; margin-bottom
           </tr>
           <tr class="row9">
              <td class="column0 style9 s">NO</th>
-             <td class="column0 style9 s">NAMA KEGIATAN</th>
+             <td class="column0 style9 s">URAIAN KEGIATAN</th>
              <td class="column0 style9 s">BIDANG</th>
-             <td class="column0 style9 s">JUMLAH/VOLUME</th>
+             <td class="column0 style9 s">JUMLAH</th>
              <td class="column0 style9 s">RT</th>
              <td class="column0 style9 s">KETERANGAN</th>
              <td class="column0 style9 s">FOTO KEGIATAN</th>
