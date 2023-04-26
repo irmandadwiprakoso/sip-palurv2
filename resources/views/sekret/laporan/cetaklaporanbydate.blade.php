@@ -68,15 +68,15 @@
 
   <body>
 <style>
-@page { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.2in; margin-bottom: 0.5in; }
-body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.2in; margin-bottom: 0.5in; }
+@page { margin-left: 0.6in; margin-right: 0.7in; margin-top: 0.2in; margin-bottom: 0.5in; }
+body { margin-left: 0.6in; margin-right: 0.7in; margin-top: 0.2in; margin-bottom: 0.5in; }
 </style>
 
 <section class="content-info">
     <div class="container paddings-mini">
         <div class="row">
            <div class="col-lg-12">
-    <table border="0" cellpadding="5" cellspacing="0" id="sheet0" class="sheet0 gridlines">
+    <table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
         <col class="col0">
         <col class="col1">
         <col class="col2">
@@ -87,13 +87,13 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.2in; margin-botto
         <col class="col7">
         <tbody>
           <tr class="row0">
-            <td class="column0 style4 s style4" colspan="6">LAPORAN KEGIATAN HARIAN SATGAS PAMOR RW {{ Auth::user()->rw->rw }}</td>
+            <td class="column0 style4 s style4" colspan="8">LAPORAN KEGIATAN HARIAN SATGAS PAMOR RW {{ Auth::user()->rw->rw }}</td>
           </tr>
           <tr class="row1">
-            <td class="column0 style4 s style4" colspan="6">KELURAHAN {{ Auth::user()->village->name }} KECAMATAN {{ Auth::user()->district->name }}</td>
+            <td class="column0 style4 s style4" colspan="8">KELURAHAN {{ Auth::user()->village->name }} KECAMATAN {{ Auth::user()->district->name }}</td>
           </tr>
           <tr class="row2">
-            <td class="column0 style4 s style4" colspan="6">TAHUN {{ date('Y') }}</td>
+            <td class="column0 style4 s style4" colspan="8">TAHUN {{ date('Y') }}</td>
           </tr>
           <tr class="row3">
           </tr>
@@ -106,13 +106,15 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.2in; margin-botto
             <td class="column1 style5 s">: {{ Auth::user()->rw->rw }}</td>
           </tr>
           <tr class="row6">
-            <td class="column0 style5 s">HARI</td>
-            <td class="column1 style5 s">: </td>
-          </tr>
-          <tr class="row7">
-            <td class="column0 style5 s">TANGGAL</td>
             @foreach ($cetaklaporanbydate as $pamor)
-            <td class="column1 style5 s">: {{ $pamor->tanggal }}</td>
+            <td class="column0 style5 s">HARI</td>
+            <td class="column1 style5 s">: {{ \Carbon\Carbon::parse($pamor->tanggal)->isoformat('dddd') }} </td>
+            @endforeach
+        </tr>
+          <tr class="row7">
+            @foreach ($cetaklaporanbydate as $pamor)
+            <td class="column0 style5 s">TANGGAL</td>
+            <td class="column1 style5 s">: {{ \Carbon\Carbon::parse($pamor->tanggal)->isoformat('D MMMM Y') }}</td>
             @endforeach
           </tr>
           <tr class="row8">
@@ -124,6 +126,7 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.2in; margin-botto
              <td class="column0 style9 s">JUMLAH/VOLUME</th>
              <td class="column0 style9 s">RT</th>
              <td class="column0 style9 s">KETERANGAN</th>
+             <td class="column0 style9 s">FOTO KEGIATAN</th>
              <td class="column0 style9 s">STEMPEL DAN TTD RW</th>
         </tr>
              @foreach ($cetaklaporanbydate as $pamor)
@@ -134,6 +137,8 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.2in; margin-botto
             <td class="style9 s"> {{ $pamor->jumlah }}</td>
             <td class="style9 s"> {{ $pamor->rt->rt }}</td>
             <td class="style9 s"> {{ $pamor->keterangan }}</td>
+            <td class="style9 s"> <img src="{{ asset('images/LaporanHarian/' . $pamor->foto) }}" width="100" height="100"></img>
+            </td>
             <td class="style9 s"> </td>
             </tr>
             @endforeach
