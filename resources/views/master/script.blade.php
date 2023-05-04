@@ -20,6 +20,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.js"></script>
+
 <!-- Toastr -->
 <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
 <!-- SweetAlert2 -->

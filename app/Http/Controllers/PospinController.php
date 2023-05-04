@@ -67,7 +67,7 @@ class PospinController extends Controller
          $districts = District::all();
          $villages = Village::all();
          $pospin = Pospin::all();
-         
+
 
          return view('permasbang.pospin.index', 
          ['chart' => $chart->build()],

@@ -74,10 +74,13 @@ class TkkController extends Controller
         $seksi = Seksi::all();
         $jabatan = Jabatan::all();
         // Get semua data 
+        $provinces = Province::all();
+        $regencies = Regency::all();
         $districts = District::all();
         $villages = Village::all();
         $tkk = Tkk::all();
         $kelbekasi = kelbekasi::all();
+        $kecbekasi = kecbekasi::all();
 
         return view(
             'sekret.tkk.index',
@@ -89,10 +92,13 @@ class TkkController extends Controller
                 'pendidikan',
                 'seksi',
                 'jabatan',
+                'provinces',
+                'regencies',
                 'districts',
                 'villages',
                 'tkk',
-                'kelbekasi'
+                'kelbekasi',
+                'kecbekasi'
             )
         );
     }
@@ -112,8 +118,12 @@ class TkkController extends Controller
         $seksi = Seksi::all();
         $jabatan = Jabatan::all();
         // Get semua data 
+        $provinces = Province::all();
+        $regencies = Regency::all();
         $districts = District::all();
         $villages = Village::all();
+        $kelbekasi = kelbekasi::all();
+        $kecbekasi = kecbekasi::all();
 
         return view(
             'sekret.tkk.index',
@@ -125,8 +135,12 @@ class TkkController extends Controller
                 'pendidikan',
                 'seksi',
                 'jabatan',
+                'provinces',
+                'regencies',
                 'districts',
-                'villages'
+                'villages',
+                'kelbekasi',
+                'kecbekasi'
             )
         );
     }
@@ -194,8 +208,8 @@ class TkkController extends Controller
         $user->role = 'user';
         $user->password = bcrypt('kotabekasi');
         $user->remember_token = Str::random(60);
-        $user->district_id = $request->district_id;
-        $user->village_id = $request->village_id;
+        $user->district_id = Auth::user()->district_id;
+        $user->village_id = Auth::user()->village_id;
         $user->save();
 
         $request->request->add(['user_id' => $user->id]);
@@ -393,8 +407,8 @@ class TkkController extends Controller
                 'email' => $request->email,
                 'no_HP' => $request->no_HP,
                 'rw_id' => $request->rw_id,
-                'district_id' => $request->district_id,
-                'village_id' => $request->village_id,
+                // 'district_id' => $request->district_id,
+                // 'village_id' => $request->village_id,
                 // 'foto' => $request->foto
             ]);
 
@@ -410,8 +424,8 @@ class TkkController extends Controller
             'email' => $request->email,
             'name' => $request->nama,
             'username' => $request->username,
-            'district_id' => $request->district_id,
-            'village_id' => $request->village_id,
+            // 'district_id' => $request->district_id,
+            // 'village_id' => $request->village_id,
         ]);
 
         return redirect('/tkk')->with('success', 'Data Berhasil Di Update!');

@@ -21,7 +21,6 @@ use App\Http\Controllers\VaksinController;
 use App\Http\Controllers\PkkController;
 use App\Http\Controllers\PospinController;
 use App\Http\Controllers\PkhController;
-use App\Http\Controllers\SiksController;
 use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -171,6 +170,9 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
 
     //Laporan Pamor//
     Route::resource('laporanpamor', LaporanpamorController::class);
+    Route::post('/getkabupaten', [TkkController::class, 'getkabupaten'])->name('getkabupaten');
+    Route::post('/getkecamatan', [TkkController::class, 'getkecamatan'])->name('getkecamatan');
+    Route::post('/getdesa', [TkkController::class, 'getdesa'])->name('getdesa');
     Route::get('/destroylaporanpamor/{id}', [LaporanpamorController::class, 'destroylaporanpamor'])->name('destroylaporanpamor');
     Route::get('/getdatalaporanpamor', [LaporanpamorController::class, 'getdatalaporanpamor'])->name('datalaporanpamor');
     //Cetak Laporan Pamor//
@@ -221,12 +223,5 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::post('/getdesa', [PospinController::class, 'getdesa'])->name('getdesa');
     Route::get('/destroypospin/{id}', [PospinController::class, 'destroypospin'])->name('destroypospin');
     Route::get('/getdatapospin', [PospinController::class, 'getdatapospin'])->name('datapospin');
-    
-    //SIKS-NG//
-    Route::resource('siks', SiksController::class);
-    Route::post('/getkabupaten', [SiksController::class, 'getkabupaten'])->name('getkabupaten');
-    Route::post('/getkecamatan', [SiksController::class, 'getkecamatan'])->name('getkecamatan');
-    Route::post('/getdesa', [SiksController::class, 'getdesa'])->name('getdesa');
-    Route::get('/destroysiks/{id}', [SiksController::class, 'destroysiks'])->name('destroysiks');
-    Route::get('/getdatasiks', [SiksController::class, 'getdatasiks'])->name('datasiks');
+
 });

@@ -15,7 +15,7 @@ class Tkk extends Model
     [
         'id', 'nama', 'KK', 'tempat_lahir', 'tanggal_lahir', 'jeniskelamin_id',
         'alamat', 'agama_id', 'pendidikan_id', 'statuskawin_id', 'seksi_id', 'jabatan_id',
-        'regency_id', 'province_id',
+        'district_id', 'village_id',
         'SK_Tkk', 'no_rek', 'npwp', 'email', 'no_HP', 'foto', 'user_id', 'username', 'rw_id'
     ];
 
@@ -79,5 +79,9 @@ class Tkk extends Model
     public function kelbekasi()
     {
         return $this->belongsTo(kelbekasi::class);
+    }
+    public function kecbekasi()
+    {
+        return $this->belongsTo(kecbekasi::class);
     }
 }

@@ -299,7 +299,7 @@
                                         </div>
                                         </div>
     
-                                            <div class="col-sm-4">
+                                            {{-- <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label for="district_id" class="form-label">Kecamatan</label>
                                                 <select class="form-control @error('district_id') is-invalid @enderror"
@@ -331,7 +331,7 @@
                                                 @error('village_id') <div class="alert alert-danger">{{ $message }} </div>
                                                 @enderror
                                             </div>
-                                            </div>
+                                            </div> --}}
 
                                         <div class="col-sm-4">
                                         <div class="form-group">

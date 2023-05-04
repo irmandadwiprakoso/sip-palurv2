@@ -9,9 +9,7 @@ use App\Models\District;
 class kelbekasi extends Model
 {
     use HasFactory;
-
     protected $table = 'kelbekasi';
-
     protected $hidden = [
         'district_id'
     ];

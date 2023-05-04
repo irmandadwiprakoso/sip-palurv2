@@ -515,26 +515,26 @@
                                         </div>
 
                                     <div class="col-sm-6">
-                                    <div class="form-group">
+                                        <div class="form-group">
                                             <label for="kecamatan">Kecamatan</label>
                                             <select class="form-control @error('district_id') is-invalid @enderror"
                                                 id="kecamatan" name="district_id" value="{{ old('district_id') }}">
-                                                <option selected disabled>- Pilih Kecamatan-</option>
-                                                @foreach ($districts as $kecamatan)
-                                                    <option value="{{ $kecamatan->id }}">{{ $kecamatan->name }}
-                                                    </option>
-                                                @endforeach
+                                                <option selected disabled>-Pilih Kecamatan-</option>
+                                                @foreach ($kecbekasi as $kecbekasi)
+                                                <option value="{{ $kecbekasi->id }}">{{ $kecbekasi->name }}</option>
+                                            @endforeach
                                             </select>
                                             @error('district_id') <div class="alert alert-danger">{{ $message }}
                                             </div>@enderror
                                         </div>
-                                        </div>
+                                    </div>
+
                                     <div class="col-sm-6">
-                                    <div class="form-group">
-                                            <label for="desa">Desa/Kelurahan</label>
+                                        <div class="form-group">
+                                            <label for="desa">Kelurahan</label>
                                             <select class="form-control @error('village_id') is-invalid @enderror"
                                                 id="desa" name="village_id" value="{{ old('village_id') }}">
-                                                <option selected disabled>- Pilih Desa/Kelurahan-</option>
+                                                <option selected disabled>-Pilih Kelurahan-</option>
                                                 @foreach ($villages as $desa)
                                                     <option value="{{ $desa->id }}">{{ $desa->name }}</option>
                                                 @endforeach
@@ -542,7 +542,7 @@
                                             @error('village_id') <div class="alert alert-danger">{{ $message }}
                                             </div>@enderror
                                         </div>
-                                        </div>
+                                    </div>
                                     
 
                                     <div class="col-sm-6">
