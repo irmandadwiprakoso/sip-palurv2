@@ -417,8 +417,10 @@ class LaporanpamorController extends Controller
         );
     }
 
-    public function cetaklaporanbydate($startdatepamor, $enddatepamor)
+    public function cetaklaporanbydate($startdatepamor)
     {
+        // dd(["tanggal awal : ".$startdatepamor]);
+
         $rt = Rt::all();
         $rw = Rw::all();
         $seksi = Seksi::all();
@@ -429,13 +431,13 @@ class LaporanpamorController extends Controller
         $villages = Village::all();
         $kelbekasi = kelbekasi::all();
 
-        // dd(["tanggal awal : ".$startdatepamor, "Tanggal Akhir : ".$enddatepamor]);
+
         if (auth()->user()->role == 'superadmin') {
-            $cetaklaporanbydate = Laporanpamor::whereBetween('tanggal', [$startdatepamor, $enddatepamor])->latest()->get();
+            $cetaklaporanbydate = Laporanpamor::where('tanggal', '=' , $startdatepamor)->get();
         }
 
         if (auth()->user()->role == 'user') {
-            $cetaklaporanbydate = Laporanpamor::where('user_id', Auth()->user()->id)->whereBetween('tanggal', [$startdatepamor, $enddatepamor])->latest()->get();
+            $cetaklaporanbydate = Laporanpamor::where('user_id', Auth()->user()->id)->where('tanggal', '=', $startdatepamor)->get();
         }
 
         return view('sekret.laporan.cetaklaporanbydate', 

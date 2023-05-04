@@ -25,26 +25,35 @@
                     <div class="col-md-12">
                         <div class="card-body">
                         <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="startdatepamor">Start Date:</label>
+                                        <label for="startdatepamor">Pilih Tanggal:</label>
                                         <input type="date" class="form-control" 
                                         id="startdatepamor" name="startdatepamor">
                                     </div>
                                 </div>
 
-                                <div class="col-sm-6">
+                                {{-- <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="enddatepamor">End Date:</label>
                                         <input type="date" class="form-control" 
                                         id="enddatepamor" name="enddatepamor">
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="col-sm-12">
+                                {{-- <div class="col-sm-12">
                                     <div class="form-group">
                                         <a href="" onclick="this.href='/cetaklaporanbydate/'+ document.getElementById('startdatepamor').value
                                         + '/' + document.getElementById('enddatepamor').value " class="btn btn-danger col-md-12" target="_blank">
+                                            <i class="fas fa-print"></i> Cetak Laporan Pamor
+                                        </a>
+                                    </div>
+                                </div> --}}
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <a href="" onclick="this.href='/cetaklaporanbydate/'+ document.getElementById('startdatepamor').value  + '/' "
+                                        class="btn btn-danger col-md-12" target="_blank">
                                             <i class="fas fa-print"></i> Cetak Laporan Pamor
                                         </a>
                                     </div>

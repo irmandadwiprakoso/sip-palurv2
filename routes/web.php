@@ -175,7 +175,7 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::get('/getdatalaporanpamor', [LaporanpamorController::class, 'getdatalaporanpamor'])->name('datalaporanpamor');
     //Cetak Laporan Pamor//
     Route::get('/cetaklaporanpamor', [LaporanpamorController::class, 'cetaklaporanpamor'])->name('cetaklaporanpamor');
-    Route::get('/cetaklaporanbydate/{startdatepamor}/{enddatepamor}', [LaporanpamorController::class, 'cetaklaporanbydate'])->name('cetaklaporanbydate');
+    Route::get('/cetaklaporanbydate/{startdatepamor}', [LaporanpamorController::class, 'cetaklaporanbydate'])->name('cetaklaporanbydate');
 
 });
 
