@@ -257,7 +257,7 @@ class SaranapendidikanController extends Controller
             'alamat' => 'required',
             'rt_id' => 'required',
             // 'rw_id' => 'required',
-            'no_HP' => 'required',
+            // 'no_HP' => 'required',
         ]
         );
 
@@ -272,7 +272,7 @@ class SaranapendidikanController extends Controller
             // 'rw_id' => $request->rw_id,
             // 'district_id' => $request->district_id,
             // 'village_id' => $request->village_id,
-            'no_HP' => $request->no_HP,
+            // 'no_HP' => $request->no_HP,
             ]);
 
             if ($request->hasFile('foto')){
