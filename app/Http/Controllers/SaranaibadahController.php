@@ -143,8 +143,8 @@ class SaranaibadahController extends Controller
             // 'regency_id' => 'required',
             // 'district_id' => 'required',
             // 'village_id' => 'required',
-            'no_SK' => 'required',
-            'no_HP' => 'required',
+            // 'no_SK' => 'required',
+            // 'no_HP' => 'required',
             'foto' => 'required|max:1024',
         ],
         [
@@ -159,8 +159,8 @@ class SaranaibadahController extends Controller
             // 'regency_id.required' => 'Harus Di isi yaa',
             // 'district_id.required' => 'Harus Di isi yaa',
             // 'village_id.required' => 'Harus Di isi yaa',
-            'no_SK.required' => 'Harus Di isi yaa',
-            'no_HP.required' => 'Harus Di isi yaa',
+            // 'no_SK.required' => 'Harus Di isi yaa',
+            // 'no_HP.required' => 'Harus Di isi yaa',
         ]
     );
             $imgName = $request->foto->getClientOriginalName() . '-' . time() 
@@ -274,7 +274,7 @@ class SaranaibadahController extends Controller
             'rt_id' => 'required',
             // 'rw_id' => 'required',
             // 'no_SK' => 'required',
-            'no_HP' => 'required',
+            // 'no_HP' => 'required',
         ]
         );
 
