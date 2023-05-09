@@ -120,7 +120,7 @@ class PkkController extends Controller
                 // 'pokja' => 'required',
                 // 'rt_id' => 'required',
                 // 'rw_id' => 'required',
-                'no_SK' => 'required',
+                // 'no_SK' => 'required',
                 'jabatan_id' => 'required',       
             ],
             [
@@ -129,7 +129,7 @@ class PkkController extends Controller
                 // 'pokja.required' => 'Harus di Isi Yaa',
                 // 'rt_id.required' => 'Harus di Isi Yaa',
                 // 'rw_id.required' => 'Harus di Isi Yaa',
-                'no_SK.required' => 'Harus di Isi Yaa',
+                // 'no_SK.required' => 'Harus di Isi Yaa',
                 'jabatan_id.required' => 'Harus di Isi Yaa',
             ]
         );
@@ -217,7 +217,7 @@ class PkkController extends Controller
             'pokja' => 'required',
             // 'rt_id' => 'required',
             // 'rw_id' => 'required',
-            'no_SK' => 'required',
+            // 'no_SK' => 'required',
             'jabatan_id' => 'required',      
         ]);
 
@@ -227,7 +227,7 @@ class PkkController extends Controller
                 'pokja' => $request->pokja,
                 // 'rt_id' => $request->rt_id,
                 // 'rw_id' => $request->rw_id,
-                'no_SK' => $request->no_SK,
+                // 'no_SK' => $request->no_SK,
                 'jabatan_id' => $request->jabatan_id,
                 // 'district_id' => $request->district_id,
                 // 'village_id' => $request->village_id,
@@ -261,22 +261,11 @@ class PkkController extends Controller
                 $pkk = Pkk::where('village_id', $request->pkkkel)
                 ->where('rw_id', $request->rwpkk);
             }
-            if ($request->input('rtpkk') != null) {
-                $pkk = Pkk::where('village_id', $request->pkkkel)
-                ->where('rw_id', $request->rwpkk)
-                ->where('rt_id', $request->rtpkk);
-            }
         }
         
         if (auth()->user()->role == 'user') {
-            if ($request->input('rtpkk') != null) {
-                $pkk = Pkk::where('rt_id', $request->rtpkk)
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->where('rw_id', '=', auth()->user()->rw_id);
-            }else {
                 $pkk = Pkk::where('rw_id', '=', auth()->user()->rw_id)
-                ->where('village_id', '=', auth()->user()->village_id);
-            }
+                ->where('village_id', '=', auth()->user()->village_id)->orderBy('jabatan_id','asc');
         }
 
         if (auth()->user()->role == 'permasbang' || auth()->user()->role == 'struktural' ) {
@@ -287,11 +276,6 @@ class PkkController extends Controller
                 $pkk = Pkk::select('pkk.*')
                 ->where('village_id', '=', auth()->user()->village_id)
                 ->orderby('rt_id', 'asc');
-            }
-            if ($request->input('rtpkk') != null) {
-                $pkk = Pkk::where('rt_id', $request->rtpkk)
-                ->where('rw_id', $request->rwpkk)
-                ->where('village_id', '=', auth()->user()->village_id);
             }
         }
 
