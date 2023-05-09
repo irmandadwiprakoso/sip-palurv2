@@ -358,10 +358,10 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="id" class="form-label">NIK Bayi</label>
-                                                    <input type="number" class="form-control @error('id') is-invalid @enderror"
-                                                        id="id" placeholder="NIK Bayi" name="id" value="{{ old('id') }}">
-                                                    @error('id') <div class="alert alert-danger">{{ $message }} </div>
+                                                    <label for="NIK" class="form-label">NIK Bayi</label>
+                                                    <input type="number" class="form-control @error('NIK') is-invalid @enderror"
+                                                        id="NIK" placeholder="NIK Bayi" name="NIK" value="{{ old('NIK') }}">
+                                                    @error('NIK') <div class="alert alert-danger">{{ $message }} </div>
                                                     @enderror
                                                 </div>
                                             </div>

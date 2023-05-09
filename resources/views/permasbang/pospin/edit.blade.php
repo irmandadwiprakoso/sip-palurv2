@@ -43,7 +43,7 @@
                                         <div class="col-sm-12">
                                         <div class="form-group">
                                             <h3 class="profile-username text-center">{{ $pospin->nama }}</h3>
-                                            <h3 class="profile-username text-center">{{ $pospin->id }}</h3>
+                                            <h3 class="profile-username text-center">{{ $pospin->NIK }}</h3>
                                         </div>
                                         </div>
 
@@ -64,11 +64,11 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="id" class="form-label">NIK Bayi</label>
-                                                    <input type="number" class="form-control @error('id') is-invalid @enderror"
-                                                        id="id" placeholder="id Bayi" name="id"
-                                                        value="{{ $pospin->id }}">
-                                                    @error('id') <div class="alert alert-danger">{{ $message }} </div>
+                                                    <label for="NIK" class="form-label">NIK Bayi</label>
+                                                    <input type="number" class="form-control @error('NIK') is-invalid @enderror"
+                                                        id="NIK" placeholder="NIK Bayi" name="NIK"
+                                                        value="{{ $pospin->NIK }}">
+                                                    @error('NIK') <div class="alert alert-danger">{{ $message }} </div>
                                                     @enderror
                                                 </div>
                                             </div>
