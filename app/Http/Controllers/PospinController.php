@@ -299,7 +299,7 @@ class PospinController extends Controller
                  return $pospin->jeniskelamin->jeniskelamin;
              })
              ->addColumn('saranakesehatan', function ($pospin) {
-                 return $pospin->saranakesehatan->nama;
+                 return $pospin->saranakesehatan->id;
              })
              ->addColumn('rw', function ($pospin) {
                  return $pospin->rw->rw;
@@ -329,7 +329,7 @@ class PospinController extends Controller
                  auth()->user()->role == "user" ) {
                      return '<a href="#" class="btn btn-danger deletepospin"
                  data-id="' . $pospin->id . '"
-                 data-nama="' . $pospin->ktp->nama . '">
+                 data-nama="' . $pospin->nama . '">
                  <i class="fas fa-trash"></i></a>';
                  }
              })
