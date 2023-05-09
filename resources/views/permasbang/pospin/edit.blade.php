@@ -42,12 +42,12 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                         <div class="form-group">
-                                            <h3 class="profile-username text-center">{{ $pospin->ktp->nama }}</h3>
-                                            <h3 class="profile-username text-center">{{ $pospin->ktp->id }}</h3>
+                                            <h3 class="profile-username text-center">{{ $pospin->nama }}</h3>
+                                            <h3 class="profile-username text-center">{{ $pospin->NIK }}</h3>
                                         </div>
                                         </div>
 
-                                              <div class="col-sm-6">
+                                              {{-- <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="ktp_id" class="form-label">Nama/NIK Bayi</label>
                                                     <input class="form-control @error('ktp_id') is-invalid @enderror" 
@@ -60,7 +60,41 @@
                                                         </datalist>
                                                     @error ('ktp_id') <div class="alert alert-danger">{{ $message }} </div>@enderror 
                                                 </div>
+                                            </div> --}}
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="NIK" class="form-label">NIK Bayi</label>
+                                                    <input type="number" class="form-control @error('NIK') is-invalid @enderror"
+                                                        id="NIK" placeholder="NIK Bayi" name="NIK"
+                                                        value="{{ $pospin->NIK }}">
+                                                    @error('NIK') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
                                             </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="nama" class="form-label">Nama Bayi</label>
+                                                    <input type="nama" class="form-control @error('nama') is-invalid @enderror"
+                                                        id="nama" placeholder="nama Bayi" name="nama"
+                                                        value="{{ $pospin->nama }}">
+                                                    @error('nama') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
+                                                    <input type="date"
+                                                        class="form-control @error('tgl_lahir') is-invalid @enderror"
+                                                        id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir"
+                                                        value="{{ $ktp->tgl_lahir }}">
+                                                    @error('tgl_lahir') <div class="alert alert-danger">{{ $message }}
+                                                    </div>@enderror
+                                                </div>
+                                                </div>
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
@@ -71,7 +105,24 @@
                                                     @error('nama_ortu') <div class="alert alert-danger">{{ $message }} </div>
                                                     @enderror
                                                 </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="jeniskelamin_id" class="form-label">Jenis Kelamin</label>
+                                                    <select class="form-control @error('jeniskelamin_id') is-invalid @enderror"
+                                                        aria-label="Default select example" id="jeniskelamin_id" name="jeniskelamin_id"
+                                                        value="{{ $pospin->jeniskelamin_id }}">
+                                                        <option selected value="{{ $pospin->jeniskelamin_id }}">
+                                                            {{ $pospin->jeniskelamin->jeniskelamin}}</option>
+                                                        @foreach ($jeniskelamin as $jeniskelamin)
+                                                            <option value="{{ $jeniskelamin->id }}">{{ $jeniskelamin->jeniskelamin }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('jeniskelamin_id') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
                                                 </div>
+                                                </div>   
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
@@ -119,8 +170,6 @@
                                                         </div>@enderror
                                                     </div>
                                                 </div>    
-
-     
 
                                             <div class="col-sm-12">
                                                 <div class="form-group">

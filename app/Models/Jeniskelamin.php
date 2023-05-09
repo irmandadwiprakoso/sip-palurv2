@@ -23,4 +23,8 @@ class Jeniskelamin extends Model
     {
         return $this->hasMany(Ktp::class);
     }
+    public function pospin()
+    {
+        return $this->hasMany(Pospin::class);
+    }
 }

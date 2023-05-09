@@ -3,7 +3,7 @@
         <div class="form-group">
             <label for="nama" class="form-label">NIK</label>
             <input type="text" disabled readonly
-                class="form-control" id="nama" value="{{ $pospin->ktp_id }}">
+                class="form-control" id="nama" value="{{ $pospin->NIK }}">
         </div>
         </div>
 
@@ -11,21 +11,21 @@
     <div class="form-group">
         <label for="nama" class="form-label">Nama</label>
         <input type="text" disabled readonly
-            class="form-control" id="nama" value="{{ $pospin->ktp->nama }}">
+            class="form-control" id="nama" value="{{ $pospin->nama }}">
     </div>
     </div>
     <div class="col-sm-6">
     <div class="form-group">
         <label for="nama" class="form-label">JK</label>
         <input type="text" disabled readonly
-            class="form-control" id="nama" value="{{ $pospin->ktp->jeniskelamin->jeniskelamin }}">
+            class="form-control" id="nama" value="{{ $pospin->jeniskelamin->jeniskelamin }}">
     </div>
     </div>
     <div class="col-sm-6">
     <div class="form-group">
         <label for="nama" class="form-label">Tanggal Lahir</label>
         <input type="text" disabled readonly
-            class="form-control" id="nama" value="{{ $pospin->ktp->tanggal_lahir }}">
+            class="form-control" id="nama" value="{{ $pospin->tgl_lahir }}">
     </div>
     </div>
 

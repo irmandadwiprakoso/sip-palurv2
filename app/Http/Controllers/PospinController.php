@@ -7,6 +7,7 @@ use App\Models\Ktp;
 use App\Models\Rw;
 use App\Models\Saranakesehatan;
 use App\Models\District;
+use App\Models\Jeniskelamin;
 use App\Models\Village;
 use App\Models\kelbekasi;
 use App\Charts\PospinChart;
@@ -62,6 +63,7 @@ class PospinController extends Controller
          $rw = Rw::all();
          $ktp = Ktp::all();
          $kelbekasi = kelbekasi::all();
+         $jeniskelamin = Jeniskelamin::all();
          $saranakesehatan = Saranakesehatan::all();
          // Get semua data
          $districts = District::all();
@@ -80,6 +82,7 @@ class PospinController extends Controller
              'districts',
              'villages',
              'pospin',
+             'jeniskelamin',
              'chart'
          ));
      }
@@ -95,6 +98,7 @@ class PospinController extends Controller
          $rw = Rw::all();
          $ktp = Ktp::all();
          $kelbekasi = kelbekasi::all();
+         $jeniskelamin = Jeniskelamin::all();
          $saranakesehatan = Saranakesehatan::all();
          // Get semua data
          $districts = District::all();
@@ -107,6 +111,7 @@ class PospinController extends Controller
              'saranakesehatan',
              'districts',
              'villages',
+             'jeniskelamin',
          ));
      }
  
@@ -121,19 +126,21 @@ class PospinController extends Controller
         //  dd($request->all());
          $request->validate(
              [
-                 'ktp_id' => 'required|unique:pospin,ktp_id',
+                 'NIK' => 'required|unique:pospin,NIK',
                  'nama_ortu' => 'required',
                  'saranakesehatan_id' => 'required',    
              ],
              [
-                 'ktp_id.required' => 'Harus di Isi Yaa',
-                 'ktp_id.unique' => 'NIK Sudah Digunakan',
+                 'NIK.required' => 'Harus di Isi Yaa',
+                 'NIK.unique' => 'NIK Sudah Digunakan',
                  'nama_ortu.required' => 'Harus di Isi Yaa',
                  'saranakesehatan_id.required' => 'Harus di Isi Yaa',
              ]
          );
          Pospin::create([
-             'ktp_id' => $request->ktp_id,
+             'NIK' => $request->NIK,
+             'nama' => $request->nama,
+             'jeniskelamin_id' => $request->jeniskelamin_id,
              'saranakesehatan_id' => $request->saranakesehatan_id,
              'nama_ortu' => $request->nama_ortu,
              'pin_1' => $request->pin_1,
@@ -157,6 +164,7 @@ class PospinController extends Controller
          $rw = Rw::all();
          $ktp = Ktp::all();
          $kelbekasi = kelbekasi::all();
+         $jeniskelamin = Jeniskelamin::all();
          $saranakesehatan = Saranakesehatan::all();
          // Get semua data
          $districts = District::all();
@@ -170,6 +178,7 @@ class PospinController extends Controller
              'saranakesehatan',
              'districts',
              'villages',
+             'jeniskelamin',
              'pospin',
          ));
      }
@@ -185,6 +194,7 @@ class PospinController extends Controller
          $ktp = Ktp::all();
          $rw = Rw::all();
          $kelbekasi = kelbekasi::all();
+         $jeniskelamin = Jeniskelamin::all();
          $saranakesehatan = Saranakesehatan::all();
          // Get semua data
          $districts = District::all();
@@ -198,6 +208,7 @@ class PospinController extends Controller
              'districts',
              'villages',
              'pospin',
+             'jeniskelamin',
          ));
      }
  
@@ -212,7 +223,7 @@ class PospinController extends Controller
      {
      //  dd($request->all());   
          $request->validate([
-             // 'ktp_id' => 'required',
+             // 'NIK' => 'required',
              'saranakesehatan_id' => 'required',
              'pin_1' => 'required',      
              'pin_2' => 'required',      
@@ -220,7 +231,9 @@ class PospinController extends Controller
  
          Pospin::where('id', $pospin->id)
              ->update([
-                 'ktp_id' => $request->ktp_id,
+                 'NIK' => $request->NIK,
+                 'nama' => $request->nama,
+                 'jeniskelamin_id' => $request->jeniskelamin_id,
                  'saranakesehatan_id' => $request->saranakesehatan_id,
                  'nama_ortu' => $request->nama_ortu,
                  'pin_1' => $request->pin_1,
@@ -263,14 +276,8 @@ class PospinController extends Controller
          }
          
          if (auth()->user()->role == 'user') {
-             if ($request->input('rtpospin') != null) {
-                 $pospin = Pospin::where('rt_id', $request->rtpospin)
-                 ->where('village_id', '=', auth()->user()->village_id)
-                 ->where('rw_id', '=', auth()->user()->rw_id);
-             }else {
                  $pospin = Pospin::where('rw_id', '=', auth()->user()->rw_id)
                  ->where('village_id', '=', auth()->user()->village_id);
-             }
          }
  
          if (auth()->user()->role == 'permasbang' || auth()->user()->role == 'struktural' ) {
@@ -286,14 +293,8 @@ class PospinController extends Controller
  
          return DataTables::eloquent($pospin)
              ->addIndexColumn()
-             ->addColumn('nama_ktp', function ($pospin) {
-                 return $pospin->ktp->nama;
-             })
-             ->addColumn('jk_ktp', function ($pospin) {
-                 return $pospin->ktp->jeniskelamin->jeniskelamin;
-             })
-             ->addColumn('tgllahir_ktp', function ($pospin) {
-                 return $pospin->ktp->tanggal_lahir;
+             ->addColumn('jeniskelamin', function ($pospin) {
+                 return $pospin->jeniskelamin->jeniskelamin;
              })
              ->addColumn('saranakesehatan', function ($pospin) {
                  return $pospin->saranakesehatan->nama;
@@ -333,10 +334,7 @@ class PospinController extends Controller
  
              ->rawColumns([
              'rw', 
-             'ktp', 
-             'nama_ktp', 
-             'jk_ktp', 
-             'tgllahir_ktp', 
+             'jeniskelamin', 
              'village', 
              'district', 
              'saranakesehatan', 

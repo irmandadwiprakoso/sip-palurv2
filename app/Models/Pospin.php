@@ -10,15 +10,17 @@ class Pospin extends Model
     use HasFactory;
     protected $table = 'pospin';
     protected $fillable = [
-        'id',
-        'ktp_id',
-        'saranakesehatan_id',
+        'NIK',
+        'nama',
+        'jeniskelamin_id',
+        'tgl_lahir',
         'nama_ortu',
+        'saranakesehatan_id',
+        'pin_1',
+        'pin_2',
         'rw_id',
         'district_id',
         'village_id',
-        'pin_1',
-        'pin_2',
     ];
 
     public function rt()
@@ -48,5 +50,9 @@ class Pospin extends Model
     public function kelbekasi()
     {
         return $this->belongsTo(kelbekasi::class);
+    }
+    public function jeniskelamin()
+    {
+        return $this->belongsTo(Jeniskelamin::class);
     }
 }

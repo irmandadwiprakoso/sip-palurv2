@@ -331,7 +331,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Data POSPIN </h4>
+                    <h4 class="modal-title">Add Data POSPIN POLIO </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -341,7 +341,7 @@
                             <form>
                                 <div class="row">
 
-                                            <div class="col-sm-6">
+                                            {{-- <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="ktp_id" class="form-label">NIK/Nama POSPIN</label>
                                                     <input class="form-control @error('ktp_id') is-invalid @enderror" 
@@ -353,6 +353,53 @@
                                                         @endforeach
                                                         </datalist>
                                                     @error ('ktp_id') <div class="alert alert-danger">{{ $message }} </div>@enderror 
+                                                </div>
+                                            </div> --}}
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="NIK" class="form-label">NIK Bayi</label>
+                                                    <input type="number" class="form-control @error('NIK') is-invalid @enderror"
+                                                        id="NIK" placeholder="NIK Bayi" name="NIK" value="{{ old('NIK') }}">
+                                                    @error('NIK') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="nama" class="form-label">Nama Bayi</label>
+                                                    <input type="text" onkeyup="this.value = this.value.toUpperCase()"
+                                                        class="form-control @error('nama') is-invalid @enderror"
+                                                        id="nama" placeholder="Nama Bayi" name="nama" value="{{ old('nama') }}">
+                                                    @error('nama') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="tgl_lahir">Tanggal lahir</label>
+                                                    <input type="date" class="form-control" 
+                                                    id="tgl_lahir" name="tgl_lahir">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="jeniskelamin_id">Jenis Kelamin</label>
+                                                    <select class="form-control @error('jeniskelamin_id') is-invalid @enderror"
+                                                        id="jeniskelamin_id" name="jeniskelamin_id"
+                                                        value="{{ old('jeniskelamin_id') }}">
+                                                        <option selected disabled>- Pilih JK -</option>
+                                                        @foreach ($jeniskelamin as $jeniskelamin)
+                                                            <option value="{{ $jeniskelamin->id}}"
+                                                                {{ old('jeniskelamin_id') == $jeniskelamin->id ? 'selected' : null }}>
+                                                                {{ $jeniskelamin->jeniskelamin }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('jeniskelamin_id') <div class="alert alert-danger">
+                                                        {{ $message }} </div>@enderror
                                                 </div>
                                             </div>
 
@@ -383,7 +430,7 @@
                                                     @error('saranakesehatan_id') <div class="alert alert-danger">
                                                         {{ $message }} </div>@enderror
                                                 </div>
-                                                </div>
+                                            </div>
 
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
