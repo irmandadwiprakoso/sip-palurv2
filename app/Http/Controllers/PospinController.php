@@ -140,6 +140,7 @@ class PospinController extends Controller
          Pospin::create([
              'NIK' => $request->NIK,
              'nama' => $request->nama,
+             'tgl_lahir' => $request->tgl_lahir,
              'jeniskelamin_id' => $request->jeniskelamin_id,
              'saranakesehatan_id' => $request->saranakesehatan_id,
              'nama_ortu' => $request->nama_ortu,
@@ -233,6 +234,7 @@ class PospinController extends Controller
              ->update([
                  'NIK' => $request->NIK,
                  'nama' => $request->nama,
+                 'tgl_lahir' => $request->tgl_lahir,
                  'jeniskelamin_id' => $request->jeniskelamin_id,
                  'saranakesehatan_id' => $request->saranakesehatan_id,
                  'nama_ortu' => $request->nama_ortu,
