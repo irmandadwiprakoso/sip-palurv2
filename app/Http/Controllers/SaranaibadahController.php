@@ -273,7 +273,7 @@ class SaranaibadahController extends Controller
             'alamat' => 'required',
             'rt_id' => 'required',
             // 'rw_id' => 'required',
-            'no_SK' => 'required',
+            // 'no_SK' => 'required',
             'no_HP' => 'required',
         ]
         );

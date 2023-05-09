@@ -100,7 +100,7 @@
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                          <label for="no_HP" class="form-label">Nomor HP</label>
+                          <label for="no_HP" class="form-label">Kontak PIC</label>
                           <input type="number"
                               class="form-control @error('no_HP') is-invalid @enderror" id="no_HP"
                               placeholder="No HP" name="no_HP" value="{{ $saranaibadah->no_HP }}">
@@ -111,10 +111,10 @@
 
                       <div class="col-sm-6">
                       <div class="form-group">
-                          <label for="no_SK" class="form-label">Nomor SK</label>
+                          <label for="no_SK" class="form-label">Nomor SK DKM</label>
                           <input type="text"
                               class="form-control @error('no_SK') is-invalid @enderror" id="no_SK"
-                              placeholder="No SK" name="no_SK"
+                              placeholder="No SK DKM dan Tahun SK DKM" name="no_SK"
                               value="{{ $saranaibadah->no_SK }}">
                           @error('no_SK') <div class="alert alert-danger">{{ $message }} </div>
                           @enderror
