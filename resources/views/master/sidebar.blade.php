@@ -143,7 +143,7 @@
                         <li class="nav-item">
                             <a href="/pospin" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Pospin</p>
+                                <p>Pospin Polio</p>
                             </a>
                         </li>
                     </ul>
