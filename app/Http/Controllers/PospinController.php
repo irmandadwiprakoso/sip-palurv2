@@ -126,19 +126,19 @@ class PospinController extends Controller
         //  dd($request->all());
          $request->validate(
              [
-                 'NIK' => 'required|unique:pospin,NIK',
+                 'id' => 'required|unique:pospin,id',
                  'nama_ortu' => 'required',
                  'saranakesehatan_id' => 'required',    
              ],
              [
-                 'NIK.required' => 'Harus di Isi Yaa',
-                 'NIK.unique' => 'NIK Sudah Digunakan',
+                 'id.required' => 'Harus di Isi Yaa',
+                 'id.unique' => 'id Sudah Digunakan',
                  'nama_ortu.required' => 'Harus di Isi Yaa',
                  'saranakesehatan_id.required' => 'Harus di Isi Yaa',
              ]
          );
          Pospin::create([
-             'NIK' => $request->NIK,
+             'id' => $request->id,
              'nama' => $request->nama,
              'tgl_lahir' => $request->tgl_lahir,
              'jeniskelamin_id' => $request->jeniskelamin_id,
@@ -222,9 +222,9 @@ class PospinController extends Controller
       */
      public function update(Request $request, Pospin $pospin)
      {
-     //  dd($request->all());   
+    //   dd($request->all());   
          $request->validate([
-             // 'NIK' => 'required',
+             // 'id' => 'required',
              'saranakesehatan_id' => 'required',
              'pin_1' => 'required',      
              'pin_2' => 'required',      
@@ -232,7 +232,7 @@ class PospinController extends Controller
  
          Pospin::where('id', $pospin->id)
              ->update([
-                 'NIK' => $request->NIK,
+                //  'id' => $request->id,
                  'nama' => $request->nama,
                  'tgl_lahir' => $request->tgl_lahir,
                  'jeniskelamin_id' => $request->jeniskelamin_id,
@@ -299,7 +299,7 @@ class PospinController extends Controller
                  return $pospin->jeniskelamin->jeniskelamin;
              })
              ->addColumn('saranakesehatan', function ($pospin) {
-                 return $pospin->saranakesehatan->id;
+                 return $pospin->saranakesehatan->nama;
              })
              ->addColumn('rw', function ($pospin) {
                  return $pospin->rw->rw;

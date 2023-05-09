@@ -43,15 +43,15 @@
                                         <div class="col-sm-12">
                                         <div class="form-group">
                                             <h3 class="profile-username text-center">{{ $pospin->nama }}</h3>
-                                            <h3 class="profile-username text-center">{{ $pospin->NIK }}</h3>
+                                            <h3 class="profile-username text-center">{{ $pospin->id }}</h3>
                                         </div>
                                         </div>
 
                                               {{-- <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="ktp_id" class="form-label">Nama/NIK Bayi</label>
+                                                    <label for="ktp_id" class="form-label">Nama/id Bayi</label>
                                                     <input class="form-control @error('ktp_id') is-invalid @enderror" 
-                                                    placeholder="Ketik NIK/Nama, pilih NIK/Nama sesuai yang diinginkan" list="nik_warga" id="ktp_id" 
+                                                    placeholder="Ketik id/Nama, pilih id/Nama sesuai yang diinginkan" list="nik_warga" id="ktp_id" 
                                                     name="ktp_id" value="{{$pospin->ktp_id}}"> 
                                                         <datalist id="nik_warga" selected value="{{$pospin->ktp_id}}" >
                                                         @foreach ($ktp as $ktp)
@@ -64,11 +64,11 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="NIK" class="form-label">NIK Bayi</label>
-                                                    <input type="number" class="form-control @error('NIK') is-invalid @enderror"
-                                                        id="NIK" placeholder="NIK Bayi" name="NIK"
-                                                        value="{{ $pospin->NIK }}">
-                                                    @error('NIK') <div class="alert alert-danger">{{ $message }} </div>
+                                                    <label for="id" class="form-label">NIK Bayi</label>
+                                                    <input type="number" class="form-control @error('id') is-invalid @enderror"
+                                                        id="id" placeholder="id Bayi" name="id"
+                                                        value="{{ $pospin->id }}">
+                                                    @error('id') <div class="alert alert-danger">{{ $message }} </div>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -90,7 +90,7 @@
                                                     <input type="date"
                                                         class="form-control @error('tgl_lahir') is-invalid @enderror"
                                                         id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir"
-                                                        value="{{ $ktp->tgl_lahir }}">
+                                                        value="{{ $pospin->tgl_lahir }}">
                                                     @error('tgl_lahir') <div class="alert alert-danger">{{ $message }}
                                                     </div>@enderror
                                                 </div>

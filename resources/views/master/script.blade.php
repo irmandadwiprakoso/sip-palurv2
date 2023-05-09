@@ -2128,7 +2128,7 @@
             },
             columns:[
                 {data:'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},
-                {data:'NIK', name:'NIK'},
+                {data:'id', name:'id'},
                 {data:'nama', name:'nama'},
                 {data:'tgl_lahir', name:'tgl_lahir'},
                 {data:'jeniskelamin', name:'jeniskelamin'},

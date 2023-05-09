@@ -292,7 +292,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">NIK</th>
+                                <th scope="col">id</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">JK</th>
                                 <th scope="col">Tgl Lahir</th>
@@ -343,13 +343,13 @@
 
                                             {{-- <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="ktp_id" class="form-label">NIK/Nama POSPIN</label>
+                                                    <label for="ktp_id" class="form-label">id/Nama POSPIN</label>
                                                     <input class="form-control @error('ktp_id') is-invalid @enderror" 
-                                                    placeholder="Ketik NIK/Nama, lalu pilih NIK/Nama sesuai yang diinginkan" list="nik_warga" id="ktp_id" name="ktp_id" value="{{ old('ktp_id') }}"> 
+                                                    placeholder="Ketik id/Nama, lalu pilih id/Nama sesuai yang diinginkan" list="nik_warga" id="ktp_id" name="ktp_id" value="{{ old('ktp_id') }}"> 
                                                         <datalist id="nik_warga">
                                                         @foreach ($ktp as $ktp)
                                                             <option value="{{$ktp->id}}"> {{$ktp->nama}}</option>
-                                                            <!-- <option value="{{$ktp->id}}" {{old('ktp_id') == $ktp->id ? 'selected' : null }}>{{$ktp->NIK}}</option> -->
+                                                            <!-- <option value="{{$ktp->id}}" {{old('ktp_id') == $ktp->id ? 'selected' : null }}>{{$ktp->id}}</option> -->
                                                         @endforeach
                                                         </datalist>
                                                     @error ('ktp_id') <div class="alert alert-danger">{{ $message }} </div>@enderror 
@@ -358,10 +358,10 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="NIK" class="form-label">NIK Bayi</label>
-                                                    <input type="number" class="form-control @error('NIK') is-invalid @enderror"
-                                                        id="NIK" placeholder="NIK Bayi" name="NIK" value="{{ old('NIK') }}">
-                                                    @error('NIK') <div class="alert alert-danger">{{ $message }} </div>
+                                                    <label for="id" class="form-label">NIK Bayi</label>
+                                                    <input type="number" class="form-control @error('id') is-invalid @enderror"
+                                                        id="id" placeholder="NIK Bayi" name="id" value="{{ old('id') }}">
+                                                    @error('id') <div class="alert alert-danger">{{ $message }} </div>
                                                     @enderror
                                                 </div>
                                             </div>
