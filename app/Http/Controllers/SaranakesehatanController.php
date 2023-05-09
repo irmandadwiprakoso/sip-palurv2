@@ -250,7 +250,7 @@ class SaranakesehatanController extends Controller
             'alamat' => 'required',
             'rt_id' => 'required',
             // 'rw_id' => 'required',
-            'no_HP' => 'required',
+            // 'no_HP' => 'required',
         ]
         );
 
