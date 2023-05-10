@@ -167,6 +167,7 @@ class SaranakesehatanController extends Controller
             'district_id' => Auth::user()->district_id,
             'village_id' => Auth::user()->village_id,
             'no_HP' => $request->no_HP,
+            
             'foto' => $imgName,
         ]);
 
@@ -262,6 +263,7 @@ class SaranakesehatanController extends Controller
             'statustanah_id' => $request->statustanah_id,
             'alamat' => $request->alamat,
             'rt_id' => $request->rt_id,
+            
             // 'rw_id' => $request->rw_id,
             // 'district_id' => $request->district_id,
             // 'village_id' => $request->village_id,

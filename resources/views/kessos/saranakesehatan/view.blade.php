@@ -44,6 +44,7 @@
          class="form-control" id="nama" value="{{ $saranakesehatan->no_HP }}">
  </div>
  </div>
+
  <div class="col-sm-12">
  <div class="form-group">
      <label for="tanggal_lahir" class="form-label">Alamat</label>

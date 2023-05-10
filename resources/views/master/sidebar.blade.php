@@ -129,15 +129,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/namaposyandu" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Nama Posyandu</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/posyandu" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Posyandu</p>
+                                <p>Kader Posyandu</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/pkk" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>PKK</p>
+                                <p>Kader PKK</p>
                             </a>
                         </li>
                         <li class="nav-item">
