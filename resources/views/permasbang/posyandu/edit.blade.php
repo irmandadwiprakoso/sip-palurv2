@@ -30,7 +30,7 @@
                             <!-- general form elements -->
                             <div class="card card-danger">
                                 <div class="card-header">
-                                    <h3 class="card-title">Update Data Posyandu</h3>
+                                    <h3 class="card-title">Update Data Kader Posyandu</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
@@ -48,14 +48,14 @@
                                         </div>
                                             <div class="col-sm-12">
                                               <div class="form-group">
-                                                  <label for="id" class="form-label">Nama Kader Posyandu</label>
+                                                  <label for="id" class="form-label">Nama Kader Kader Posyandu</label>
                                                   <input type="text" disabled readonly
                                                       class="form-control" id="nama" value="{{ $posyandu->ktp->nama }}">
                                               </div>
                                               </div>
                                               <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="ktp_id" class="form-label">Nama/NIK Kader Posyandu</label>
+                                                    <label for="ktp_id" class="form-label">Nama/NIK Kader Kader Posyandu</label>
                                                     <input class="form-control @error('ktp_id') is-invalid @enderror" placeholder="Ketik NIK/Nama, pilih NIK/Nama sesuai yang diinginkan" list="nik_warga" id="ktp_id" name="ktp_id" value="{{$posyandu->ktp_id}}"> 
                                                         <datalist id="nik_warga" selected value="{{$posyandu->ktp_id}}" >
                                                         @foreach ($ktp as $ktp)
@@ -84,7 +84,7 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="no_SK" class="form-label">Nomor SK Posyandu</label>
+                                                    <label for="no_SK" class="form-label">Nomor SK Kader Posyandu</label>
                                                     <input type="text" class="form-control @error('no_SK') is-invalid @enderror"
                                                         id="no_SK" placeholder="No SK Lurah/Camat" name="no_SK"
                                                         value="{{ $posyandu->no_SK }}">
@@ -95,7 +95,7 @@
 
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="saranakesehatan_id" class="form-label">Posyandu</label>
+                                                        <label for="saranakesehatan_id" class="form-label">Kader Posyandu</label>
                                                         <select class="form-control @error('saranakesehatan_id') is-invalid @enderror"
                                                             aria-label="Default select example" id="saranakesehatan_id" name="saranakesehatan_id"
                                                             value="{{ $posyandu->saranakesehatan_id }}">

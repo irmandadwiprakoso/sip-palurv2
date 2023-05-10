@@ -2203,3 +2203,116 @@
     })
 
 </script>
+
+<!-- DataTables Nama Posyandu-->
+<script>
+    let rwnamaposyandu = $("#filter-rwnamaposyandu").val()
+        ,namaposyandukel = $("#filter-namaposyandukel").val()
+
+    $(document).ready(function() {
+        var table = $('#datanamaposyandu').DataTable({
+            processing:true,
+            serverSide:true,            
+            responsive: true,
+            autoWidth: false,
+            paging: true,
+            lengthChange: true,
+            info: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
+            dom: 
+                "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
+                "<'row'<'col-md-12'tr>>" +
+                "<'row'<'col-md-5'i><'col-md-7'p>>",
+                lengthMenu:[
+                    [10,25,50,100,-1],
+                    [10,25,50,100,"All"]
+                ],
+            ajax: {
+                url : "{{'getdatanamaposyandu'}}",
+                data:function(d){
+                d.rwnamaposyandu = rwnamaposyandu;
+                d.namaposyandukel = namaposyandukel;
+                return d               
+                }
+            },
+            columns:[
+                {data:'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},
+                {data:'nama', name:'nama'},
+                {data:'tipekesehatan', name:'tipekesehatan'},
+                {data:'statustanah', name:'statustanah'},
+                {data:'nama_pimpinan', name:'nama_pimpinan'},
+                {data:'alamat', name:'alamat'},
+                {data:'rt', name:'rt'},
+                {data:'rw', name:'rw'},
+                {data:'district', name:'district'},
+                {data:'village', name:'village'},
+                {data:'no_HP', name:'no_HP'},
+                {data:'keterangan', name:'keterangan'},
+                {data:'foto', name:'foto',
+                render: function( data, type, full, meta ) {
+                        return "<img src=\"/images/SaranaKesehatan/" + data + "\" height=\"100\"/>";
+                    }
+                },
+                {data:'edit', name:'edit', orderable: false, searchable: false},
+                {data:'view', name:'view', orderable: false, searchable: false},
+                {data:'hapus', name:'hapus', orderable: false, searchable: false},
+                ],
+        })
+
+        table.buttons().container()
+            .appendTo( '#datanamaposyandu_wrapper .col-md-6:e(0)' 
+        );
+
+            $(".filter").on('change', function() { 
+                rwnamaposyandu = $("#filter-rwnamaposyandu").val()
+                namaposyandukel = $("#filter-namaposyandukel").val()
+                table.ajax.reload(null, false);            
+            })
+    })
+
+    $(document).on('click', '.viewnamaposyandu', function(){
+        console.log($(this).data('id'))
+        let id = $(this).data('id')
+        $.ajax({
+            url:`/namaposyandu/${id}`,
+            method:"GET",
+            success:function(data){
+                console.log(data)
+                $('#modal-view').find('.modal-body').html(data)
+                $('#modal-view').modal('show')
+            },
+            error:function(error){
+                console.log(error)
+            }
+        })
+    })
+</script>
+
+<!--SweetAlert2 Sarana Kesehatan -->
+<script>
+    $(document).on('click', '.deletenamaposyandu', function() {
+        var id = $(this).attr('data-id')
+        var namaid = $(this).attr('data-nama')
+
+        Swal.fire({
+            title: 'Yakin di Hapus?',
+            text: "Kamu Akan Ngapus Data Dengan Nama : " + namaid + " ",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Apus Aja!',
+            cancelButtonText: 'Gajadi!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = "/destroynamaposyandu/" + id + ""
+                Swal.fire(
+                    'Ahsyiappp!',
+                    'Datanya Udah Keapus!',
+                    'success'
+                )
+            }
+        })
+    })
+
+</script>

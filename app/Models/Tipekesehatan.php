@@ -16,4 +16,8 @@ class Tipekesehatan extends Model
     {
         return $this->hasMany(SaranaKesehatan::class);
     }
+    public function Namaposyandu()
+    {
+        return $this->hasMany(Namaposyandu::class);
+    }
 }

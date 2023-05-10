@@ -23,4 +23,8 @@ class Statustanah extends Model
     {
         return $this->hasMany(saranakesehatan::class);
     }
+    public function namaposyandu()
+    {
+        return $this->hasMany(Namaposyandu::class);
+    }
 }

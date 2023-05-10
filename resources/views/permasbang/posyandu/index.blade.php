@@ -27,7 +27,7 @@
             <!-- Filter Data --> 
                 <div class="card card-danger">
                     <div class="card-header">
-                        <h3 class="card-title">Filter Data Posyandu</h3>
+                        <h3 class="card-title">Filter Data Kader Posyandu</h3>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -35,7 +35,7 @@
                                 <div class="row">            
                                         <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="filter-posyandukel" class="form-label">Posyandu Kelurahan</label>
+                                            <label for="filter-posyandukel" class="form-label">Kader Posyandu Kelurahan</label>
                                             <select class="form-control filter" id="filter-posyandukel" name="filter-posyandukel">
                                                 <option value="">-- Pilih Kelurahan --</option>
                                                 @foreach ($kelbekasi as $kelbekasi)
@@ -81,7 +81,7 @@
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3> {{$posyandu->where('village_id', '=', auth()->user()->village_id)->count()}}</h3>
-                            <p>Jumlah Kader Posyandu</p>
+                            <p>Jumlah Kader Kader Posyandu</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-thin fa-user-plus"></i>
@@ -95,7 +95,7 @@
                             <h3> {{$posyandu->where('village_id', '=', auth()->user()->village_id)
                             ->where('rw_id', '=', auth()->user()->rw_id)
                             ->count()}}</h3>
-                            <p>Jumlah Kader Posyandu</p>
+                            <p>Jumlah Kader Kader Posyandu</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-thin fa-user-plus"></i>
@@ -107,7 +107,7 @@
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3> {{$posyandu->count()}}</h3>
-                            <p>Jumlah Kader Posyandu</p>
+                            <p>Jumlah Kader Kader Posyandu</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-thin fa-user-plus"></i>
@@ -120,7 +120,7 @@
             <!-- Main content / Tampilan Data -->
                 <div class="card card-danger">
                     <div class="card-header">
-                        <h3 class="card-title">Data Posyandu</h3>
+                        <h3 class="card-title">Data Kader Posyandu</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -132,7 +132,7 @@
                                     <th scope="col">Nama</th>
                                     <th scope="col">Jabatan</th>
                                     <th scope="col">No SK</th>
-                                    <th scope="col">Nama Posyandu</th>
+                                    <th scope="col">Nama Kader Posyandu</th>
                                     <th scope="col">RW</th>
                                     <th scope="col">Kecamatan</th>
                                     <th scope="col">Kelurahan</th>
@@ -160,7 +160,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Data Posyandu </h4>
+                    <h4 class="modal-title">Add Data Kader Posyandu </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -172,7 +172,7 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="ktp_id" class="form-label">NIK Kader Posyandu</label>
+                                                    <label for="ktp_id" class="form-label">NIK Kader Kader Posyandu</label>
                                                     <input class="form-control @error('ktp_id') is-invalid @enderror" placeholder="Ketik NIK/Nama, lalu pilih NIK/Nama sesuai yang diinginkan" list="nik_warga" id="ktp_id" name="ktp_id" value="{{ old('ktp_id') }}"> 
                                                         <datalist id="nik_warga">
                                                         @foreach ($ktp as $ktp)
@@ -205,10 +205,10 @@
 
                                             <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="no_SK" class="form-label">Nomor SK Posyandu</label>
+                                                <label for="no_SK" class="form-label">Nomor SK Kader Posyandu</label>
                                                 <input type="text" 
                                                     class="form-control @error('no_SK') is-invalid @enderror" id="no_SK"
-                                                    placeholder="Nomor SK Posyandu " name="no_SK"
+                                                    placeholder="Nomor SK Kader Posyandu " name="no_SK"
                                                     value="{{ old('no_SK') }}">
                                                 @error('no_SK') <div class="alert alert-danger">{{ $message }} </div>
                                                 @enderror
@@ -217,11 +217,11 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="saranakesehatan_id">Posyandu</label>
+                                                    <label for="saranakesehatan_id">Kader Posyandu</label>
                                                     <select class="form-control @error('saranakesehatan_id') is-invalid @enderror"
                                                         id="saranakesehatan_id" name="saranakesehatan_id"
                                                         value="{{ old('saranakesehatan_id') }}">
-                                                        <option selected disabled>- Pilih Posyandu-</option>
+                                                        <option selected disabled>- Pilih Kader Posyandu-</option>
                                                         @foreach ($saranakesehatan as $saranakesehatan)
                                                             <option value="{{ $saranakesehatan->id}}"
                                                                 {{ old('saranakesehatan_id') == $saranakesehatan->id ? 'selected' : null }}>
@@ -248,12 +248,12 @@
     <!-- /.endmodal -->
 </form>
 
-<!--------------Modal View Posyandu------------------------->
+<!--------------Modal View Kader Posyandu------------------------->
     <div class="modal fade" id="modal-view">
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Detail Data Posyandu </h4>
+                    <h4 class="modal-title">Detail Data Kader Posyandu </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

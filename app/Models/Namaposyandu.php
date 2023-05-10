@@ -65,8 +65,4 @@ class Namaposyandu extends Model
     {
         return $this->hasMany(Posyandu::class);
     }
-    public function namaposyandu()
-    {
-        return $this->hasMany(Namaposyandu::class);
-    }
 }

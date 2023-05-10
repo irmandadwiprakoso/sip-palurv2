@@ -22,6 +22,7 @@ use App\Http\Controllers\PkkController;
 use App\Http\Controllers\PospinController;
 use App\Http\Controllers\PkhController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\NamaposyanduController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -224,4 +225,11 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
     Route::get('/destroypospin/{id}', [PospinController::class, 'destroypospin'])->name('destroypospin');
     Route::get('/getdatapospin', [PospinController::class, 'getdatapospin'])->name('datapospin');
 
+    //Nama Posyaandu//
+    Route::resource('namaposyandu', NamaposyanduController::class);
+    Route::post('/getkabupaten', [NamaposyanduController::class, 'getkabupaten'])->name('getkabupaten');
+    Route::post('/getkecamatan', [NamaposyanduController::class, 'getkecamatan'])->name('getkecamatan');
+    Route::post('/getdesa', [NamaposyanduController::class, 'getdesa'])->name('getdesa');
+    Route::get('/destroynamaposyandu/{id}', [NamaposyanduController::class, 'destroynamaposyandu'])->name('destroynamaposyandu');
+    Route::get('/getdatanamaposyandu', [NamaposyanduController::class, 'getdatanamaposyandu'])->name('datanamaposyandu');
 });
