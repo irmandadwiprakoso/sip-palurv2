@@ -7,25 +7,22 @@
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- assets App -->
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
-
 <!-- DataTables  & Plugins -->
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
 {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.bootstrap4.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.colVis.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.html5.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.print.min.js"></script> --}}
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.js"></script> --}}
 
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
 <!-- Toastr -->
 <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
@@ -133,8 +130,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,         
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -171,6 +169,11 @@
                 {data:'no_hp', name:'no_hp'},
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#dataksbrt_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwksbrt = $("#filter-rwksbrt").val()
                 rtksbrt = $("#filter-rtksbrt").val()
@@ -240,8 +243,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,  
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -276,6 +280,11 @@
                 {data:'no_hp', name:'no_hp'},
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#dataksbrw_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 ksbrwkel = $("#filter-ksbrwkel").val()
                 rwksbrw = $("#filter-rwksbrw").val()
@@ -376,8 +385,9 @@
             lengthChange: true,
             ordering: true,
             info: true,
-            scrollY: true,
-            scrollX: true,         
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -418,6 +428,11 @@
                 {data:'hapus', name:'hapus', orderable: false, searchable: false}
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#dataktp_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rw = $("#filter-rw").val()
                 rt = $("#filter-rt").val()
@@ -471,8 +486,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,         
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -521,6 +537,11 @@
                 },
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#datatkk_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwtkk = $("#filter-rwtkk").val()
                 tkkkel = $("#filter-tkkkel").val()
@@ -560,8 +581,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,         
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -609,6 +631,11 @@
                 },
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#gettrashdatatkk_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 trashrwtkk = $("#filter-trashrwtkk").val()
                 trashtkkkel = $("#filter-trashtkkkel").val()
@@ -687,8 +714,9 @@
             paging:true,
             lengthChange:true,
             info:true,
-            scrollY: true,
-            scrollX: true,        
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -737,6 +765,11 @@
                 },
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#dataasn_wrapper .col-md-6:e(0)' 
+        );
+
         $(".filter").on('change', function() { 
                 jabatanasn = $("#filter-jabatanasn").val()
                 asnkel = $("#filter-asnkel").val()
@@ -823,6 +856,11 @@
                 },
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#gettrashdataasn_wrapper .col-md-6:e(0)' 
+        );
+
         $(".filter").on('change', function() { 
                 trashjabatanasn = $("#filter-trashjabatanasn").val()
                 trashasnkel = $("#filter-trashasnkel").val()
@@ -906,8 +944,9 @@
             lengthChange: true,
             ordering: true,
             info: true,
-            scrollY: true,
-            scrollX: true,          
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'excel', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -950,6 +989,10 @@
                 },
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#datalaporanpamor_wrapper .col-md-6:e(0)' 
+        );
 
             $(".filter").on('change', function() { 
                 rwpamor = $("#filter-rwpamor").val()
@@ -1024,8 +1067,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,        
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1056,6 +1100,11 @@
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#datauser_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwuser = $("#filter-rwuser").val()
                 userkel = $("#filter-userkel").val()
@@ -1125,8 +1174,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,      
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1166,6 +1216,11 @@
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#datasaranaibadah_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwsaranaibadah = $("#filter-rwsaranaibadah").val()
                 saranaibadahkel = $("#filter-saranaibadahkel").val()
@@ -1234,8 +1289,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,        
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1274,6 +1330,11 @@
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#datasaranapendidikan_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwsaranapendidikan = $("#filter-rwsaranapendidikan").val()
                 saranapendidikankel = $("#filter-saranapendidikankel").val()
@@ -1342,8 +1403,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,        
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1382,6 +1444,11 @@
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#datasaranakesehatan_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwsaranakesehatan = $("#filter-rwsaranakesehatan").val()
                 saranakesehatankel = $("#filter-saranakesehatankel").val()
@@ -1451,8 +1518,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,       
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1490,6 +1558,11 @@
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#datapkh_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwpkh = $("#filter-rwpkh").val()
                 rtpkh = $("#filter-rtpkh").val()
@@ -1563,8 +1636,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,          
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1604,6 +1678,11 @@
                 {data:'village', name:'village'},
                 ],
         })
+      
+        table.buttons().container()
+            .appendTo( '#datapbb_wrapper .col-md-6:e(0)' 
+        );
+
         $(".filter").on('change', function() { 
             rwpbb = $("#filter-rwpbb").val()
             rtpbb = $("#filter-rtpbb").val()
@@ -1622,7 +1701,8 @@
             autoWidth: false,
             paging: true,
             lengthChange: true,
-            info: true,        
+            info: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1648,6 +1728,11 @@
                 {data:'jumlahsppt', name:'jumlahsppt'},
                 ],
         })
+      
+        table.buttons().container()
+            .appendTo( '#detaildatapbb_wrapper .col-md-6:e(0)' 
+        );
+
         $(".filter").on('change', function() { 
             rwpbb = $("#filter-rwpbb").val()
             rtpbb = $("#filter-rtpbb").val()
@@ -1720,8 +1805,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,           
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1762,6 +1848,11 @@
                 },
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#datafasosfasum_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwfasosfasum = $("#filter-rwfasosfasum").val()
                 rtfasosfasum = $("#filter-rtfasosfasum").val()
@@ -1832,8 +1923,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,           
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1866,6 +1958,11 @@
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#dataposyandu_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwposyandu = $("#filter-rwposyandu").val()
                 rtposyandu = $("#filter-rtposyandu").val()
@@ -1936,8 +2033,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,         
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1970,6 +2068,11 @@
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#datapkk_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwpkk = $("#filter-rwpkk").val()
                 rtpkk = $("#filter-rtpkk").val()
@@ -2040,8 +2143,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,         
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -2077,6 +2181,11 @@
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#datapospin_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwpospin = $("#filter-rwpospin").val()
                 posyandupin = $("#filter-posyandupin").val()
@@ -2146,8 +2255,9 @@
             paging: true,
             lengthChange: true,
             info: true,
-            scrollY: true,
-            scrollX: true,            
+            scrollY: 500,
+            scrollX: true,
+            buttons: ['copy', 'csv', 'excel', 'print', 'colvis'],           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -2187,6 +2297,11 @@
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 ],
         })
+
+        table.buttons().container()
+            .appendTo( '#datanamaposyandu_wrapper .col-md-6:e(0)' 
+        );
+
             $(".filter").on('change', function() { 
                 rwnamaposyandu = $("#filter-rwnamaposyandu").val()
                 namaposyandukel = $("#filter-namaposyandukel").val()
@@ -2210,7 +2325,6 @@
             }
         })
     })
-
 </script>
 
 <!--SweetAlert2 Sarana Kesehatan -->

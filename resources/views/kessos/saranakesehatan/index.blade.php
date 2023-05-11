@@ -86,28 +86,6 @@
                       </div>
                   </div>
                 </div>
-                <div class="col-lg-3 col-xs-6">
-                  <div class="small-box bg-danger">
-                    <div class="inner">
-                      <p> Posyandu </p>
-                      <h3> {{ $saranakesehatan->where('tipekesehatan_id', '=', '5')->count() }}</h3>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-solid fa-stethoscope"></i>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-xs-6">
-                  <div class="small-box bg-danger">
-                    <div class="inner">
-                      <p> Posbindu </p>
-                      <h3> {{ $saranakesehatan->where('tipekesehatan_id', '=', '6')->count() }}</h3>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-solid fa-stethoscope"></i>
-                      </div>
-                  </div>
-                </div>
                 @elseif(auth()->user()->role == "kessos" || auth()->user()->role == "struktural" )
                 <div class="col-lg-3 col-xs-6">
                   <div class="small-box bg-danger">
@@ -168,28 +146,6 @@
                       </div>
                   </div>
                 </div>
-                <div class="col-lg-3 col-xs-6">
-                  <div class="small-box bg-danger">
-                    <div class="inner">
-                      <p> Posyandu </p>
-                      <h3> {{ $saranakesehatan->where('village_id', '=', auth()->user()->village_id)->where('tipekesehatan_id', '=', '5')->count() }}</h3>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-solid fa-stethoscope"></i>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-xs-6">
-                  <div class="small-box bg-danger">
-                    <div class="inner">
-                      <p> Posbindu </p>
-                      <h3> {{ $saranakesehatan->where('village_id', '=', auth()->user()->village_id)->where('tipekesehatan_id', '=', '6')->count() }}</h3>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-solid fa-stethoscope"></i>
-                      </div>
-                  </div>
-                </div>
                 @elseif(auth()->user()->role == "user")
                 <div class="col-lg-3 col-xs-6">
                   <div class="small-box bg-danger">
@@ -244,28 +200,6 @@
                     <div class="inner">
                       <p> Puskemas </p>
                       <h3> {{ $saranakesehatan->where('village_id', '=', auth()->user()->village_id)->where('rw_id', '=', auth()->user()->rw_id)->where('tipekesehatan_id', '=', '4')->count() }}</h3>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-solid fa-stethoscope"></i>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-xs-6">
-                  <div class="small-box bg-danger">
-                    <div class="inner">
-                      <p> Posyandu </p>
-                      <h3> {{ $saranakesehatan->where('village_id', '=', auth()->user()->village_id)->where('rw_id', '=', auth()->user()->rw_id)->where('tipekesehatan_id', '=', '5')->count() }}</h3>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-solid fa-stethoscope"></i>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-xs-6">
-                  <div class="small-box bg-danger">
-                    <div class="inner">
-                      <p> Posbindu </p>
-                      <h3> {{ $saranakesehatan->where('village_id', '=', auth()->user()->village_id)->where('rw_id', '=', auth()->user()->rw_id)->where('tipekesehatan_id', '=', '6')->count() }}</h3>
                     </div>
                     <div class="icon">
                         <i class="fas fa-solid fa-stethoscope"></i>

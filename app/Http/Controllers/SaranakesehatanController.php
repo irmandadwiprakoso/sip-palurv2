@@ -294,32 +294,29 @@ class SaranakesehatanController extends Controller
     {
         if (auth()->user()->role == 'superadmin') {
             if ($request->input('saranakesehatankel') != null) {
-                $saranakesehatan = Saranakesehatan::where('village_id', $request->saranakesehatankel)->orderBy('rw_id', 'asc');
+                $saranakesehatan = Saranakesehatan::where('village_id', $request->saranakesehatankel)
+                ->orderBy('rw_id', 'asc')->orderBy('rt_id', 'asc');
             } else {
-                $saranakesehatan = Saranakesehatan::select('saranakesehatan.*')->orderBy('rw_id', 'asc');
+                $saranakesehatan = Saranakesehatan::select('saranakesehatan.*')->orderBy('rw_id', 'asc')->orderBy('rt_id', 'asc');
             }
             if ($request->input('rwsaranakesehatan') != null) {
                 $saranakesehatan = Saranakesehatan::where('village_id', $request->saranakesehatankel)
-                ->where('rw_id', $request->rwsaranakesehatan)
-                ->orderBy('rt_id', 'asc');
+                ->where('rw_id', $request->rwsaranakesehatan)->orderBy('rt_id', 'asc');
             }
         }
         
         if (auth()->user()->role == 'user') {
             $saranakesehatan = Saranakesehatan::where('rw_id', '=', auth()->user()->rw_id)
-            ->where('village_id', '=', auth()->user()->village_id)
-            ->orderby('rt_id', 'asc');
+            ->where('village_id', '=', auth()->user()->village_id)->orderBy('rt_id', 'asc');
         }
 
         if (auth()->user()->role == 'kessos' || auth()->user()->role == 'struktural' ) {
             if ($request->input('rwsaranakesehatan') != null) {
                 $saranakesehatan = Saranakesehatan::where('rw_id', $request->rwsaranakesehatan)
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->orderBy('rt_id', 'asc');
+                ->where('village_id', '=', auth()->user()->village_id)->orderBy('rt_id', 'asc');
             }else {
                 $saranakesehatan = Saranakesehatan::select('saranakesehatan.*')
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->orderby('rt_id', 'asc');
+                ->where('village_id', '=', auth()->user()->village_id)->orderBy('rt_id', 'asc');
             }
         }
 

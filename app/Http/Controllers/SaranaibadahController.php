@@ -318,32 +318,28 @@ class SaranaibadahController extends Controller
     {
         if (auth()->user()->role == 'superadmin') {
             if ($request->input('saranaibadahkel') != null) {
-                $saranaibadah = Saranaibadah::where('village_id', $request->saranaibadahkel)->orderBy('rw_id', 'asc');
+                $saranaibadah = Saranaibadah::where('village_id', $request->saranaibadahkel);
             } else {
-                $saranaibadah = Saranaibadah::select('saranaibadah.*')->orderBy('rw_id', 'asc');
+                $saranaibadah = Saranaibadah::select('saranaibadah.*');
             }
             if ($request->input('rwsaranaibadah') != null) {
                 $saranaibadah = Saranaibadah::where('village_id', $request->saranaibadahkel)
-                ->where('rw_id', $request->rwsaranaibadah)
-                ->orderBy('rt_id', 'asc');
+                ->where('rw_id', $request->rwsaranaibadah);
             }
         }
         
         if (auth()->user()->role == 'user') {
             $saranaibadah = Saranaibadah::where('rw_id', '=', auth()->user()->rw_id)
-            ->where('village_id', '=', auth()->user()->village_id)
-            ->orderby('rt_id', 'asc');
+            ->where('village_id', '=', auth()->user()->village_id);
         }
 
         if (auth()->user()->role == 'kessos' || auth()->user()->role == 'struktural' ) {
             if ($request->input('rwsaranaibadah') != null) {
                 $saranaibadah = Saranaibadah::where('rw_id', $request->rwsaranaibadah)
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->orderBy('rt_id', 'asc');
+                ->where('village_id', '=', auth()->user()->village_id);
             }else {
                 $saranaibadah = Saranaibadah::select('saranaibadah.*')
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->orderby('rt_id', 'asc');
+                ->where('village_id', '=', auth()->user()->village_id);
             }
         }	
 

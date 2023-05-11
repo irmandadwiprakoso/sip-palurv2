@@ -299,32 +299,28 @@ class SaranapendidikanController extends Controller
     {
         if (auth()->user()->role == 'superadmin') {
             if ($request->input('saranapendidikankel') != null) {
-                $saranapendidikan = Saranapendidikan::where('village_id', $request->saranapendidikankel)->orderBy('rw_id', 'asc');
+                $saranapendidikan = Saranapendidikan::where('village_id', $request->saranapendidikankel);
             } else {
-                $saranapendidikan = Saranapendidikan::select('saranapendidikan.*')->orderBy('rw_id', 'asc');
+                $saranapendidikan = Saranapendidikan::select('saranapendidikan.*')->orderby('rt_id', 'asc');
             }
             if ($request->input('rwsaranapendidikan') != null) {
                 $saranapendidikan = Saranapendidikan::where('village_id', $request->saranapendidikankel)
-                ->where('rw_id', $request->rwsaranapendidikan)
-                ->orderBy('rt_id', 'asc');
+                ->where('rw_id', $request->rwsaranapendidikan);
             }
         }
         
         if (auth()->user()->role == 'user') {
             $saranapendidikan = Saranapendidikan::where('rw_id', '=', auth()->user()->rw_id)
-            ->where('village_id', '=', auth()->user()->village_id)
-            ->orderby('rt_id', 'asc');
+            ->where('village_id', '=', auth()->user()->village_id);
         }
 
         if (auth()->user()->role == 'kessos' || auth()->user()->role == 'struktural' ) {
             if ($request->input('rwsaranapendidikan') != null) {
                 $saranapendidikan = Saranapendidikan::where('rw_id', $request->rwsaranapendidikan)
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->orderBy('rt_id', 'asc');
+                ->where('village_id', '=', auth()->user()->village_id);
             }else {
                 $saranapendidikan = Saranapendidikan::select('saranapendidikan.*')
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->orderby('rt_id', 'asc');
+                ->where('village_id', '=', auth()->user()->village_id);
             }
         }	
 
