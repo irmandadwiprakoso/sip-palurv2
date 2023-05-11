@@ -14,7 +14,7 @@ class PospinChart
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\pieChart
+    public function build(): \ArielMejiaDev\LarapexCharts\DonutChart
     {
         if (auth()->user()->role == 'user') {
             $pospin = Pospin::get();
@@ -53,12 +53,13 @@ class PospinChart
             'Belum Pin Polio 2',
         ];
 
-        return $this->chart->pieChart()
+        return $this->chart->donutChart()
             ->setTitle('Data Pos Sub Pin Polio Nopv2')
+            ->setSubtitle(date('Y'))
             ->addData($data)
             ->setLabels($label)
-            ->setWidth(400)
-            ->setHeight(400);
+            ->setWidth(500)
+            ->setHeight(500);
             // ->setColors(['#ffc63b', '#ff6384']);
     }
 }
