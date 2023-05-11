@@ -15,7 +15,7 @@ class Pospin extends Model
         'jeniskelamin_id',
         'tgl_lahir',
         'nama_ortu',
-        'saranakesehatan_id',
+        'namaposyandu_id',
         'pin_1',
         'pin_2',
         'rw_id',
@@ -38,6 +38,10 @@ class Pospin extends Model
     public function saranakesehatan()
     {
         return $this->belongsTo(Saranakesehatan::class);
+    }
+    public function namaposyandu()
+    {
+        return $this->belongsTo(Namaposyandu::class);
     }
     public function district()
     {

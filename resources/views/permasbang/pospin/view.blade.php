@@ -33,7 +33,7 @@
     <div class="form-group">
         <label for="nama" class="form-label">Posyandu</label>
         <input type="text" disabled readonly
-            class="form-control" id="nama" value="{{ $pospin->saranakesehatan->nama }}">
+            class="form-control" id="nama" value="{{ $pospin->namaposyandu->nama }}">
     </div>
     </div>
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pospin;
 use App\Models\Ktp;
 use App\Models\Rw;
-use App\Models\Saranakesehatan;
+use App\Models\Namaposyandu;
 use App\Models\District;
 use App\Models\Jeniskelamin;
 use App\Models\Village;
@@ -64,7 +64,7 @@ class PospinController extends Controller
          $ktp = Ktp::all();
          $kelbekasi = kelbekasi::all();
          $jeniskelamin = Jeniskelamin::all();
-         $saranakesehatan = Saranakesehatan::all();
+         $namaposyandu = Namaposyandu::all();
          // Get semua data
          $districts = District::all();
          $villages = Village::all();
@@ -78,7 +78,7 @@ class PospinController extends Controller
              'rw',
              'ktp',
              'kelbekasi',
-             'saranakesehatan',
+             'namaposyandu',
              'districts',
              'villages',
              'pospin',
@@ -99,7 +99,7 @@ class PospinController extends Controller
          $ktp = Ktp::all();
          $kelbekasi = kelbekasi::all();
          $jeniskelamin = Jeniskelamin::all();
-         $saranakesehatan = Saranakesehatan::all();
+         $namaposyandu = Namaposyandu::all();
          // Get semua data
          $districts = District::all();
          $villages = Village::all();
@@ -108,7 +108,7 @@ class PospinController extends Controller
              'rw',
              'ktp',
              'kelbekasi',
-             'saranakesehatan',
+             'namaposyandu',
              'districts',
              'villages',
              'jeniskelamin',
@@ -128,13 +128,13 @@ class PospinController extends Controller
              [
                  'id' => 'required|unique:pospin,id',
                  'nama_ortu' => 'required',
-                 'saranakesehatan_id' => 'required',    
+                 'namaposyandu_id' => 'required',    
              ],
              [
                  'id.required' => 'Harus di Isi Yaa',
                  'id.unique' => 'id Sudah Digunakan',
                  'nama_ortu.required' => 'Harus di Isi Yaa',
-                 'saranakesehatan_id.required' => 'Harus di Isi Yaa',
+                 'namaposyandu_id.required' => 'Harus di Isi Yaa',
              ]
          );
          Pospin::create([
@@ -142,7 +142,7 @@ class PospinController extends Controller
              'nama' => $request->nama,
              'tgl_lahir' => $request->tgl_lahir,
              'jeniskelamin_id' => $request->jeniskelamin_id,
-             'saranakesehatan_id' => $request->saranakesehatan_id,
+             'namaposyandu_id' => $request->namaposyandu_id,
              'nama_ortu' => $request->nama_ortu,
              'pin_1' => $request->pin_1,
              'pin_2' => $request->pin_2,
@@ -166,7 +166,7 @@ class PospinController extends Controller
          $ktp = Ktp::all();
          $kelbekasi = kelbekasi::all();
          $jeniskelamin = Jeniskelamin::all();
-         $saranakesehatan = Saranakesehatan::all();
+         $namaposyandu = Namaposyandu::all();
          // Get semua data
          $districts = District::all();
          $villages = Village::all();
@@ -176,7 +176,7 @@ class PospinController extends Controller
              'rw',
              'ktp',
              'kelbekasi',
-             'saranakesehatan',
+             'namaposyandu',
              'districts',
              'villages',
              'jeniskelamin',
@@ -196,7 +196,7 @@ class PospinController extends Controller
          $rw = Rw::all();
          $kelbekasi = kelbekasi::all();
          $jeniskelamin = Jeniskelamin::all();
-         $saranakesehatan = Saranakesehatan::all();
+         $namaposyandu = Namaposyandu::all();
          // Get semua data
          $districts = District::all();
          $villages = Village::all();
@@ -205,7 +205,7 @@ class PospinController extends Controller
              'rw',
              'ktp',
              'kelbekasi',
-             'saranakesehatan',
+             'namaposyandu',
              'districts',
              'villages',
              'pospin',
@@ -225,7 +225,7 @@ class PospinController extends Controller
     //   dd($request->all());   
          $request->validate([
              // 'id' => 'required',
-             'saranakesehatan_id' => 'required',
+             'namaposyandu_id' => 'required',
              'pin_1' => 'required',      
              'pin_2' => 'required',      
          ]);
@@ -236,7 +236,7 @@ class PospinController extends Controller
                  'nama' => $request->nama,
                  'tgl_lahir' => $request->tgl_lahir,
                  'jeniskelamin_id' => $request->jeniskelamin_id,
-                 'saranakesehatan_id' => $request->saranakesehatan_id,
+                 'namaposyandu_id' => $request->namaposyandu_id,
                  'nama_ortu' => $request->nama_ortu,
                  'pin_1' => $request->pin_1,
                  'pin_2' => $request->pin_2,
@@ -298,8 +298,8 @@ class PospinController extends Controller
              ->addColumn('jeniskelamin', function ($pospin) {
                  return $pospin->jeniskelamin->jeniskelamin;
              })
-             ->addColumn('saranakesehatan', function ($pospin) {
-                 return $pospin->saranakesehatan->nama;
+             ->addColumn('namaposyandu', function ($pospin) {
+                 return $pospin->namaposyandu->nama;
              })
              ->addColumn('rw', function ($pospin) {
                  return $pospin->rw->rw;
@@ -339,7 +339,7 @@ class PospinController extends Controller
              'jeniskelamin', 
              'village', 
              'district', 
-             'saranakesehatan', 
+             'namaposyandu', 
              'edit', 
              'view', 
              'hapus'

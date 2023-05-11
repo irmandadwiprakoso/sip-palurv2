@@ -217,18 +217,18 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="saranakesehatan_id">Kader Posyandu</label>
-                                                    <select class="form-control @error('saranakesehatan_id') is-invalid @enderror"
-                                                        id="saranakesehatan_id" name="saranakesehatan_id"
-                                                        value="{{ old('saranakesehatan_id') }}">
+                                                    <label for="namaposyandu_id">Kader Posyandu</label>
+                                                    <select class="form-control @error('namaposyandu_id') is-invalid @enderror"
+                                                        id="namaposyandu_id" name="namaposyandu_id"
+                                                        value="{{ old('namaposyandu_id') }}">
                                                         <option selected disabled>- Pilih Kader Posyandu-</option>
-                                                        @foreach ($saranakesehatan as $saranakesehatan)
-                                                            <option value="{{ $saranakesehatan->id}}"
-                                                                {{ old('saranakesehatan_id') == $saranakesehatan->id ? 'selected' : null }}>
-                                                                {{ $saranakesehatan->nama }}</option>
+                                                        @foreach ($namaposyandu as $namaposyandu)
+                                                            <option value="{{ $namaposyandu->id}}"
+                                                                {{ old('namaposyandu_id') == $namaposyandu->id ? 'selected' : null }}>
+                                                                {{ $namaposyandu->nama }}</option>
                                                         @endforeach
                                                     </select>
-                                                    @error('saranakesehatan_id') <div class="alert alert-danger">
+                                                    @error('namaposyandu_id') <div class="alert alert-danger">
                                                         {{ $message }} </div>@enderror
                                                 </div>
                                                 </div>

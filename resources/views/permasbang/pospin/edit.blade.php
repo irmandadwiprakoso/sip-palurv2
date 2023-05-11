@@ -126,17 +126,17 @@
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="saranakesehatan_id" class="form-label">Posyandu</label>
-                                                    <select class="form-control @error('saranakesehatan_id') is-invalid @enderror"
-                                                        aria-label="Default select example" id="saranakesehatan_id" name="saranakesehatan_id"
-                                                        value="{{ $pospin->saranakesehatan_id }}">
-                                                        <option selected value="{{ $pospin->saranakesehatan_id }}">
-                                                            {{ $pospin->saranakesehatan->nama}}</option>
-                                                        @foreach ($saranakesehatan as $posyandu)
+                                                    <label for="namaposyandu_id" class="form-label">Posyandu</label>
+                                                    <select class="form-control @error('namaposyandu_id') is-invalid @enderror"
+                                                        aria-label="Default select example" id="namaposyandu_id" name="namaposyandu_id"
+                                                        value="{{ $pospin->namaposyandu_id }}">
+                                                        <option selected value="{{ $pospin->namaposyandu_id }}">
+                                                            {{ $pospin->namaposyandu->nama}}</option>
+                                                        @foreach ($namaposyandu as $posyandu)
                                                             <option value="{{ $posyandu->id }}">{{ $posyandu->nama }}</option>
                                                         @endforeach
                                                     </select>
-                                                    @error('saranakesehatan_id') <div class="alert alert-danger">{{ $message }} </div>
+                                                    @error('namaposyandu_id') <div class="alert alert-danger">{{ $message }} </div>
                                                     @enderror
                                                 </div>
                                                 </div>   
