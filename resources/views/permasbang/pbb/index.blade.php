@@ -497,7 +497,7 @@
                       <h3> Rp. {{ number_format ($pbb->where('TAHUN_SPPT', '=', date('Y'))
                       ->where('village_id', '=', auth()->user()->village_id)
                       ->where('rw_id', '=', auth()->user()->rw_id)
-                      ->where('KETERANGAN', '=', 'LUNAS')->sum('PBB_LUNAS_SPPT') )}}</h3>
+                      ->where('KETERANGAN', '=', 'LUNAS')->sum('PBB_TERHUTANG_SPPT') )}}</h3>
                     </div>
                     <div class="icon">
                       <i class="fas fa-solid fa-coins"></i>
