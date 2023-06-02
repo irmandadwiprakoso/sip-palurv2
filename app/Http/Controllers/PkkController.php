@@ -274,8 +274,7 @@ class PkkController extends Controller
                 ->where('village_id', '=', auth()->user()->village_id);
             }else {
                 $pkk = Pkk::select('pkk.*')
-                ->where('village_id', '=', auth()->user()->village_id)
-                ->orderby('rt_id', 'asc');
+                ->where('village_id', '=', auth()->user()->village_id);
             }
         }
 

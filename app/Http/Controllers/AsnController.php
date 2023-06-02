@@ -419,11 +419,9 @@ class AsnController extends Controller
 
         if (auth()->user()->role == 'sekret' || auth()->user()->role == 'stuktural') {
             if ($request->input('jabatanasn') != null) {
-                $asn = Asn::where('jabatan_id', $request->jabatanasn)->where('village_id', $request->asnkel);
+                $asn = Asn::where('jabatan_id', $request->jabatanasn)->where('village_id', auth()->user()->village_id);
             } else
-            $asn = Asn::select('asn.*')
-            ->where('village_id', '=', auth()->user()->village_id)
-            ->orderBy('jabatan_id', 'asc');
+            $asn = Asn::where('village_id', '=', auth()->user()->village_id)->orderBy('jabatan_id', 'asc');
         }
 
         return DataTables::eloquent($asn)

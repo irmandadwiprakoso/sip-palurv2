@@ -437,7 +437,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-body">
-                                <div class="row">            
+                                <div class="row"> 
+                                  @if (auth()->user()->role == "superadmin")            
                                         <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="filter-saranapendidikankel" class="form-label">Kelurahan</label>
@@ -449,7 +450,7 @@
                                             </select>
                                         </div>
                                         </div>
-
+                                  @endif
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="filter-rwsaranapendidikan" class="form-label">RW</label>

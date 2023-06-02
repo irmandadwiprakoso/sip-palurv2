@@ -543,7 +543,6 @@
                                             </select>
                                         </div>
                                         </div>
-
                                         <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="filter-rtpbb" class="form-label">RT</label>
@@ -555,7 +554,7 @@
                                             </select>
                                         </div>
                                         </div>
-            
+                                        @if (auth()->user()->role == "superadmin") 
                                         <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="filter-pbbkel" class="form-label">Kelurahan</label>
@@ -567,7 +566,7 @@
                                             </select>
                                         </div>
                                         </div>
-            
+                                        @endif
                                         <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="filter-tahunpbb" class="form-label">Tahun</label>

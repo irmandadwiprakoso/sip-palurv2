@@ -38,8 +38,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-body">
-
                         <div class="row">
+                            @if (auth()->user()->role == "superadmin") 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="filter-pamorkel" class="form-label">Pamor Kelurahan</label>
@@ -50,8 +50,8 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                </div>
-
+                            </div>
+                            @endif
                             <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="filter-rwpamor" class="form-label">Pamor RW</label>
@@ -70,7 +70,7 @@
                                         <input class="form-control filter" id="filter-tahun" 
                                         type="text" name="filter-tahun" value="{{ date('Y') }}">
                                 </div>
-                                </div>
+                            </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -92,7 +92,9 @@
                     </div>
                 </div>									
             </div>										
-            </div>										
+          									
+            									
+            										
             <!-- Main content / Tampilan Data -->
             <section class="content">
                 <div class="container-fluid">
@@ -137,6 +139,8 @@
                 <!-- /.container-fluid -->
             </section>
         </div>
+
+        
         @include('master.csidebar')
         @include('master.footer')
         @include('master.script')
