@@ -9,20 +9,21 @@
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 
 <!-- DataTables  & Plugins -->
+{{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script> --}}
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
-{{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.bootstrap4.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.colVis.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.html5.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.3/js/buttons.print.min.js"></script> --}}
+{{-- <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script> --}}
 
 <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
@@ -128,13 +129,16 @@
         var table = $('#dataksbrt').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,         
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,            
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -235,13 +239,16 @@
         var table = $('#dataksbrw').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,  
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,     
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -370,14 +377,16 @@
         var table = $('#dataktp').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            ordering: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,         
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,          
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -465,14 +474,17 @@
     $(document).ready(function() {
         var table = $('#datatkk').DataTable({
             processing:true,
-            serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            serverSide:false,            
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,         
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,         
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -554,14 +566,17 @@
     $(document).ready(function() {
         var table = $('#gettrashdatatkk').DataTable({
             processing:true,
-            serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            serverSide:false,            
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,         
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,            
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -681,14 +696,17 @@
     $(document).ready(function() {
         var table = $('#dataasn').DataTable({
             processing:true,
-            serverSide:true,            
+            serverSide:false,            
             responsive:true,
             autoWidth:false,
             paging:true,
             lengthChange:true,
             info:true,
             scrollY: true,
-            scrollX: true,        
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,       
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -769,13 +787,17 @@
     $(document).ready(function() {
         var table = $('#gettrashdataasn').DataTable({
             processing:true,
-            serverSide:true,            
+            serverSide:false,            
             responsive:true,
             autoWidth:false,
             paging:true,
             lengthChange:true,
             info:true,
-            buttons: ['copy', 'csv', 'print', 'colvis'],           
+            scrollY: true,
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,             
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -899,15 +921,17 @@
     $(document).ready(function() {
         var table = $('#datalaporanpamor').DataTable({
             processing:true,
-            serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            ordering: true,
-            info: true,
+            serverSide:false,            
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,          
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,         
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1016,16 +1040,19 @@
         ,userkel = $("#filter-userkel").val()
 
     $(document).ready(function() {
-        var table = $('#datauser').DataTable({
+        var table = $('#datauser').DataTable({  
             processing:true,
-            serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            serverSide:false,            
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,        
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1120,13 +1147,16 @@
         var table = $('#datasaranaibadah').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,      
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,         
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1229,13 +1259,16 @@
         var table = $('#datasaranapendidikan').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,        
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1337,13 +1370,16 @@
         var table = $('#datasaranakesehatan').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,        
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,          
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1446,13 +1482,16 @@
         var table = $('#datapkh').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,       
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,         
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1558,13 +1597,16 @@
         var table = $('#datapbb').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,          
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,             
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1715,13 +1757,16 @@
         var table = $('#datafasosfasum').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,           
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,             
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1827,13 +1872,16 @@
         var table = $('#dataposyandu').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,           
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,             
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -1931,13 +1979,16 @@
         var table = $('#datapkk').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,         
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,            
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -2035,13 +2086,16 @@
         var table = $('#datapospin').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,         
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,           
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -2141,13 +2195,16 @@
         var table = $('#datanamaposyandu').DataTable({
             processing:true,
             serverSide:true,            
-            responsive: true,
-            autoWidth: false,
-            paging: true,
-            lengthChange: true,
-            info: true,
+            responsive:true,
+            autoWidth:false,
+            paging:true,
+            lengthChange:true,
+            info:true,
             scrollY: true,
-            scrollX: true,            
+            scrollX: true,
+            ordering: true,
+            searching: true,
+            fixedColumns: true,               
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +

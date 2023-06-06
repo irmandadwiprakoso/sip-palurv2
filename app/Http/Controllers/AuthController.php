@@ -313,9 +313,9 @@ class AuthController extends Controller
     public function getdatauser(Request $request)
     {
         if ($request->input('userkel') != null) {
-            $user = User::where('village_id', $request->userkel)->orderBy('rw_id', 'asc');
+            $user = User::where('village_id', $request->userkel);
         } else {
-            $user = User::select('users.*')->orderBy('rw_id', 'asc');
+            $user = User::select('users.*');
         }
 
         return DataTables::eloquent($user)
