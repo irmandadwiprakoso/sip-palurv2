@@ -12,7 +12,7 @@
 {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script> --}}
 
-{{-- <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
@@ -23,10 +23,9 @@
 <script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js')}}"></script>
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script> --}}
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+{{-- <script type="text/javascript" src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> --}}
 
 <!-- Toastr -->
 <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
@@ -1036,22 +1035,24 @@
 
 <!-- DataTables User-->
 <script>
+    
     let rwuser = $("#filter-rwuser").val()
         ,userkel = $("#filter-userkel").val()
 
     $(document).ready(function() {
         var table = $('#datauser').DataTable({  
             processing:true,
-            serverSide:false,            
+            serverSide:true,            
             responsive:true,
             autoWidth:false,
             paging:true,
             lengthChange:true,
             info:true,
-            scrollY: true,
-            scrollX: true,
+            // scrollY: true,
+            // scrollX: true,
             ordering: true,
             searching: true,
+            // fixedHeader: true
             fixedColumns: true,
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
