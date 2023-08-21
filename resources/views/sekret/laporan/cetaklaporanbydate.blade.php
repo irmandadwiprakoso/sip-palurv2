@@ -71,7 +71,7 @@
 @page { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.3in; margin-bottom: 0.75in; }
 body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.3in; margin-bottom: 0.75in; }
 </style>
-    <table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
+    <table cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
         <col class="col0">
         <col class="col1">
         <col class="col2">
@@ -97,7 +97,7 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.3in; margin-botto
           <tr class="row4">
             <td class="column0 style1 null"></td>
             <td class="column1 style1 s">NAMA</td>
-            <td class="column2 style1 s">: {{ Auth::user()->name }} </td>
+            <td class="column2 style1 s" colspan="4">: {{ Auth::user()->name }} </td>
             <td class="column3 style1 null"></td>
             <td class="column4 style1 null"></td>
             <td class="column5 style1 null"></td>
@@ -119,10 +119,9 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.3in; margin-botto
             <td class="column9 style1 null"></td>
           </tr>
           <tr class="row6">
-            @foreach ($cetaklaporanbydate as $pamor)
             <td class="column0 style1 null"></td>
             <td class="column1 style1 s">HARI</td>
-            <td class="column2 style1 s">: {{ \Carbon\Carbon::parse($pamor->tanggal)->isoformat('dddd') }}</td>
+            <td class="column2 style1 s">: {{ \Carbon\Carbon::parse($cetaklaporanbydate[0]->tanggal)->isoformat('dddd') }}</td>
             <td class="column3 style1 null"></td>
             <td class="column4 style1 null"></td>
             <td class="column5 style1 null"></td>
@@ -134,7 +133,7 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.3in; margin-botto
           <tr class="row7">
             <td class="column0 style1 null"></td>
             <td class="column1 style1 s">TANGGAL</td>
-            <td class="column2 style1 s">: {{ \Carbon\Carbon::parse($pamor->tanggal)->isoformat('D MMMM Y') }}</td>
+            <td class="column2 style1 s">: {{ \Carbon\Carbon::parse($cetaklaporanbydate[0]->tanggal)->isoformat('D MMMM Y') }}</td>
             <td class="column3 style1 null"></td>
             <td class="column4 style1 null"></td>
             <td class="column5 style1 null"></td>
@@ -143,7 +142,6 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.3in; margin-botto
             <td class="column8 style1 null"></td>
             <td class="column9 style1 null"></td>
           </tr>
-          @endforeach
           <tr class="row8">
           </tr>
           <tr class="row9">
@@ -179,7 +177,7 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.3in; margin-botto
             <td class="column3 style6 null"></td>
             <td class="column4 style6 null"></td>
             <td class="column5 style6 null"></td>
-            <td class="column6 style6 s style1" colspan="2">PETUGAS PAMOR RW {{ Auth::user()->rw->rw }} </td>
+            <td class="column6 style6 s style1" colspan="2"><b>PETUGAS PAMOR RW {{ Auth::user()->rw->rw }}</b> </td>
             <td class="column7 style6 null"></td>
             <td class="column8 style6 null"></td>
             <td class="column9 style6 null"></td>
@@ -197,7 +195,7 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.3in; margin-botto
             <td class="column3 style1 null"></td>
             <td class="column4 style1 null"></td>
             <td class="column5 style1 null"></td>
-            <td class="column6 style1 s">{{ Auth::user()->name }}</td>
+            <td class="column6 style1 s" colspan="4"><b><u>{{ Auth::user()->name }}</b></u></td>
             <td class="column7 style1 null"></td>
             <td class="column8 style1 null"></td>
             <td class="column9 style1 null"></td>
@@ -209,12 +207,7 @@ body { margin-left: 0.78in; margin-right: 0.7in; margin-top: 0.3in; margin-botto
             <td class="column3 style1 null"></td>
             <td class="column4 style1 null"></td>
             <td class="column5 style1 null"></td>
-            @if (auth()->user()->role == "superadmin" || auth()->user()->role == "struktural")
-            <td class="column6 style1 s">NIK. </td>
-            @endif
-            @if (auth()->user()->role == "user")
-            <td class="column6 style1 s">NIK. {{ Auth::user()->tkk->id }}</td>
-            @endif
+            <td class="column6 style1 s" colspan="2"><b>NIK. {{$cetaklaporanbydate[0]->user->tkk->id}}</b></td>
             <td class="column7 style1 null"></td>
             <td class="column8 style1 null"></td>
             <td class="column9 style1 null"></td>
