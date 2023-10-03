@@ -44,7 +44,7 @@
                         <p>
                             Admin
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">1</span>
+                            <span class="badge badge-info right"></span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -69,7 +69,7 @@
                         <p>
                             Kessos
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">3</span>
+                            <span class="badge badge-info right"></span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -112,7 +112,7 @@
                         <p>
                             Permasbang
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">3</span>
+                            <span class="badge badge-info right"></span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -167,7 +167,7 @@
                         <p>
                             Pem & Trantibum
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">3</span>
+                            <span class="badge badge-info right"></span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -206,7 +206,7 @@
                         <p>
                             Sekretariat
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">3</span>
+                            <span class="badge badge-info right"></span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
