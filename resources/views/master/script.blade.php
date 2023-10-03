@@ -1040,7 +1040,7 @@
     $(document).ready(function() {
         var table = $('#datauser').DataTable({  
             processing:true,
-            serverSide:true,            
+            serverSide:false,            
             responsive:true,
             autoWidth:false,
             paging:true,
