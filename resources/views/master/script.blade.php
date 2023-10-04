@@ -699,18 +699,15 @@
             paging:true,
             lengthChange:true,
             info:true,
-            scrollY: true,
-            scrollX: true,
             ordering: true,
-            searching: true,
-            fixedColumns: true,       
+            searching: true,      
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5'i><'col-md-7'p>>",
                 lengthMenu:[
-                    [5,10,25,50,100,-1],
-                    [5,10,25,50,100,"All"]
+                    [10,25,50,100,-1],
+                    [10,25,50,100,"All"]
                 ],
             ajax: {
                 url : "{{'getdataasn'}}",
@@ -729,7 +726,7 @@
                 {data:'golongan', name:'golongan'},
                 {data:'jabatan', name:'jabatan'},
                 {data:'edit', name:'edit', orderable: false, searchable: false},
-                {data:'view', name:'view', orderable: false, searchable: false},
+                // {data:'view', name:'view', orderable: false, searchable: false},
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 {data:'district', name:'district'},
                 {data:'village', name:'village'},

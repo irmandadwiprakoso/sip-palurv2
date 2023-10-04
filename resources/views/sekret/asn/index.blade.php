@@ -23,7 +23,7 @@
                                 <i class="fas fa-plus-square"></i> Add Data 
                             </button>
                             @if (auth()->user()->role == "superadmin")
-                            <a href="/trashasn" class="btn btn-danger">
+                            <a href="/trashasn" class="btn btn-black">
                                 <i class="fas fa-trash"></i> Restore Data
                             </a>
                             @endif
@@ -165,7 +165,7 @@
                                 <th scope="col">Golongan</th>
                                 <th scope="col">Jabatan</th>
                                 <th scope="col">Edit</th>
-                                <th scope="col">Detail</th>
+                                <!-- <th scope="col">Detail</th> -->
                                 <th scope="col">Delete</th>
                                 <th scope="col">Kecamatan</th>
                                 <th scope="col">Kelurahan</th>
