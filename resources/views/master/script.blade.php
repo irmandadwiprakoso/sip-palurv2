@@ -507,7 +507,7 @@
                 {data:'district', name:'district'},
                 {data:'village', name:'village'},
                 {data:'edit', name:'edit', orderable: false, searchable: false},
-                {data:'view', name:'view', orderable: false, searchable: false},
+                // {data:'view', name:'view', orderable: false, searchable: false},
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 {data:'tempat_lahir', name:'tempat_lahir'},
                 {data:'tanggal_lahir', name:'tanggal_lahir'},
@@ -776,6 +776,7 @@
     })
 </script>
 
+<!-- DataTables Restore ASN-->
 <script>
     let trashjabatanasn = $("#filter-trashjabatanasn").val()
         ,trashasnkel = $("#filter-trashasnkel").val()

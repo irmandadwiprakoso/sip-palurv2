@@ -26,7 +26,7 @@
                             </button>
                             @endif
                             @if (auth()->user()->role == "superadmin")
-                            <a href="/trashtkk" class="btn btn-danger">
+                            <a href="/trashtkk" class="btn btn-primary">
                                 <i class="fas fa-trash"></i> Restore Data
                             </a>
                             @endif
@@ -240,7 +240,7 @@
                                 <th scope="col">Kecamatan</th>
                                 <th scope="col">Kelurahan</th>
                                 <th scope="col">Edit</th>
-                                <th scope="col">Detail</th>
+                                <!-- <th scope="col">Detail</th> -->
                                 <th scope="col">Delete</th>
                                 <th scope="col">Tempat Lahir</th>
                                 <th scope="col">Tanggal Lahir</th>
