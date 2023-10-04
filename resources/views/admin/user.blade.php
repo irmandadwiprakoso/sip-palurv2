@@ -56,7 +56,7 @@
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <h3>{{$user->count()}}</h3>
-                                    <p>Jumlah User</p>
+                                    <p>All User</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-thin fa-user-plus"></i>
@@ -89,7 +89,7 @@
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <h3>{{$user->where('role', '=', 'user')->count()}}</h3>
-                                    <p> User</p>
+                                    <p> User TKK</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-thin fa-user-plus"></i>
@@ -156,7 +156,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">Username</th>
-                                    <th scope="col">Role</th>
+                                    <th scope="col">Role User</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">RW</th>
                                     <th scope="col">Kecamatan</th>
