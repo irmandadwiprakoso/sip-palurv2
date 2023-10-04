@@ -1042,7 +1042,7 @@
             processing:true,
             serverSide:false,            
             responsive:true,
-            autoWidth:false,
+            autoWidth:true,
             paging:true,
             lengthChange:true,
             info:true,
@@ -1051,7 +1051,7 @@
             ordering: true,
             searching: true,
             // fixedHeader: true
-            fixedColumns: true,
+            // fixedColumns: true,
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
