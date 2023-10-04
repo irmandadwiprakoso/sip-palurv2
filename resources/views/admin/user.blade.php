@@ -162,7 +162,7 @@
                                     <th scope="col">Kecamatan</th>
                                     <th scope="col">Kelurahan</th>
                                     <th scope="col">Reset Password</th>
-                                    <th scope="col">Detail</th>
+                                    <!-- <th scope="col">Detail</th> -->
                                     <th scope="col">Delete</th>
                                 </tr>
                             </thead>

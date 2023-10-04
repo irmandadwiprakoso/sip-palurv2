@@ -146,12 +146,12 @@
                                 <p>Kader PKK</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="/pospin" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pospin Polio</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 @endif
