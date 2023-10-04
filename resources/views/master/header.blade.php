@@ -22,7 +22,7 @@
 <!-- Preloader -->
 <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__wobble" src="{{ asset('assets/dist/img/iconsippalur.png') }}" alt="iconsippalur"
-        height="70" width="70">
+        height="100" width="100">
 </div>
 
 <!-- SweetAlert2 -->
