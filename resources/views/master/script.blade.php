@@ -700,7 +700,9 @@
             lengthChange:true,
             info:true,
             ordering: true,
-            searching: true,      
+            searching: true, 
+            scrollY: true,
+            scrollX: true,     
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +

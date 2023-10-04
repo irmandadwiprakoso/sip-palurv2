@@ -23,7 +23,7 @@
                                 <i class="fas fa-plus-square"></i> Add Data 
                             </button>
                             @if (auth()->user()->role == "superadmin")
-                            <a href="/trashasn" class="btn btn-black">
+                            <a href="/trashasn" class="btn btn-primary">
                                 <i class="fas fa-trash"></i> Restore Data
                             </a>
                             @endif
