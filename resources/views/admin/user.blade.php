@@ -198,7 +198,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="name" class="form-label">Nama</label>
+                                        <label for="name" class="form-label">Name</label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                             placeholder="Nama User" name="name">
                                         @error('name') <div class="alert alert-danger">{{ $message }} </div>
@@ -210,7 +210,7 @@
                                     <div class="form-group">
                                         <label for="username" class="form-label">Username</label>
                                         <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                            id="username" placeholder="username" name="username">
+                                            id="username" placeholder="Username" name="username">
                                         @error('username') <div class="alert alert-danger">{{ $message }}
                                         </div>@enderror
                                     </div>
