@@ -918,18 +918,6 @@
     $(document).ready(function() {
         // var table = $('#datalaporanpamor').DataTable({
             new DataTable('#datalaporanpamor', {
-                ajax: {
-                url : "{{'getdatalaporanpamor'}}",
-                data:function(d){
-                d.rwpamor = rwpamor;
-                d.pamorkel = pamorkel;
-                d.bulan = bulan;
-                d.tahun = tahun;
-                d.startdatepamor = startdatepamor;
-                d.enddatepamor = enddatepamor;
-                return d               
-                }
-            },
             // processing:true,
             // serverSide:true,            
             // ordering: true,
@@ -957,7 +945,18 @@
                     [10,25,50,100,-1],
                     [10,25,50,100,"All"]
                 ],
-
+            ajax: {
+                url : "{{'getdatalaporanpamor'}}",
+                data:function(d){
+                d.rwpamor = rwpamor;
+                d.pamorkel = pamorkel;
+                d.bulan = bulan;
+                d.tahun = tahun;
+                d.startdatepamor = startdatepamor;
+                d.enddatepamor = enddatepamor;
+                return d               
+                }
+            },
             columns:[
                 {data:'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},
                 {data:'name', name:'name'},
