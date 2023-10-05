@@ -293,6 +293,7 @@ class LaporanpamorController extends Controller
     
     public function getdatalaporanpamor(Request $request)
     {
+        var_dump($request);
     if (auth()->user()->role == 'user') {
         if ($request->input('tahun') != null) {
             $laporanpamor = Laporanpamor::where('user_id', Auth()->user()->id)
