@@ -401,7 +401,7 @@ class LaporanpamorController extends Controller
             ->rawColumns([
                 'district', 'village', 'seksi', 'rt', 'rw', 'edit', 'view', 'hapus', 'name'
             ])
-            ->orderColumns(['rt','name'],"-:column $1")
+            ->orderColumns(['tanggal','keterangan'],"-:column $1")
             ->toJson();
     }
 
