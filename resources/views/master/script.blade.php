@@ -918,17 +918,17 @@
     $(document).ready(function() {
         var table = $('#datalaporanpamor').DataTable({
             processing:true,
-            ordering: true,
+            // ordering: true,
             serverSide:false,            
-            responsive:true,
-            autoWidth:false,
-            paging:true,
-            lengthChange:false,
-            info:true,
-            scrollY: true,
-            scrollX: true,
-            searching: true,
-            fixedColumns: false,         
+            // responsive:true,
+            // autoWidth:false,
+            // paging:true,
+            // lengthChange:false,
+            // info:true,
+            // scrollY: true,
+            // scrollX: true,
+            // searching: true,
+            // fixedColumns: false,         
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
