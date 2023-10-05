@@ -915,10 +915,10 @@
       ,startdatepamor = $("#filter-startdatepamor").val()
       ,enddatepamor = $("#filter-enddatepamor").val()
     
-//     let clicked = $('#tanggal_kegiatan').on('click', function($this) {
-//         return true;
-//     })
-// console.log(clicked)
+    let clicked = $('#tanggal_kegiatan').on('click', function($this) {
+        return true;
+    })
+console.log(clicked)
     
     $(document).ready(function() {
         var table = $('#datalaporanpamor').DataTable({
