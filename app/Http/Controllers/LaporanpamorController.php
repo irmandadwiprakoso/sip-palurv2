@@ -354,7 +354,7 @@ class LaporanpamorController extends Controller
     }
         // dd ($laporanpamor);
         // die;
-        return DataTables::Of($laporanpamor)
+        return DataTables::eloquent($laporanpamor)
             ->addIndexColumn()
             ->addColumn('name', function ($laporanpamor) {
                 return $laporanpamor->user['name'];
@@ -401,6 +401,7 @@ class LaporanpamorController extends Controller
             ->rawColumns([
                 'district', 'village', 'seksi', 'rt', 'rw', 'edit', 'view', 'hapus', 'name'
             ])
+            ->orderColumns(['tanggal','nama'],"-:column $1")
             ->toJson();
     }
 
