@@ -908,84 +908,87 @@
 
 <!-- DataTables Laporan PAMOR-->
 <script>
-    let rwpamor = $("#filter-rwpamor").val()
-      ,pamorkel = $("#filter-pamorkel").val()
-      ,bulan = $("#filter-bulan").val()
-      ,tahun = $("#filter-tahun").val()
-      ,startdatepamor = $("#filter-startdatepamor").val()
-      ,enddatepamor = $("#filter-enddatepamor").val()
 
-    $(document).ready(function() {
-        var table = $('#datalaporanpamor').DataTable({
-            // new DataTable('#datalaporanpamor', {
-            // processing:true,
-            // serverSide:true,            
-            // ordering: true,
-            // responsive:true,
-            // autoWidth:false,
-            // paging:true,
-            // lengthChange:false,
-            // info:true,
-            // scrollY: true,
-            // scrollX: true,
-            // searching: true,
-            // fixedColumns: false,      
-            ordering: true,
-            searching: false,
-            serverSide: true,   
-            dom: 
-                "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
-                "<'row'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5'i><'col-md-7'p>>",
-                lengthMenu:[
-                    [10,25,50,100,-1],
-                    [10,25,50,100,"All"]
-                ],
-            ajax: {
-                url : "{{'getdatalaporanpamor'}}",
-                data:function(d){
-                d.rwpamor = rwpamor;
-                d.pamorkel = pamorkel;
-                d.bulan = bulan;
-                d.tahun = tahun;
-                d.startdatepamor = startdatepamor;
-                d.enddatepamor = enddatepamor;
-                return d               
-                }
-            },
-            columns:[
-                {data:'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},
-                {data:'name', name:'name'},
-                {data:'tanggal', name:'tanggal'},
-                {data:'kegiatan', name:'kegiatan'},
-                {data:'jumlah', name:'jumlah'},
-                {data:'seksi', name:'seksi'},
-                {data:'keterangan', name:'keterangan'},
-                {data:'tinjut', name:'tinjut'},
-                {data:'rt', name:'rt'},
-                {data:'rw', name:'rw'},
-                {data:'village', name:'village'},
-                {data:'edit', name:'edit', orderable: false, searchable: false},
-                // {data:'view', name:'view', orderable: false, searchable: false},
-                {data:'hapus', name:'hapus', orderable: false, searchable: false},
-                {data:'foto', name:'foto',
-                render: function( data, type, full, meta ) {
-                        return "<img src=\"/images/LaporanHarian/" + data + "\" height=\"100\"/>";
-                    }
-                },
-            ],
-        })
-            $(".filter").on('change', function() { 
-                rwpamor = $("#filter-rwpamor").val()
-                pamorkel = $("#filter-pamorkel").val()
-                bulan = $("#filter-bulan").val()
-                tahun = $("#filter-tahun").val()
-                startdatepamor = $("#filter-startdatepamor").val()
-                enddatepamor = $("#filter-enddatepamor").val()
-                table.ajax.reload(null, false);  
+    new DataTable('#datalaporanpamor', {
+        url : "{{'getdatalaporanpamor'}}",
+        processing: true,
+        serverSide: true
+    });
+
+    // let rwpamor = $("#filter-rwpamor").val()
+    //   ,pamorkel = $("#filter-pamorkel").val()
+    //   ,bulan = $("#filter-bulan").val()
+    //   ,tahun = $("#filter-tahun").val()
+    //   ,startdatepamor = $("#filter-startdatepamor").val()
+    //   ,enddatepamor = $("#filter-enddatepamor").val()
+
+    // $(document).ready(function() {
+    //     var table = $('#datalaporanpamor').DataTable({
+    //         // processing:true,
+    //         // serverSide:true,            
+    //         // ordering: true,
+    //         // responsive:true,
+    //         // autoWidth:false,
+    //         // paging:true,
+    //         // lengthChange:false,
+    //         // info:true,
+    //         // scrollY: true,
+    //         // scrollX: true,
+    //         // searching: true,
+    //         // fixedColumns: false,        
+    //         dom: 
+    //             "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
+    //             "<'row'<'col-md-12'tr>>" +
+    //             "<'row'<'col-md-5'i><'col-md-7'p>>",
+    //             lengthMenu:[
+    //                 [10,25,50,100,-1],
+    //                 [10,25,50,100,"All"]
+    //             ],
+    //         ajax: {
+    //             url : "{{'getdatalaporanpamor'}}",
+    //             data:function(d){
+    //             d.rwpamor = rwpamor;
+    //             d.pamorkel = pamorkel;
+    //             d.bulan = bulan;
+    //             d.tahun = tahun;
+    //             d.startdatepamor = startdatepamor;
+    //             d.enddatepamor = enddatepamor;
+    //             return d               
+    //             }
+    //         },
+    //         columns:[
+    //             {data:'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},
+    //             {data:'name', name:'name'},
+    //             {data:'tanggal', name:'tanggal'},
+    //             {data:'kegiatan', name:'kegiatan'},
+    //             {data:'jumlah', name:'jumlah'},
+    //             {data:'seksi', name:'seksi'},
+    //             {data:'keterangan', name:'keterangan'},
+    //             {data:'tinjut', name:'tinjut'},
+    //             {data:'rt', name:'rt'},
+    //             {data:'rw', name:'rw'},
+    //             {data:'village', name:'village'},
+    //             {data:'edit', name:'edit', orderable: false, searchable: false},
+    //             // {data:'view', name:'view', orderable: false, searchable: false},
+    //             {data:'hapus', name:'hapus', orderable: false, searchable: false},
+    //             {data:'foto', name:'foto',
+    //             render: function( data, type, full, meta ) {
+    //                     return "<img src=\"/images/LaporanHarian/" + data + "\" height=\"100\"/>";
+    //                 }
+    //             },
+    //         ],
+    //     })
+    //         $(".filter").on('change', function() { 
+    //             rwpamor = $("#filter-rwpamor").val()
+    //             pamorkel = $("#filter-pamorkel").val()
+    //             bulan = $("#filter-bulan").val()
+    //             tahun = $("#filter-tahun").val()
+    //             startdatepamor = $("#filter-startdatepamor").val()
+    //             enddatepamor = $("#filter-enddatepamor").val()
+    //             table.ajax.reload(null, false);  
                          
-            })
-    })
+    //         })
+    // })
 
     $(document).on('click', '.viewlaporanpamor', function(){
         console.log($(this).data('id'))
