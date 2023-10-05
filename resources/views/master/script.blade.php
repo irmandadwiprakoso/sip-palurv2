@@ -933,7 +933,7 @@
             ordering: false,
             scrollY: 200,
             searching: false,
-            serverSide: true   
+            serverSide: true,   
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
@@ -976,7 +976,6 @@
                 },
             ],
         })
-
             $(".filter").on('change', function() { 
                 rwpamor = $("#filter-rwpamor").val()
                 pamorkel = $("#filter-pamorkel").val()
