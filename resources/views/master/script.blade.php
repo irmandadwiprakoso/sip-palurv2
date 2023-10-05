@@ -919,7 +919,7 @@
         var table = $('#datalaporanpamor').DataTable({
             processing:true,
             serverSide:true,            
-            // ordering: true,
+            ordering: true,
             // responsive:true,
             // autoWidth:false,
             // paging:true,
