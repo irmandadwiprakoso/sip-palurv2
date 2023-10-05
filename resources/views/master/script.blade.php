@@ -9,8 +9,8 @@
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 
 <!-- DataTables  & Plugins -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 <!-- <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
@@ -930,8 +930,7 @@
             // scrollX: true,
             // searching: true,
             // fixedColumns: false,      
-            ordering: false,
-            scrollY: 200,
+            ordering: true,
             searching: false,
             serverSide: true,   
             dom: 
