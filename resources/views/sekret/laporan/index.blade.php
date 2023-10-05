@@ -53,7 +53,7 @@
                             </div>
                             @endif
 
-                            
+                            @if (auth()->user()->role != "user") 
                             <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="filter-rwpamor" class="form-label">Pamor RW</label>
@@ -65,6 +65,7 @@
                                 </select>
                             </div>
                             </div>
+                            @endif
 
                             <div class="col-sm-12">
                                 <div class="form-group">
