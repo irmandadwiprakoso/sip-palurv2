@@ -931,9 +931,6 @@
             // searching: true,
             // fixedColumns: false,      
             ordering: false,
-            scroller: {
-                loadingIndicator: true
-            },
             scrollY: 200,
             searching: false,
             serverSide: true   
