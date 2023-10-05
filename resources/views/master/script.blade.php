@@ -962,7 +962,7 @@
                 {data:'rw', name:'rw'},
                 {data:'village', name:'village'},
                 {data:'edit', name:'edit', orderable: false, searchable: false},
-                {data:'view', name:'view', orderable: false, searchable: false},
+                // {data:'view', name:'view', orderable: false, searchable: false},
                 {data:'hapus', name:'hapus', orderable: false, searchable: false},
                 {data:'foto', name:'foto',
                 render: function( data, type, full, meta ) {

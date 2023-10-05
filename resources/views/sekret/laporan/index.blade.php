@@ -119,7 +119,7 @@
                                                 <th scope="col">RW</th>
                                                 <th scope="col">Kelurahan</th>
                                                 <th scope="col">Edit</th>
-                                                <th scope="col">Detail</th>
+                                                <!-- <th scope="col">Detail</th> -->
                                                 <th scope="col">Delete</th>
                                                 <th scope="col">Foto Kegiatan</th>
                                             </tr>
