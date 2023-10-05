@@ -352,7 +352,7 @@ class LaporanpamorController extends Controller
             $laporanpamor = Laporanpamor::whereBetween('tanggal', [$request->startdatepamor, $request->enddatepamor]);
         }
     }
-        return $laporanpamor;
+        dd ($laporanpamor);
         die;
         return DataTables::eloquent($laporanpamor)
             ->addIndexColumn()
