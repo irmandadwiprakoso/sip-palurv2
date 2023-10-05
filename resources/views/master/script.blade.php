@@ -923,7 +923,7 @@
             responsive:true,
             autoWidth:false,
             paging:true,
-            lengthChange:true,
+            lengthChange:false,
             info:true,
             scrollY: true,
             scrollX: true,
@@ -934,8 +934,8 @@
                 "<'row'<'col-md-12'tr>>" +
                 "<'row'<'col-md-5'i><'col-md-7'p>>",
                 lengthMenu:[
-                    [5,10,25,50,100,-1],
-                    [5,10,25,50,100,"All"]
+                    [10,25,50,100,-1],
+                    [10,25,50,100,"All"]
                 ],
             ajax: {
                 url : "{{'getdatalaporanpamor'}}",
