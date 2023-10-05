@@ -23,7 +23,7 @@
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">
                                 <i class="fas fa-plus-square"></i> Add Data 
                             </button>
-                            <a href="/cetaklaporanpamor" class="btn btn-danger">
+                            <a href="/cetaklaporanpamor" class="btn btn-primary">
                                 <i class="fas fa-print"></i> Print Laporan Pamor
                             </a>
                         @endif
@@ -91,10 +91,8 @@
                         </div>
                     </div>
                 </div>									
-            </div>										
-          									
-            									
-            										
+            </div>										       									
+            								            										
             <!-- Main content / Tampilan Data -->
             <section class="content">
                 <div class="container-fluid">
@@ -139,7 +137,7 @@
                 <!-- /.container-fluid -->
             </section>
         </div>
-
+    </div>    
         
         @include('master.csidebar')
         @include('master.footer')

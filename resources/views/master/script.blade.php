@@ -918,7 +918,7 @@
     $(document).ready(function() {
         var table = $('#datalaporanpamor').DataTable({
             processing:true,
-            serverSide:false,            
+            serverSide:true,            
             responsive:true,
             autoWidth:true,
             paging:true,
