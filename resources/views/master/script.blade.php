@@ -918,17 +918,17 @@
     $(document).ready(function() {
         var table = $('#datalaporanpamor').DataTable({
             processing:true,
+            ordering: true,
             serverSide:true,            
             responsive:true,
-            autoWidth:true,
+            autoWidth:false,
             paging:true,
             lengthChange:true,
             info:true,
             scrollY: true,
             scrollX: true,
-            ordering: true,
             searching: true,
-            fixedColumns: true,         
+            fixedColumns: false,         
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
