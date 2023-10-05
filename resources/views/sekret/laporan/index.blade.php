@@ -112,7 +112,7 @@
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">Nama</th>
-                                                <th scope="col">Tanggal Kegiatan</th>
+                                                <th id="tanggal_kegiatan"scope="col">Tanggal Kegiatan</th>
                                                 <th scope="col">Uraian Kegiatan</th>
                                                 <th scope="col">Jumlah Kegiatan</th>
                                                 <th scope="col">Bidang Kegiatan</th>
