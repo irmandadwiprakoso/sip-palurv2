@@ -916,7 +916,8 @@
       ,enddatepamor = $("#filter-enddatepamor").val()
 
     $(document).ready(function() {
-        var table = $('#datalaporanpamor').DataTable({
+        // var table = $('#datalaporanpamor').DataTable({
+            new DataTable('#datalaporanpamor', {
             processing:true,
             // ordering: true,
             serverSide:true,            
