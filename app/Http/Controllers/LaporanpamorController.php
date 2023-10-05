@@ -336,7 +336,8 @@ class LaporanpamorController extends Controller
 
     if (auth()->user()->role == 'superadmin') {
         if ($request->input('tahun') != null) {
-            $laporanpamor = Laporanpamor::whereYear('tanggal', $request->tahun)->orderBy('tanggal', 'desc');
+            $laporanpamor = Laporanpamor::whereYear('tanggal', $request->tahun);
+            // $laporanpamor = Laporanpamor::whereYear('tanggal', $request->tahun)->orderBy('tanggal', 'desc');
         }
 
         if ($request->input('pamorkel') != null) {
@@ -354,9 +355,9 @@ class LaporanpamorController extends Controller
     }
     // die;
     // $laporanpamor = $laporanpamor;
-    $laporansatgaspamor = Laporanpamor::query();
+    // $laporansatgaspamor = Laporanpamor::query();
 
-    dd ($laporansatgaspamor->get());
+    // dd ($laporansatgaspamor->get());
         return DataTables::eloquent($laporanpamor)
             ->addIndexColumn()
             ->addColumn('name', function ($laporanpamor) {
