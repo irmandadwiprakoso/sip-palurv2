@@ -915,7 +915,7 @@
       ,startdatepamor = $("#filter-startdatepamor").val()
       ,enddatepamor = $("#filter-enddatepamor").val()
     
-    let clicked = $('#tanggal_kegiatan').on('click', function($this) {
+    let clicked = $('#tanggal_kegiatan').on('click', function() {
         return true;
     })
 console.log(clicked)
