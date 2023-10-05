@@ -356,7 +356,7 @@ class LaporanpamorController extends Controller
     // $laporanpamor = $laporanpamor;
     $laporansatgaspamor = Laporanpamor::query();
 
-    dd ($laporansatgaspamor);
+    dd ($laporansatgaspamor->get());
         return DataTables::eloquent($laporanpamor)
             ->addIndexColumn()
             ->addColumn('name', function ($laporanpamor) {
