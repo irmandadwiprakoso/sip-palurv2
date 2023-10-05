@@ -353,7 +353,7 @@ class LaporanpamorController extends Controller
         }
     }
     // die;
-    $laporanpamor = $laporanpamor->get();
+    // $laporanpamor = $laporanpamor;
     
     dd ($laporanpamor);
         return DataTables::eloquent($laporanpamor)
