@@ -908,21 +908,20 @@
 
 <!-- DataTables Laporan PAMOR-->
 <script>
+    let rwpamor = $("#filter-rwpamor").val()
+      ,pamorkel = $("#filter-pamorkel").val()
+      ,bulan = $("#filter-bulan").val()
+      ,tahun = $("#filter-tahun").val()
+      ,startdatepamor = $("#filter-startdatepamor").val()
+      ,enddatepamor = $("#filter-enddatepamor").val()
 
-    new DataTable('#datalaporanpamor', {
+    $(document).ready(function() {
+        new DataTable('#datalaporanpamor', {
         url : "{{'getdatalaporanpamor'}}",
         processing: true,
         serverSide: true
-    });
-
-    // let rwpamor = $("#filter-rwpamor").val()
-    //   ,pamorkel = $("#filter-pamorkel").val()
-    //   ,bulan = $("#filter-bulan").val()
-    //   ,tahun = $("#filter-tahun").val()
-    //   ,startdatepamor = $("#filter-startdatepamor").val()
-    //   ,enddatepamor = $("#filter-enddatepamor").val()
-
-    // $(document).ready(function() {
+    })
+});
     //     var table = $('#datalaporanpamor').DataTable({
     //         // processing:true,
     //         // serverSide:true,            
