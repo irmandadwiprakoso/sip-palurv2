@@ -918,27 +918,7 @@
     $(document).ready(function() {
         // var table = $('#datalaporanpamor').DataTable({
             new DataTable('#datalaporanpamor', {
-            processing:true,
-            // ordering: true,
-            serverSide:true,            
-            // responsive:true,
-            // autoWidth:false,
-            // paging:true,
-            // lengthChange:false,
-            // info:true,
-            // scrollY: true,
-            // scrollX: true,
-            // searching: true,
-            // fixedColumns: false,         
-            dom: 
-                "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
-                "<'row'<'col-md-12'tr>>" +
-                "<'row'<'col-md-5'i><'col-md-7'p>>",
-                lengthMenu:[
-                    [10,25,50,100,-1],
-                    [10,25,50,100,"All"]
-                ],
-            ajax: {
+                ajax: {
                 url : "{{'getdatalaporanpamor'}}",
                 data:function(d){
                 d.rwpamor = rwpamor;
@@ -950,6 +930,34 @@
                 return d               
                 }
             },
+            // processing:true,
+            // serverSide:true,            
+            // ordering: true,
+            // responsive:true,
+            // autoWidth:false,
+            // paging:true,
+            // lengthChange:false,
+            // info:true,
+            // scrollY: true,
+            // scrollX: true,
+            // searching: true,
+            // fixedColumns: false,      
+            ordering: false,
+            scroller: {
+                loadingIndicator: true
+            },
+            scrollY: 200,
+            searching: false,
+            serverSide: true   
+            dom: 
+                "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
+                "<'row'<'col-md-12'tr>>" +
+                "<'row'<'col-md-5'i><'col-md-7'p>>",
+                lengthMenu:[
+                    [10,25,50,100,-1],
+                    [10,25,50,100,"All"]
+                ],
+
             columns:[
                 {data:'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},
                 {data:'name', name:'name'},
@@ -970,7 +978,7 @@
                         return "<img src=\"/images/LaporanHarian/" + data + "\" height=\"100\"/>";
                     }
                 },
-                ],
+            ],
         })
 
             $(".filter").on('change', function() { 
