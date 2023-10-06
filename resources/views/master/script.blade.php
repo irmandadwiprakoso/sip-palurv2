@@ -925,6 +925,7 @@ console.log(clicked)
             processing:true,
             serverSide:true,            
             ordering: true,
+            searching: true,
             // responsive:true,
             // autoWidth:false,
             // paging:true,
@@ -932,7 +933,6 @@ console.log(clicked)
             // info:true,
             // scrollY: true,
             // scrollX: true,
-            // searching: true,
             // fixedColumns: false,        
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +

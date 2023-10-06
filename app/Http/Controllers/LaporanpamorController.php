@@ -347,7 +347,7 @@ class LaporanpamorController extends Controller
 
         if ($request->input('rwpamor') != null) {
             $laporanpamor = Laporanpamor::whereYear('tanggal', $request->tahun)
-            ->where('village_id', $request->pamorkel)->where('rw_id', $request->rwpamor)->orderBy('tanggal', 'desc');
+            ->where('village_id', $request->pamorkel)->where('rw_id', $request->rwpamor);
         }
 
         if ($request->input('startdatepamor') != null) {
@@ -406,7 +406,7 @@ class LaporanpamorController extends Controller
             ->rawColumns([
                 'district', 'village', 'seksi', 'rt', 'rw', 'edit', 'view', 'hapus', 'name'
             ])
-            ->orderColumns(['tanggal','keterangan'],"-:column $1")
+            // ->orderColumns(['tanggal','keterangan'],"-:column $1")
             ->toJson();
     }
 
