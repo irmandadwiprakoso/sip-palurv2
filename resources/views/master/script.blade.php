@@ -918,7 +918,7 @@
     let clicked = $('#tanggal_kegiatan').on('click', function() {
         return true;
     })
-console.log(clicked)
+    console.log(clicked)
     
     $(document).ready(function() {
         var table = $('#datalaporanpamor').DataTable({
@@ -1480,17 +1480,17 @@ console.log(clicked)
     $(document).ready(function() {
         var table = $('#datapkh').DataTable({
             processing:true,
-            serverSide:true,            
+            serverSide:false,            
             responsive:true,
             autoWidth:true,
             paging:true,
             lengthChange:true,
             info:true,
-            scrollY: true,
-            scrollX: true,
-            ordering: true,
-            searching: true,
-            fixedColumns: true,         
+            // scrollY: true,
+            // scrollX: true,
+            // ordering: true,
+            // searching: true,
+            // fixedColumns: true,         
             dom: 
                 "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>" +
                 "<'row'<'col-md-12'tr>>" +
