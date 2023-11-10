@@ -183,7 +183,7 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin']], function () {
 });
 
 // MENU PERMASBANG //
-Route::group(['middleware' => ['auth', 'checkrole:superadmin]], function () {
+Route::group(['middleware' => ['auth', 'checkrole:superadmin']], function () {
     //PBB//
     Route::resource('pbb', PbbController::class);
     Route::post('/getkabupaten', [PbbController::class, 'getkabupaten'])->name('getkabupaten');
