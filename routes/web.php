@@ -71,14 +71,14 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin']], function () {
 });   
  
 // PROFILE USER //
-Route::group(['middleware' => ['auth', 'checkrole:superadmin,user,struktural,sekret,permasbang,pemtrantibum,kessos']], function () {
+Route::group(['middleware' => ['auth', 'checkrole:superadmin,user']], function () {
     Route::get('/auth/profile', [TkkController::class, 'profileuser'])->name('profileuser');
     Route::get('/password/reset', [PasswordController::class,'reset'])->name('reset');
     Route::patch('/password/update', [PasswordController::class,'update'])->name('update');
 });
 
 // MENU KESSOS //
-Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sekret,permasbang,pemtrantibum,kessos']], function () {
+Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,kessos']], function () {
     //Saranaibadah//
     Route::resource('saranaibadah', SaranaibadahController::class);
     Route::post('/getkabupaten', [SaranaibadahController::class, 'getkabupaten'])->name('getkabupaten');
@@ -113,7 +113,7 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
 });
 
 // MENU PEM TRANTIBUM //
-Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sekret,permasbang,pemtrantibum,kessos']], function () {
+Route::group(['middleware' => ['auth', 'checkrole:superadmin']], function () {
     //KTP//
     Route::resource('ktp', KtpController::class);
     Route::post('/getkabupaten', [KtpController::class, 'getkabupaten'])->name('getkabupaten');
@@ -140,7 +140,7 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
 });
 
 // MENU SEKRETARIAT //
-Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sekret,permasbang,pemtrantibum,kessos']], function () {
+Route::group(['middleware' => ['auth', 'checkrole:superadmin']], function () {
     //ASN//
     Route::resource('asn', AsnController::class);
     Route::post('/getkabupaten', [TkkController::class, 'getkabupaten'])->name('getkabupaten');
@@ -183,7 +183,7 @@ Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sek
 });
 
 // MENU PERMASBANG //
-Route::group(['middleware' => ['auth', 'checkrole:superadmin,struktural,user,sekret,permasbang,pemtrantibum,kessos']], function () {
+Route::group(['middleware' => ['auth', 'checkrole:superadmin]], function () {
     //PBB//
     Route::resource('pbb', PbbController::class);
     Route::post('/getkabupaten', [PbbController::class, 'getkabupaten'])->name('getkabupaten');

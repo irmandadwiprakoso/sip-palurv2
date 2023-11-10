@@ -471,7 +471,7 @@
     $(document).ready(function() {
         var table = $('#datatkk').DataTable({
             processing:true,
-            serverSide:false,            
+            serverSide:true,            
             responsive:true,
             autoWidth:true,
             paging:true,
@@ -693,7 +693,7 @@
     $(document).ready(function() {
         var table = $('#dataasn').DataTable({
             processing:true,
-            serverSide:false,            
+            serverSide:true,            
             responsive:true,
             autoWidth:true,
             paging:true,
@@ -784,7 +784,7 @@
     $(document).ready(function() {
         var table = $('#gettrashdataasn').DataTable({
             processing:true,
-            serverSide:false,            
+            serverSide:true,            
             responsive:true,
             autoWidth:true,
             paging:true,
@@ -1044,7 +1044,7 @@
     $(document).ready(function() {
         var table = $('#datauser').DataTable({  
             processing:true,
-            serverSide:false,            
+            serverSide:true,            
             responsive:true,
             autoWidth:true,
             paging:true,
