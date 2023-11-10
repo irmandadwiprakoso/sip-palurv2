@@ -306,9 +306,6 @@ class PkhController extends Controller
              ->addColumn('alamat_ktp', function ($pkh) {
                  return $pkh->ktp->alamat;
              })
-            //  ->addColumn('statusdtks', function ($pkh) {
-            //      return $pkh->statusdtks->statusdtks;
-            //  })
              ->addColumn('rt', function ($pkh) {
                  return $pkh->rt->rt;
              })
@@ -351,7 +348,6 @@ class PkhController extends Controller
              'ktp', 
              'nama_ktp', 
              'alamat_ktp', 
-            //  'statusdtks', 
              'village', 
              'district', 
              'edit', 

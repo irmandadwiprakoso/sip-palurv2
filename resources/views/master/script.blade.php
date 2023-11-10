@@ -1480,7 +1480,7 @@
     $(document).ready(function() {
         var table = $('#datapkh').DataTable({
             processing:true,
-            serverSide:false,            
+            serverSide:true,            
             responsive:true,
             autoWidth:true,
             paging:true,
@@ -1513,7 +1513,6 @@
                 {data:'ktp_id', name:'ktp_id'},
                 {data:'nama_ktp', name:'nama_ktp'},
                 {data:'alamat_ktp', name:'alamat_ktp'},
-                // {data:'statusdtks', name:'statusdtks'},
                 {data:'pkh', name:'pkh'},
                 {data:'bpnt', name:'bpnt'},
                 {data:'pbi', name:'pbi'},
