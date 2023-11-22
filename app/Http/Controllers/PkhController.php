@@ -320,7 +320,7 @@ class PkhController extends Controller
              })
  
              ->addColumn('edit', function ($pkh) {
-                 if (auth()->user()->role == "superadmin" || auth()->user()->role == "kessos" ||
+                 if (auth()->user()->role == "superadmin" || auth()->user()->role == "struktural" || auth()->user()->role == "kessos" ||
                  auth()->user()->role == "user") {
                      return '<a href="pkh/' . $pkh->id . '/edit" class="btn btn-warning" title="Edit">
                  <i class="fas fa-edit"></i></a>';
@@ -333,7 +333,7 @@ class PkhController extends Controller
              })
  
              ->addColumn('hapus', function ($pkh) {
-                 if (auth()->user()->role == "superadmin" || auth()->user()->role == "kessos" ||
+                 if (auth()->user()->role == "superadmin" || auth()->user()->role == "struktural" ||
                  auth()->user()->role == "user" ) {
                      return '<a href="#" class="btn btn-danger deletepkh"
                  data-id="' . $pkh->id . '"
