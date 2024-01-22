@@ -45,7 +45,7 @@
                                         <center>
                                             <img src="{{ asset('assets/dist/img/iconsippalur.png') }}" height="100px">
                                             <h2>Selamat Datang
-                                                <br>{{ Auth::user()->name }} di Website
+                                                <br><b>{{ Auth::user()->name }}</b> di Website
                                                 <br>Sistem Informasi Pelaporan Pamor Kelurahan <b>(SIP-PALUR)</b>
                                                 <br>Kelurahan Jakasampurna Kecamatan Bekasi Barat Kota Bekasi
                                             </h2>
