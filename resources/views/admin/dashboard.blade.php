@@ -46,7 +46,7 @@
                                             <img src="{{ asset('assets/dist/img/iconsippalur.png') }}" height="100px">
                                             <h2>Selamat Datang
                                                 <br>{{ Auth::user()->name }} di Website
-                                                <br>Sistem Informasi Pelaporan Pamor Kelurahan (SIP-PALUR)
+                                                <br>Sistem Informasi Pelaporan Pamor Kelurahan <b>(SIP-PALUR)</b>
                                             </h2>
                                         </center>
                                     </div>
